@@ -12,3 +12,4 @@
 
 
 In theory this should setup everything as we need it.
+Remember to `npm install` each time you pull the repository!
