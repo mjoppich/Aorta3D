@@ -40,6 +40,13 @@ def root():
     return app.send_static_file(retFile)
 
 
+@app.route('/model/<path:filename>')
+def models(filename):
+    print(filename)
+    retFile = "../data/models/" +filename
+    return send_from_directory("../data/models", filename)
+
+
 @app.route('/test', methods=['GET', 'POST'])
 def test():
     return "<html><body>miRExplore Server v0.01</body></html>", 200, None

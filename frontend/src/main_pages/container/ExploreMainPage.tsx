@@ -3,10 +3,19 @@ import {Card, CardActions, CardContent, CardHeader, CardText} from 'material-ui/
 import FlatButton from 'material-ui/FlatButton';
 
 import * as THREE from 'three';
+var STLLoader = require('three-stl-loader')(THREE)
+
 import {WebGLRenderer, PointLight, AmbientLight, Mesh} from 'threact';
+import config from '../config';
+import { listenerCount } from 'cluster';
+
+var createCamera = require('perspective-camera')
+
+
+
 
 export interface ExplorePageProps { switchTab?: any };
-export interface ExplorePageState { globject: any};
+export interface ExplorePageState { globject: any, glScene: any, glCamera: any, glControls: any, width: any, height: any};
 
 export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePageState> {
 
@@ -22,12 +31,82 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
      * This method will be executed after initial rendering.
      */
     componentWillMount() {
+        var self=this;
 
-        this.setState({globject: []});
+        var width = 1200;
+        var height = 800;
 
+        var cameraXOffset = 50;
+
+        var camera = new THREE.PerspectiveCamera(75, width/height, 0.1, 1000)
+        camera.position.set(cameraXOffset,0,0);        
+        camera.lookAt([0,0,0])
+        camera.updateProjectionMatrix();
+
+        var controls = require('orbit-controls')({position: [cameraXOffset,0,0]});
+        controls.test = "test";
+
+        this.setState({globject: [], glCamera: camera, glControls: controls, width: width, height: height});
+    }
+
+    loadBaseElement(loader, elempath, mpos=[0, 0, 0], mscale=[1,1,1], mcolor="#ffffff", mrot=[0,0,0])
+    {
+        var self=this;
+
+        loader.load( config.getRestAddress() + "/"+elempath, function ( geometry ) {
+
+            /*
+
+mesh.position.set( -500.0,  -700.0, 0 );
+                                        mesh.rotation.set( 0, 0, 0 );
+                                        mesh.scale.set( 2,2,2 );
+
+            */
+            geometry.computeBoundingBox();
+            geometry.center()
+
+            console.log(geometry)
+            //var geomSize = {x: geometry.boundingBox.max.x-geometry.boundingBox.min.x, y: geometry.boundingBox.max.y-geometry.boundingBox.min.y, z: geometry.boundingBox.max.z-geometry.boundingBox.min.z}
+            //mpos = [-geomSize.x*mscale[0]/2.0 + mpos[0], -geomSize.y*mscale[1]/2.0 + mpos[1], -geomSize.z*mscale[2]/2.0 + mpos[2]]
+
+            
+
+            console.log("loaded stl")
+            console.log(elempath)
+            console.log(geometry.boundingBox)
+
+            var curlist = self.state.globject;
+
+            var nmesh = <Mesh key={curlist.length}
+            geometry={geometry}
+            material={new THREE.MeshStandardMaterial({
+              color: mcolor
+            })}
+            scale={mscale}
+            position={mpos}
+            />;
+            
+            curlist.push(nmesh);
+
+            self.setState({globject: curlist})
+        } );
     }
 
     componentDidMount() {
+
+
+        var self=this;
+        var loader = new STLLoader();
+
+        var scaleFactor = 0.1;
+
+        self.loadBaseElement(loader, "model/base/membrane1.stl", [0, 0, 0], [scaleFactor,scaleFactor,scaleFactor], "#ff0000", [0,-Math.PI/2,0]);
+        self.loadBaseElement(loader, "model/base/membrane2.stl", [0, 0, 0], [scaleFactor,scaleFactor,scaleFactor], "#00ff00", [0,-Math.PI/2,0]);
+        self.loadBaseElement(loader, "model/base/membrane3.stl", [0, 0, 0], [scaleFactor,scaleFactor,scaleFactor], "#0000ff", [0,-Math.PI/2,0]);
+
+        self.loadBaseElement(loader, "model/base/plaque.stl", [0, 0, 0], [scaleFactor,scaleFactor,scaleFactor], "#ff0000", [0,-Math.PI/2,0]);
+        self.loadBaseElement(loader, "model/base/macrophage.stl", [0, 0, 0], [scaleFactor,scaleFactor,scaleFactor], "#ff0000", [0,-Math.PI/2,0]);
+        self.loadBaseElement(loader, "model/base/plaque.stl", [0, 0, 0], [scaleFactor,scaleFactor,scaleFactor], "#ff0000", [0,-Math.PI/2,0]);
 
     }
 
@@ -35,52 +114,8 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
     {
         //this.allQueries.push(<QueryComponent key={this.allQueries.length}/>);
         //this.setState({queriesStored: this.allQueries.length});
+        var self=this;
 
-        
-        var globject = [
-        <WebGLRenderer key="nq"
-            deferred={false}
-            physicallyCorrectLights={true}
-            gammaInput={true}
-            gammaOutput={true}
-            shadowMap={{enabled: true}}
-            toneMapping={THREE.ReinhardToneMapping}
-            antialias={true}
-            bgColor={0x00a1ff}
-            setPixelRatio={window.devicePixelRatio}
-            setSize={[800,400]}
-            camera={new THREE.PerspectiveCamera(75, 800/400, 0.1, 1000)}
-            scene={new THREE.Scene()}>
-
-        <AmbientLight />
-        <Mesh
-        geometry={new THREE.PlaneBufferGeometry( 20, 20 )}
-        material={new THREE.MeshStandardMaterial({
-          roughness: 0.8,
-          color: 0x00ff00 ,
-          metalness: 0.2,
-          bumpScale: 0.0005
-        })}
-        rotation={[-Math.PI / 2.0 , 0, 0]}
-        position={[10,0, 10]}
-        />
-    
-        <Mesh
-        geometry={new THREE.SphereGeometry( 1.0, 32, 32 )}
-        material={new THREE.MeshStandardMaterial({
-          color: 0xff0000 ,
-          roughness: 0.5,
-          metalness: 1.0
-        })}
-        position={[0,2,0]}
-        rotation={[0, 0, 0]}
-        castShadow={true} />
-
-            </WebGLRenderer>
-            ];
-    
-    
-            this.setState({globject: globject});
     }
 
     clearQueries()
@@ -89,10 +124,28 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
         //this.setState({queriesStored: this.allQueries.length});
     }
 
+    initRendering(objs)
+    {
+        console.log("init render")
+        console.log(objs)
+
+        objs.scene.background = new THREE.Color( 0xf0f0f0 );
+        objs.target = new THREE.Vector3(0,0,0);
+
+        console.log(objs)
+
+        return objs;
+    }
+
     /**
      * Render the component.
      */
     render() {
+
+        var self=this;
+
+
+        // new THREE.PerspectiveCamera(45, 2, 0.1, 1000)
 
 
         return (
@@ -121,9 +174,30 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
                     <FlatButton label="Select" onClick={this.clearQueries.bind(this)}/>
                     </CardActions>
 
-                    <CardText style={{innerHeight: "200px"}}>
+                    <CardText>
 
-                        {this.state.globject}
+
+                    <WebGLRenderer key="nq"
+                        deferred={false}
+                        physicallyCorrectLights={true}
+                        gammaInput={true}
+                        gammaOutput={true}
+                        shadowMap={{enabled: true}}
+                        toneMapping={THREE.ReinhardToneMapping}
+                        antialias={true}
+                        bgColor={0xafafaf}
+                        setPixelRatio={window.devicePixelRatio}
+                        setSize={[this.state.width, this.state.height]}
+                        controls={this.state.glControls}
+                        camera={this.state.glCamera}
+                        scene={new THREE.Scene()}
+                        onMount={(objs) => this.initRendering(objs)}
+                        >
+
+                            <AmbientLight />
+                            {self.state.globject}
+
+                        </WebGLRenderer>
 
                     </CardText>
 
