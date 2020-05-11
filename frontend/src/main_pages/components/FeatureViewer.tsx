@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-
+import { createPopper } from '@popperjs/core';
 
 class ToolTip
 {
@@ -1872,10 +1872,12 @@ export default class FeatureViewer {
                 }
             }
 
+            /*
             if (!$.fn.popover) {
                 options.bubbleHelp = false;
                 console.warn("The bubble help requires tooltip and popover bootstrap js libraries. The feature viewer will continue to work, but without the info bubble");
             }
+            */
 
             // Create SVG
             if (options.zoomMax) {
@@ -2070,9 +2072,17 @@ export default class FeatureViewer {
                             //$('[data-toggle="popover"]').popover({html: true});
                             //var baseContID = self.div.substring(1);
                             //console.log("base div id: " + baseContID);
+                            
+                            var helpButton =$(div).find('.header-help');
+                            /*
+                            
+                            var hbut = helpButton;
 
-                            var helpButton = $(div).find('.header-help');
+                            createPopper( hbut, helpContent, {
+                                placement: 'top',
+                              });
 
+                            
                             helpButton.popover({
                                 container: "body",
                                 html: true,
@@ -2081,6 +2091,7 @@ export default class FeatureViewer {
                                   return helpContent;
                                 }
                               });
+                              */
 
                               helpButton.on('hide.bs.popover', function () {
                                 helpButton.find(".state").text("Show");

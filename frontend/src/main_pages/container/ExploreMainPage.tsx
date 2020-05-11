@@ -4,12 +4,12 @@ import FlatButton from 'material-ui/FlatButton';
 
 import Aorta3DRenderer from "../components/Aorta3DRenderer";
 
-
-
-
+import Grid, { GridSpacing } from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import { json } from 'body-parser';
 
 export interface ExplorePageProps { switchTab?: any };
-export interface ExplorePageState { };
+export interface ExplorePageState { selected_element: any};
 
 export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePageState> {
 
@@ -21,7 +21,19 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
         super(props);
     }
 
+    componentWillMount()
+    {
+        this.setState({selected_element: {}})
+    }
 
+
+
+    handleElementSelected(element)
+    {
+        console.log("received element")
+        console.log(element)
+        this.setState({selected_element: element})
+    }
 
     /**
      * Render the component.
@@ -29,6 +41,9 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
     render() {
 
         var self=this;
+
+        console.log("render")
+        console.log(this.state.selected_element)
 
 
         // new THREE.PerspectiveCamera(45, 2, 0.1, 1000)
@@ -61,7 +76,23 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
 
                     <CardText>
 
-                        <Aorta3DRenderer width={1200} height={800}/>
+                    <Grid   container
+  direction="row"
+  justify="space-between"
+  alignItems="flex-start"
+   spacing={(2) as GridSpacing}
+   style={{width: "100%"}}>
+                        <Grid item xs>
+                            <Aorta3DRenderer width={600} height={600} onSelectElement={(element) => this.handleElementSelected(element)}/>
+                        </Grid>
+                        <Grid item xs>
+                            <Paper style={{width: "100%"}}>
+                                <p>Hello World</p>
+                                <p>{JSON.stringify(this.state.selected_element, null, 4)}</p>
+                            </Paper>
+                        </Grid>
+                    </Grid>
+
 
 
                     </CardText>

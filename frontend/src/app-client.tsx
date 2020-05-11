@@ -7,8 +7,8 @@ import { MainApp } from './pages/App';
 import config from './main_pages/config';
 
 import "jquery";
-import "bootstrap";
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import "bootstrap";
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const AppClient = () => 

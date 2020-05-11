@@ -1,7 +1,7 @@
 import axios from 'axios';
 import matchSorter from 'match-sorter';
 import * as React from 'react';
-import ReactTable from 'react-table';
+import ReactTable from 'react-table-6';
 
 import EvidenceReportButton from '../components/EvidenceReportButton';
 import MEEvidenceGraph from '../components/MEEvidenceGraph';

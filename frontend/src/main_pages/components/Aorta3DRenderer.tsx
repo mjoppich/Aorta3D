@@ -21,10 +21,16 @@ import {
 var createCamera = require('perspective-camera')
 
 export interface Aorta3DRendererProps {
-    width: number, height: number
+    width?: number,
+    height?: number,
+    onSelectElement?: any
 };
 export interface Aorta3DRendererState {
-    globject: any, glScene: any, glCamera: any, glControls: any, width: any, height: any, glRaycaster:any
+    globject: any,
+    glScene: any,
+    glCamera: any,
+    glControls: any,
+    glRaycaster:any
 };
 
 
@@ -54,15 +60,19 @@ export default class Aorta3DRenderer extends React.Component < Aorta3DRendererPr
         return objs;
     }
 
+    isFunction(functionToCheck) {
+        return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
+    }
+
     componentWillMount() {
         var self = this;
 
-        var width = 1200;
-        var height = 800;
+        var width = this.props.width;
+        var height = this.props.height;
 
         var cameraXOffset = 50;
 
-        var camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000)
+        var camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000)
         camera.position.set(cameraXOffset, 0, 0);
         camera.lookAt([0, 0, 0])
         camera.updateProjectionMatrix();
@@ -77,13 +87,11 @@ export default class Aorta3DRenderer extends React.Component < Aorta3DRendererPr
             globject: [],
             glCamera: camera,
             glControls: controls,
-            width: width,
-            height: height,
             glRaycaster: raycaster
         });
     }
 
-    loadBaseElement(loader, elempath, mpos = [0, 0, 0], mscale = [1, 1, 1], mcolor = "#ffffff", mrot = [0, 0, 0]) {
+    loadBaseElement(loader, elempath, mpos = [0, 0, 0], mscale = [1, 1, 1], mcolor = "#ffffff", mrot = [0, 0, 0], elemData=null) {
         var self = this;
 
         loader.load(config.getRestAddress() + "/" + elempath, function (geometry) {
@@ -127,6 +135,9 @@ mesh.position.set( -500.0,  -700.0, 0 );
             position = {
                 mpos
             }
+            elemid = {
+                elemData
+            }
             />;
 
             curlist.push(nmesh);
@@ -145,13 +156,12 @@ mesh.position.set( -500.0,  -700.0, 0 );
 
         var scaleFactor = 0.1;
 
-        self.loadBaseElement(loader, "model/base/membrane1.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, -Math.PI / 2, 0]);
-        self.loadBaseElement(loader, "model/base/membrane2.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#00ff00", [0, -Math.PI / 2, 0]);
-        self.loadBaseElement(loader, "model/base/membrane3.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#0000ff", [0, -Math.PI / 2, 0]);
+        self.loadBaseElement(loader, "model/base/membrane1.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, -Math.PI / 2, 0], {descr: "Membrane 1", type_det: "endothelial"});
+        self.loadBaseElement(loader, "model/base/membrane2.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#00ff00", [0, -Math.PI / 2, 0], {descr: "Membrane 2", type_det: "endothelial"});
+        self.loadBaseElement(loader, "model/base/membrane3.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#0000ff", [0, -Math.PI / 2, 0], {descr: "Membrane 3", type_det: "endothelial"});
 
-        self.loadBaseElement(loader, "model/base/plaque.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, -Math.PI / 2, 0]);
-        self.loadBaseElement(loader, "model/base/macrophage.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, -Math.PI / 2, 0]);
-        self.loadBaseElement(loader, "model/base/plaque.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, -Math.PI / 2, 0]);
+        self.loadBaseElement(loader, "model/base/plaque.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, -Math.PI / 2, 0], {descr: "Plaque", type_det: "plaque"});
+        self.loadBaseElement(loader, "model/base/macrophage.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, -Math.PI / 2, 0], {descr: "Macrophage", type_det: "macrophage"});
 
     }
 
@@ -188,8 +198,12 @@ mesh.position.set( -500.0,  -700.0, 0 );
                     self.INTERSECTED = intersects[0].object;
                     self.INTERSECTED.currentHex = self.INTERSECTED.material.emissive.getHex();
                     self.INTERSECTED.material.emissive.setHex(0xff0000);
-    
-                    console.log(self.INTERSECTED.elemid)
+                       
+                    if (self.isFunction(self.props.onSelectElement))
+                    {
+                        self.props.onSelectElement(self.INTERSECTED.elemid)
+                    } else {
+                    }
     
                     //elemInfo=document.createElement("p")
                     //elemText = document.createTextNode("Element with ID: " + INTERSECTED.elemid);
@@ -232,7 +246,7 @@ mesh.position.set( -500.0,  -700.0, 0 );
         var mousePos = new THREE.Vector2(event.clientX, event.clientY);
         mousePos = this.getMousePosition(mousePos);
 
-        this.MOUSE = new THREE.Vector2(( mousePos.x / this.state.width ) * 2 - 1, - ( mousePos.y / this.state.height ) * 2 + 1);
+        this.MOUSE = new THREE.Vector2(( mousePos.x / this.props.width ) * 2 - 1, - ( mousePos.y / this.props.height ) * 2 + 1);
         //this.MOUSE = new THREE.Vector2(( mousePos.x / window.innerWidth ) * 2 - 1, - ( mousePos.y / window.innerHeight ) * 2 + 1);
 
         //console.log(this.MOUSE);
@@ -275,7 +289,7 @@ mesh.position.set( -500.0,  -700.0, 0 );
                 window.devicePixelRatio
             }
             setSize = {
-                [this.state.width, this.state.height]
+                [this.props.width, this.props.height]
             }
             controls = {
                 this.state.glControls

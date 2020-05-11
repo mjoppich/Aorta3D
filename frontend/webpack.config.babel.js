@@ -1,12 +1,15 @@
-import path from 'path';
-import nodeExternals from 'webpack-node-externals';
-import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
+//import path from 'path';
+var path = require("path");
+//import nodeExternals from 'webpack-node-externals';
+//import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 
-import webpack from 'webpack';
+//import webpack from 'webpack';
 
-const autoprefixer = require('autoprefixer');
-const precss = require('precss');
-const TransferWebpackPlugin = require('transfer-webpack-plugin');
+var webpack = require("webpack");
+
+//const autoprefixer = require('autoprefixer');
+//const precss = require('precss');
+//const TransferWebpackPlugin = require('transfer-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const devMode = process.env.NODE_ENV !== 'production';
 
