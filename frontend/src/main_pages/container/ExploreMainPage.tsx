@@ -11,6 +11,7 @@ import Grid, { GridSpacing } from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { json } from 'body-parser';
 
+
 export interface ExplorePageProps { switchTab?: any };
 export interface ExplorePageState { selected_element: any};
 
@@ -98,15 +99,12 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
                                     justify="space-between"
                                     alignItems="flex-start"
                                     spacing={(2) as GridSpacing}
-                                    style={{width: "100%", height: pageHeight + "px"}}>
+                                    style={{width: "100%"}}>
                                     <Grid item xs>
                                         <Aorta3DElemInfos element={this.state.selected_element} onSelectElement={(elem) => console.log(elem)} />
                                     </Grid>
                                     <Grid item xs>
-                                        <Paper style={{width: "100%"}}>
-                                            <p>Hello World</p>
-                                            <p>{JSON.stringify(this.state.selected_element, null, 4)}</p>
-                                        </Paper>
+                                        <Aorta3DRelatedExpsViewer element={this.state.selected_element} onSelectElement={(elem) => console.log(elem)}/>
                                     </Grid>
                                     <Grid item xs>
                                         <Paper style={{width: "100%"}}>

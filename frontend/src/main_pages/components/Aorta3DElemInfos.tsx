@@ -35,11 +35,6 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
     }
 
-    componentDidMount() {
-
-       
-    }
-
     setElemInfo(info)
     {
         var self=this;
@@ -51,31 +46,39 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
     {
         var self=this;
 
-        axios.post(config.getRestAddress() + "/getElementInfo", {id: self.state.element.id}, config.axiosConfig)
-        .then(function (response) {
+        if ((prevState.element == null) || (prevState.element.id !== self.state.element.id))
+        {
+            console.log(prevState.element)
+            console.log(self.state.element)
 
-          console.log(response.data)
-          self.setElemInfo(response.data);
+            if (self.state.element.id)
+            {
+                axios.post(config.getRestAddress() + "/getElementInfo", {id: self.state.element.id}, config.axiosConfig)
+                .then(function (response) {
+        
+                  self.setElemInfo(response.data);
+        
+        
+                })
+                .catch(function (error) {
+    
+                });
+        
+                axios.post(config.getRestAddress() + "/getElementInfoImage", {id: self.state.element.id}, config.axiosConfig)
+                .then(function (response) {
+        
+                  self.setState({elem_image: response.data})
+        
+        
+                })
+                .catch(function (error) {
+    
+                });
+            }
+            
+        }
 
 
-        })
-        .catch(function (error) {
-          console.log(error)
-          self.setElemInfo({});
-        });
-
-        axios.post(config.getRestAddress() + "/getElementInfoImage", {id: self.state.element.id}, config.axiosConfig)
-        .then(function (response) {
-
-          console.log(response.data)
-          self.setState({elem_image: response.data})
-
-
-        })
-        .catch(function (error) {
-          console.log(error)
-          self.setState({elem_image: ""})
-        });
 
     }
 
@@ -97,7 +100,7 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
             <div>
                 <p>{JSON.stringify(this.state.element, null, 4)}</p>
                 <p>{JSON.stringify(this.state.eleminfo, null, 4)}</p>
-                <img src={`data:image/jpeg;base64,${this.state.elem_image}`} />
+                <img src={`data:image/png;base64,${this.state.elem_image}`} />
             </div>
         )
     }
