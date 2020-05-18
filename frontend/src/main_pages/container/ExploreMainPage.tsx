@@ -76,12 +76,12 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
 
                     <CardText>
 
-                    <Grid   container
-  direction="row"
-  justify="space-between"
-  alignItems="flex-start"
-   spacing={(2) as GridSpacing}
-   style={{width: "100%"}}>
+                    <Grid container
+                        direction="row"
+                        justify="space-between"
+                        alignItems="flex-start"
+                        spacing={(2) as GridSpacing}
+                        style={{width: "100%"}}>
                         <Grid item xs>
                             <Aorta3DRenderer width={600} height={600} onSelectElement={(element) => this.handleElementSelected(element)}/>
                         </Grid>

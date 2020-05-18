@@ -52,6 +52,29 @@ def test():
     return "<html><body>miRExplore Server v0.01</body></html>", 200, None
 
 
+@app.route('/getElementInfo', methods=['POST'])
+def getElementInfo():
+
+    content = request.get_json(silent=True)
+    fetchID = content.get("id", -1)
+    
+    data = {
+        "id": 36,
+        "type": "he",
+        "location": "AR",
+        "path": "/usr/local/hdd/aorta_images/HE/ZT13_6-1.tif",
+        "png_path": "/usr/local/hdd/aorta_images/HE/ZT13_6-1.tif.png",
+        "plaqueRate": 0.783,
+        "level": 50
+    }
+
+    response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
 @app.route('/stats', methods=['GET', 'POST'])
 def stats():
     
