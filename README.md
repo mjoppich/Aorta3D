@@ -2,6 +2,9 @@
 
     cd frontend
     npm install
+
+After installation, edit file `node_modules/material-table/types/index.d.ts` and remove line 235: `searchText?: string;` . Then continue:
+
     npm run build:dev
 
     cd ..

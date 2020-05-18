@@ -10,9 +10,9 @@ sys.path.insert(0, str(os.path.dirname(os.path.realpath(__file__))) + "/../")
 
 
 import time
-from io import StringIO
+import io
 
-from flask import Flask, jsonify, request, redirect, url_for, send_from_directory
+from flask import Flask, jsonify, request, redirect, url_for, send_from_directory, send_file
 import json
 import pprint
 from collections import defaultdict, Counter
@@ -156,20 +156,30 @@ def getElementInfoImage():
     with open(config_path) as f:
         config_file = json.load(f)
 
-    data = {}
+    data = None
+    fname = None
 
     for elem in config_file:
         if elem["id"] == fetchID:
             data = elem
             break
-    f.close()
-    print(fetchID)
-    print(data)
-    if data["type"] == "msi":
-        fname = ".".join(data["path"], "_upgma_", data["region"], ".png")
-    else:
-        fname = data["png_path"]
-    image_binary = open(fname).readall()
+
+    testImage = os.path.dirname(__file__) + "../data/images/test_image.png"
+
+    if data == None or not "path" in data:
+        fname = testImage
+    
+    else:   
+        if data["type"] == "MSI":
+            fname = ".".join([data["path"],"_upgma_", data["region"], ".png"])
+        else:
+            fname = ".".join([data["path"], ".png"])
+
+    if not os.path.exists(fname) or fname == None:
+        fname = testImage
+        
+
+    image_binary = open(fname, "rb").read()
 
     return send_file(
     io.BytesIO(image_binary),
