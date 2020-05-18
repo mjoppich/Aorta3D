@@ -8,9 +8,12 @@ import config from '../config';
 
 export interface Aorta3DElemInfosProps {
     onSelectElement?: any
+    element?: any
 };
 export interface Aorta3DElemInfosState {
-    eleminfo: any
+    eleminfo: any,
+    element: any,
+    elem_image: any
 };
 
 
@@ -37,12 +40,65 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
        
     }
 
+    setElemInfo(info)
+    {
+        var self=this;
+        self.setState({eleminfo: info})
+
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot)
+    {
+        var self=this;
+
+        axios.post(config.getRestAddress() + "/getElementInfo", {id: self.state.element.id}, config.axiosConfig)
+        .then(function (response) {
+
+          console.log(response.data)
+          self.setElemInfo(response.data);
+
+
+        })
+        .catch(function (error) {
+          console.log(error)
+          self.setElemInfo({});
+        });
+
+        axios.post(config.getRestAddress() + "/getElementInfoImage", {id: self.state.element.id}, config.axiosConfig)
+        .then(function (response) {
+
+          console.log(response.data)
+          self.setState({elem_image: response.data})
+
+
+        })
+        .catch(function (error) {
+          console.log(error)
+          self.setState({elem_image: ""})
+        });
+
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState){
+
+        var self = this;
+
+        if ((prevState == null) || (nextProps.element!==prevState.element)){            
+            return {element: nextProps.element}
+        }
+        else return null;
+      }
+
 
     render() {
 
         var self = this;
         return (
-            <div>Hello World</div>
+            <div>
+                <p>{JSON.stringify(this.state.element, null, 4)}</p>
+                <p>{JSON.stringify(this.state.eleminfo, null, 4)}</p>
+                <img src={`data:image/jpeg;base64,${this.state.elem_image}`} />
+            </div>
         )
     }
 }

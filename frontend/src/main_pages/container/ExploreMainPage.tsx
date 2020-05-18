@@ -48,6 +48,8 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
         console.log("render")
         console.log(this.state.selected_element)
 
+        var pageHeight = 600;
+
 
         // new THREE.PerspectiveCamera(45, 2, 0.1, 1000)
 
@@ -84,14 +86,36 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
                         justify="space-between"
                         alignItems="flex-start"
                         spacing={(2) as GridSpacing}
-                        style={{width: "100%"}}>
+                        style={{width: "100%", height: "100%"}}>
                         <Grid item xs>
-                            <Aorta3DRenderer width={600} height={600} onSelectElement={(element) => this.handleElementSelected(element)}/>
+                            <Aorta3DRenderer width={600} height={pageHeight} onSelectElement={(element) => this.handleElementSelected(element)}/>
                         </Grid>
                         <Grid item xs>
                             <Paper style={{width: "100%"}}>
-                                <p>Hello World</p>
-                                <p>{JSON.stringify(this.state.selected_element, null, 4)}</p>
+
+                                <Grid container
+                                    direction="column"
+                                    justify="space-between"
+                                    alignItems="flex-start"
+                                    spacing={(2) as GridSpacing}
+                                    style={{width: "100%", height: pageHeight + "px"}}>
+                                    <Grid item xs>
+                                        <Aorta3DElemInfos element={this.state.selected_element} onSelectElement={(elem) => console.log(elem)} />
+                                    </Grid>
+                                    <Grid item xs>
+                                        <Paper style={{width: "100%"}}>
+                                            <p>Hello World</p>
+                                            <p>{JSON.stringify(this.state.selected_element, null, 4)}</p>
+                                        </Paper>
+                                    </Grid>
+                                    <Grid item xs>
+                                        <Paper style={{width: "100%"}}>
+                                            <p>Hello World</p>
+                                            <p>{JSON.stringify(this.state.selected_element, null, 4)}</p>
+                                        </Paper>
+                                    </Grid>
+                                </Grid>
+
                             </Paper>
                         </Grid>
                     </Grid>
@@ -101,10 +125,6 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
                     </CardText>
 
                 </Card>
-                
-                <div>
-                    
-                </div>
 
             </div>
 
