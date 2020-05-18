@@ -157,8 +157,8 @@ def getElementInfoImage():
         "level": 50
     }
 
-    fname = ".".join(data["path"], data["region"], "upgma.png"
-    image_binary = open()).readall()
+    fname = ".".join(data["path"], data["region"], "upgma.png")
+    image_binary = open(fname).readall()
 
     return send_file(
     io.BytesIO(image_binary),
