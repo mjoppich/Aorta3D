@@ -61,9 +61,9 @@ def fetchViewableData():
     reduced_data = []
 
     for elem in config_file:
-        if elem["type"] == "msi": #temporary extraction of only MSI data
-            reduced_elem = {"id": elem["id"], "type": elem["type"], "type_det": elem["type_det"], "location": elem["location"], "level": elem["level"]}
-            reduced_data.append(reduced_elem)
+        #if elem["type"] == "msi": #temporary extraction of only MSI data   
+        reduced_elem = {"id": elem["id"], "type": elem["type"], "type_det": elem["type_det"], "location": elem["location"], "level": elem["level"]}
+        reduced_data.append(reduced_elem)
 
     f.close()
 
