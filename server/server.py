@@ -20,6 +20,7 @@ from collections import defaultdict, Counter
 from flask_cors import CORS
 
 dataurl = str(os.path.dirname(os.path.realpath(__file__))) + "/../" + 'frontend/src/static/'
+config_path = "config.json"
 
 app = Flask(__name__, static_folder=dataurl, static_url_path='/static')
 CORS(app)
@@ -54,60 +55,62 @@ def test():
 @app.route('/fetchViewableData', methods=['POST'])
 def fetchViewableData():
     
-    data = [{
-        "id": 419,
-        "type": "msi",
-        "type_det": "Lipids",
-        "region": "2",
-        "location": "AR",
-        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
-        "level": 50
-    },
-    {
-        "id": 420,
-        "type": "msi",
-        "type_det": "Lipids",
-        "region": "3",
-        "location": "AR",
-        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
-        "level": 50
-    }]
+    with open(config_path) as f:
+        config_file = json.load(f)
+
+    reduced_data = []
+
+    for elem in config_file:
+        if elem["type"] == "msi": #temporary extraction of only MSI data
+            reduced_elem = {"id": elem["id"], "type": elem["type"], "type_det": elem["type_det"], "location": elem["location"], "level": elem["level"]}
+            reduced_data.append(reduced_elem)
+
+    f.close()
 
     response = app.response_class(
-        response=json.dumps(data),
+        response=json.dumps(reduced_data),
         status=200,
         mimetype='application/json'
     )
     return response
+
 
 @app.route('/getRelatedData', methods=['POST'])
 def getRelatedData():
 
     content = request.get_json(silent=True)
     fetchID = content.get("id", -1)
-    
-    data = [{
-        "id": 419,
-        "type": "msi",
-        "type_det": "Lipids",
-        "region": "2",
-        "location": "AR",
-        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
-        "level": 50
-    },
-    {
-        "id": 420,
-        "type": "msi",
-        "type_det": "Lipids",
-        "region": "3",
-        "location": "AR",
-        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
-        "level": 50
-    }]
+
+    with open(config_path) as f:
+        config_file = json.load(f)
+
+    targetInfo = {}
+    data = []
+
+    for elem in config_file:
+        if elem["id"] == fetchID:
+            targetInfo = elem
+            break
+
+    if targetInfo["type"] == "msi":
+        targetPath = targetInfo["path"]
+        for elem in config_file:            #look for further regions in the same imZML
+            if elem["path"] == targetPath:
+                data.append(elem)
+    elif targetInfo["type"] == "he":
+        for elem in config_file:            #look for channel images that correspond to HE ID AND HE that have 0.1 similar plaque rate
+            if elem["type"] == "immuno" and elem["parent"] == fetchID:
+                data.append(elem)
+            if elem["type"] == "he" and abs(float(elem["plaqueRate"]) - float(targetInfo["plaqueRate"])) <= 0.1:
+                data.append(elem)
+    else:
+        for elem in config_file:            #look for HE parent image AND the images of different channels
+            if elem["type"] == "he" and elem["id"] == targetInfo["parent"]:
+                data.append(elem)
+            if elem["type"] == "immuno" and not elem["type_det"] == targetInfo["type_det"]:
+                data.append(elem)
+
+    f.close()
 
     response = app.response_class(
         response=json.dumps(data),
@@ -121,17 +124,17 @@ def getElementInfo():
 
     content = request.get_json(silent=True)
     fetchID = content.get("id", -1)
-    
-    data = {
-        "id": 419,
-        "type": "msi",
-        "type_det": "Lipids",
-        "region": "2",
-        "location": "AR",
-        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
-        "level": 50
-    }
+
+    with open(config_path) as f:
+        config_file = json.load(f)
+
+    data = {}
+
+    for elem in config_file:
+        if elem["id"] == fetchID:
+            data = elem
+            break
+    f.close()
 
     response = app.response_class(
         response=json.dumps(data),
@@ -145,19 +148,19 @@ def getElementInfoImage():
 
     content = request.get_json(silent=True)
     fetchID = content.get("id", -1)
-    
-    data = {
-        "id": 419,
-        "type": "msi",
-        "type_det": "Lipids",
-        "region": "2",
-        "location": "AR",
-        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
-        "level": 50
-    }
 
-    fname = ".".join(data["path"], data["region"], "upgma.png")
+    with open(config_path) as f:
+        config_file = json.load(f)
+
+    data = {}
+
+    for elem in config_file:
+        if elem["id"] == fetchID:
+            data = elem
+            break
+    f.close()
+
+    fname = ".".join(data["path"], "_upgma_", data["region"], ".png")
     image_binary = open(fname).readall()
 
     return send_file(
