@@ -20,7 +20,7 @@ from collections import defaultdict, Counter
 from flask_cors import CORS
 
 dataurl = str(os.path.dirname(os.path.realpath(__file__))) + "/../" + 'frontend/src/static/'
-config_path = "config.json"
+config_path = "../config.json"
 
 app = Flask(__name__, static_folder=dataurl, static_url_path='/static')
 CORS(app)
@@ -119,7 +119,7 @@ def getRelatedData():
     )
     return response
 
-@app.route('/getElementInfo', methods=['POST'])
+@app.route('/getElementInfo', methods=['GET', 'POST'])
 def getElementInfo():
 
     content = request.get_json(silent=True)
@@ -148,6 +148,10 @@ def getElementInfoImage():
 
     content = request.get_json(silent=True)
     fetchID = content.get("id", -1)
+    if fetchID == -1:
+        return app.response_class(
+        response="Bad request",
+        status=400    )
 
     with open(config_path) as f:
         config_file = json.load(f)
@@ -159,8 +163,12 @@ def getElementInfoImage():
             data = elem
             break
     f.close()
-
-    fname = ".".join(data["path"], "_upgma_", data["region"], ".png")
+    print(fetchID)
+    print(data)
+    if data["type"] == "msi":
+        fname = ".".join(data["path"], "_upgma_", data["region"], ".png")
+    else:
+        fname = data["png_path"]
     image_binary = open(fname).readall()
 
     return send_file(
@@ -171,8 +179,22 @@ def getElementInfoImage():
 
 @app.route('/stats', methods=['GET', 'POST'])
 def stats():
+
+    with open(config_path) as f:
+        config_file = json.load(f)
+
+    datasets = 0
+    datatypes = {}
+
+    for elem in config_file:
+        datasets += 1
+        if not elem["type"] in datatypes:
+            datatypes[elem["type"]] = 1
+        else: 
+            datatypes[elem["type"]] = datatypes[elem["type"]] + 1
+    f.close()
     
-    data = {"datasets": 10, "datatypes": ["MSI", "Microscopy"]}
+    data = {"datasets": datasets, "datatypes": list(datatypes.keys()), "overview": datatypes}
     response = app.response_class(
         response=json.dumps(data),
         status=200,
