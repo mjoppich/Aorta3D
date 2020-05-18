@@ -3,6 +3,9 @@ import {Card, CardActions, CardContent, CardHeader, CardText} from 'material-ui/
 import FlatButton from 'material-ui/FlatButton';
 
 import Aorta3DRenderer from "../components/Aorta3DRenderer";
+import Aorta3DElemInfos from "../components/Aorta3DElemInfos";
+import Aorta3DRelatedExpsViewer from "../components/Aorta3DRelatedExpsViewer";
+import Aorta3DExpAnalyser from "../components/Aorta3DExpAnalyser";
 
 import Grid, { GridSpacing } from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';

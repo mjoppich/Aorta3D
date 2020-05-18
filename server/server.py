@@ -51,6 +51,70 @@ def models(filename):
 def test():
     return "<html><body>miRExplore Server v0.01</body></html>", 200, None
 
+@app.route('/fetchViewableData', methods=['POST'])
+def fetchViewableData():
+    
+    data = [{
+        "id": 419,
+        "type": "msi",
+        "type_det": "Lipids",
+        "region": "2",
+        "location": "AR",
+        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
+        "level": 50
+    },
+    {
+        "id": 420,
+        "type": "msi",
+        "type_det": "Lipids",
+        "region": "3",
+        "location": "AR",
+        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
+        "level": 50
+    }]
+
+    response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
+@app.route('/getRelatedData', methods=['POST'])
+def getRelatedData():
+
+    content = request.get_json(silent=True)
+    fetchID = content.get("id", -1)
+    
+    data = [{
+        "id": 419,
+        "type": "msi",
+        "type_det": "Lipids",
+        "region": "2",
+        "location": "AR",
+        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
+        "level": 50
+    },
+    {
+        "id": 420,
+        "type": "msi",
+        "type_det": "Lipids",
+        "region": "3",
+        "location": "AR",
+        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
+        "level": 50
+    }]
+
+    response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 
 @app.route('/getElementInfo', methods=['POST'])
 def getElementInfo():
@@ -59,12 +123,13 @@ def getElementInfo():
     fetchID = content.get("id", -1)
     
     data = {
-        "id": 36,
-        "type": "he",
+        "id": 419,
+        "type": "msi",
+        "type_det": "Lipids",
+        "region": "2",
         "location": "AR",
-        "path": "/usr/local/hdd/aorta_images/HE/ZT13_6-1.tif",
-        "png_path": "/usr/local/hdd/aorta_images/HE/ZT13_6-1.tif.png",
-        "plaqueRate": 0.783,
+        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
         "level": 50
     }
 
@@ -74,6 +139,32 @@ def getElementInfo():
         mimetype='application/json'
     )
     return response
+
+@app.route('/getElementInfoImage', methods=['POST'])
+def getElementInfoImage():
+
+    content = request.get_json(silent=True)
+    fetchID = content.get("id", -1)
+    
+    data = {
+        "id": 419,
+        "type": "msi",
+        "type_det": "Lipids",
+        "region": "2",
+        "location": "AR",
+        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
+        "level": 50
+    }
+
+    fname = ".".join(data["path"], data["region"], "upgma.png"
+    image_binary = open()).readall()
+
+    return send_file(
+    io.BytesIO(image_binary),
+    mimetype='image/png',
+    as_attachment=True,
+    attachment_filename=fname)
 
 @app.route('/stats', methods=['GET', 'POST'])
 def stats():

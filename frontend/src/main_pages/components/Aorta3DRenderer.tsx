@@ -159,10 +159,11 @@ mesh.position.set( -500.0,  -700.0, 0 );
         self.loadBaseElement(loader, "model/base/membrane1.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, -Math.PI / 2, 0], {descr: "Membrane 1", type_det: "endothelial"});
         self.loadBaseElement(loader, "model/base/membrane2.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#00ff00", [0, -Math.PI / 2, 0], {descr: "Membrane 2", type_det: "endothelial"});
         self.loadBaseElement(loader, "model/base/membrane3.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#0000ff", [0, -Math.PI / 2, 0], {descr: "Membrane 3", type_det: "endothelial"});
-
         self.loadBaseElement(loader, "model/base/plaque.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, -Math.PI / 2, 0], {descr: "Plaque", type_det: "plaque"});
         self.loadBaseElement(loader, "model/base/macrophage.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, -Math.PI / 2, 0], {descr: "Macrophage", type_det: "macrophage"});
 
+
+        
     }
 
     INTERSECTED: any;
