@@ -64,7 +64,8 @@ export class MainStatus extends React.Component<MainStatusProps,MainStatusState>
                     <h4>Statistics</h4>
                     <ul>
                         <li><b>Datasets</b>: {this.state.stats.datasets || 0}</li>
-                        <li><b>Data Types included</b>: {(this.state.stats.datatypes || []).join(", ")}</li>
+                        <li><b>Data types</b>: {(this.state.stats.datatypes || []).join(", ")}</li>
+                        <li><b>Overview</b>: {JSON.stringify(this.state.stats.overview, null, 10)}</li>
                         
                     </ul>
                 </span>
