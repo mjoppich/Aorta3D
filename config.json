@@ -3570,10 +3570,30 @@
         "level": 50
     },
     {
-        "id": 368,
+        "id": 366,
         "type": "msi",
         "type_det": "Proteins",
         "region": "4",
+        "location": "BCA",
+        "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML.info",
+        "level": 50
+    },
+    {
+        "id": 367,
+        "type": "msi",
+        "type_det": "Proteins",
+        "region": "5",
+        "location": "BCA",
+        "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML.info",
+        "level": 50
+    },
+    {
+        "id": 368,
+        "type": "msi",
+        "type_det": "Proteins",
+        "region": "3",
         "location": "BCA",
         "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
         "info_path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML.info",
@@ -3583,7 +3603,17 @@
         "id": 369,
         "type": "msi",
         "type_det": "Proteins",
-        "region": "5",
+        "region": "7",
+        "location": "BCA",
+        "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML.info",
+        "level": 50
+    },
+    {
+        "id": 370,
+        "type": "msi",
+        "type_det": "Proteins",
+        "region": "4",
         "location": "BCA",
         "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
         "info_path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML.info",
@@ -3593,7 +3623,7 @@
         "id": 371,
         "type": "msi",
         "type_det": "Proteins",
-        "region": "3",
+        "region": "0",
         "location": "BCA",
         "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
         "info_path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML.info",
@@ -3603,7 +3633,17 @@
         "id": 372,
         "type": "msi",
         "type_det": "Proteins",
-        "region": "7",
+        "region": "6",
+        "location": "BCA",
+        "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML.info",
+        "level": 50
+    },
+    {
+        "id": 373,
+        "type": "msi",
+        "type_det": "Proteins",
+        "region": "3",
         "location": "BCA",
         "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
         "info_path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML.info",
@@ -3613,7 +3653,7 @@
         "id": 374,
         "type": "msi",
         "type_det": "Proteins",
-        "region": "4",
+        "region": "1",
         "location": "BCA",
         "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
         "info_path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML.info",
@@ -3623,7 +3663,7 @@
         "id": 375,
         "type": "msi",
         "type_det": "Proteins",
-        "region": "0",
+        "region": "7",
         "location": "BCA",
         "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
         "info_path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML.info",
@@ -3633,7 +3673,7 @@
         "id": 376,
         "type": "msi",
         "type_det": "Proteins",
-        "region": "6",
+        "region": "2",
         "location": "BCA",
         "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
         "info_path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML.info",
@@ -3643,7 +3683,7 @@
         "id": 377,
         "type": "msi",
         "type_det": "Proteins",
-        "region": "3",
+        "region": "2",
         "location": "BCA",
         "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
         "info_path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML.info",
@@ -3653,7 +3693,7 @@
         "id": 378,
         "type": "msi",
         "type_det": "Proteins",
-        "region": "1",
+        "region": "5",
         "location": "BCA",
         "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
         "info_path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML.info",
@@ -3663,46 +3703,6 @@
         "id": 379,
         "type": "msi",
         "type_det": "Proteins",
-        "region": "7",
-        "location": "BCA",
-        "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML.info",
-        "level": 50
-    },
-    {
-        "id": 381,
-        "type": "msi",
-        "type_det": "Proteins",
-        "region": "2",
-        "location": "BCA",
-        "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML.info",
-        "level": 50
-    },
-    {
-        "id": 382,
-        "type": "msi",
-        "type_det": "Proteins",
-        "region": "2",
-        "location": "BCA",
-        "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML.info",
-        "level": 50
-    },
-    {
-        "id": 383,
-        "type": "msi",
-        "type_det": "Proteins",
-        "region": "5",
-        "location": "BCA",
-        "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML.info",
-        "level": 50
-    },
-    {
-        "id": 384,
-        "type": "msi",
-        "type_det": "Proteins",
         "region": "0",
         "location": "BCA",
         "path": "/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML",
@@ -3710,7 +3710,7 @@
         "level": 50
     },
     {
-        "id": 386,
+        "id": 380,
         "type": "msi",
         "type_det": "Proteins",
         "region": "6",
@@ -3720,7 +3720,7 @@
         "level": 50
     },
     {
-        "id": 388,
+        "id": 381,
         "type": "msi",
         "type_det": "Proteins",
         "region": "1",
@@ -3730,7 +3730,7 @@
         "level": 50
     },
     {
-        "id": 390,
+        "id": 382,
         "type": "msi",
         "type_det": "Lipids",
         "region": "3",
@@ -3740,129 +3740,129 @@
         "level": 50
     },
     {
-        "id": 391,
+        "id": 383,
         "type": "msi",
         "type_det": "Lipids",
         "region": "4",
         "location": "AR",
         "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT1_Lipids/190927_AR_ZT1_Lipids.imzML",
         "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT1_Lipids/190927_AR_ZT1_Lipids.imzML.info",
+        "level": 50
+    },
+    {
+        "id": 384,
+        "type": "msi",
+        "type_det": "Lipids",
+        "region": "2",
+        "location": "AR",
+        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT1_Lipids/190927_AR_ZT1_Lipids.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT1_Lipids/190927_AR_ZT1_Lipids.imzML.info",
+        "level": 50
+    },
+    {
+        "id": 385,
+        "type": "msi",
+        "type_det": "Lipids",
+        "region": "1",
+        "location": "AR",
+        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT1_Lipids/190927_AR_ZT1_Lipids.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT1_Lipids/190927_AR_ZT1_Lipids.imzML.info",
+        "level": 50
+    },
+    {
+        "id": 386,
+        "type": "msi",
+        "type_det": "Proteins",
+        "region": "2",
+        "location": "AR",
+        "path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML.info",
+        "level": 50
+    },
+    {
+        "id": 387,
+        "type": "msi",
+        "type_det": "Proteins",
+        "region": "3",
+        "location": "AR",
+        "path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML.info",
+        "level": 50
+    },
+    {
+        "id": 388,
+        "type": "msi",
+        "type_det": "Proteins",
+        "region": "1",
+        "location": "AR",
+        "path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML.info",
+        "level": 50
+    },
+    {
+        "id": 389,
+        "type": "msi",
+        "type_det": "Proteins",
+        "region": "2",
+        "location": "AR",
+        "path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML.info",
+        "level": 50
+    },
+    {
+        "id": 390,
+        "type": "msi",
+        "type_det": "Proteins",
+        "region": "3",
+        "location": "AR",
+        "path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML.info",
+        "level": 50
+    },
+    {
+        "id": 391,
+        "type": "msi",
+        "type_det": "Proteins",
+        "region": "0",
+        "location": "AR",
+        "path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML.info",
+        "level": 50
+    },
+    {
+        "id": 392,
+        "type": "msi",
+        "type_det": "Proteins",
+        "region": "1",
+        "location": "AR",
+        "path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML.info",
+        "level": 50
+    },
+    {
+        "id": 393,
+        "type": "msi",
+        "type_det": "Proteins",
+        "region": "0",
+        "location": "AR",
+        "path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML.info",
+        "level": 50
+    },
+    {
+        "id": 394,
+        "type": "msi",
+        "type_det": "Lipids",
+        "region": "4",
+        "location": "AR",
+        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
+        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
         "level": 50
     },
     {
         "id": 395,
         "type": "msi",
         "type_det": "Lipids",
-        "region": "2",
-        "location": "AR",
-        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT1_Lipids/190927_AR_ZT1_Lipids.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT1_Lipids/190927_AR_ZT1_Lipids.imzML.info",
-        "level": 50
-    },
-    {
-        "id": 398,
-        "type": "msi",
-        "type_det": "Lipids",
-        "region": "1",
-        "location": "AR",
-        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT1_Lipids/190927_AR_ZT1_Lipids.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT1_Lipids/190927_AR_ZT1_Lipids.imzML.info",
-        "level": 50
-    },
-    {
-        "id": 399,
-        "type": "msi",
-        "type_det": "Proteins",
-        "region": "2",
-        "location": "AR",
-        "path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML.info",
-        "level": 50
-    },
-    {
-        "id": 400,
-        "type": "msi",
-        "type_det": "Proteins",
-        "region": "3",
-        "location": "AR",
-        "path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML.info",
-        "level": 50
-    },
-    {
-        "id": 401,
-        "type": "msi",
-        "type_det": "Proteins",
-        "region": "1",
-        "location": "AR",
-        "path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML.info",
-        "level": 50
-    },
-    {
-        "id": 405,
-        "type": "msi",
-        "type_det": "Proteins",
-        "region": "2",
-        "location": "AR",
-        "path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML.info",
-        "level": 50
-    },
-    {
-        "id": 406,
-        "type": "msi",
-        "type_det": "Proteins",
-        "region": "3",
-        "location": "AR",
-        "path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML.info",
-        "level": 50
-    },
-    {
-        "id": 407,
-        "type": "msi",
-        "type_det": "Proteins",
-        "region": "0",
-        "location": "AR",
-        "path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML.info",
-        "level": 50
-    },
-    {
-        "id": 408,
-        "type": "msi",
-        "type_det": "Proteins",
-        "region": "1",
-        "location": "AR",
-        "path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML.info",
-        "level": 50
-    },
-    {
-        "id": 409,
-        "type": "msi",
-        "type_det": "Proteins",
-        "region": "0",
-        "location": "AR",
-        "path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML.info",
-        "level": 50
-    },
-    {
-        "id": 411,
-        "type": "msi",
-        "type_det": "Lipids",
-        "region": "4",
-        "location": "AR",
-        "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
-        "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
-        "level": 50
-    },
-    {
-        "id": 415,
-        "type": "msi",
-        "type_det": "Lipids",
         "region": "0",
         "location": "AR",
         "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
@@ -3870,7 +3870,7 @@
         "level": 50
     },
     {
-        "id": 417,
+        "id": 396,
         "type": "msi",
         "type_det": "Lipids",
         "region": "5",
@@ -3880,7 +3880,7 @@
         "level": 50
     },
     {
-        "id": 419,
+        "id": 397,
         "type": "msi",
         "type_det": "Lipids",
         "region": "2",
@@ -3890,7 +3890,7 @@
         "level": 50
     },
     {
-        "id": 420,
+        "id": 398,
         "type": "msi",
         "type_det": "Lipids",
         "region": "3",

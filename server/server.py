@@ -198,10 +198,10 @@ def stats():
 
     for elem in config_file:
         datasets += 1
-        if not elem["type"] in datatypes:
+        if not elem["type"] in list(datatypes.keys()):
             datatypes[elem["type"]] = 1
         else: 
-            datatypes[elem["type"]] = datatypes[elem["type"]] + 1
+            datatypes[elem["type"]] += 1
     f.close()
     
     data = {"datasets": datasets, "datatypes": list(datatypes.keys()), "overview": datatypes}
