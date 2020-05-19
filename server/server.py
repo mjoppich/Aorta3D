@@ -12,12 +12,15 @@ sys.path.insert(0, str(os.path.dirname(os.path.realpath(__file__))) + "/../")
 import time
 import io
 
-from flask import Flask, jsonify, request, redirect, url_for, send_from_directory, send_file
+from flask import Flask, jsonify, request, redirect, url_for, send_from_directory, send_file, make_response
 import json
 import pprint
 from collections import defaultdict, Counter
 
 from flask_cors import CORS
+
+import base64
+
 
 dataurl = str(os.path.dirname(os.path.realpath(__file__))) + "/../" + 'frontend/src/static/'
 config_path = "config.json"
@@ -84,13 +87,22 @@ def getRelatedData():
     with open(config_path) as f:
         config_file = json.load(f)
 
-    targetInfo = {}
+    targetInfo = None
     data = []
 
     for elem in config_file:
         if elem["id"] == fetchID:
             targetInfo = elem
             break
+
+    if targetInfo == None:
+        response = app.response_class(
+            response=json.dumps([]),
+            status=200,
+            mimetype='application/json'
+        )
+        return response
+
 
     if targetInfo["type"] == "msi":
         targetPath = targetInfo["path"]
@@ -173,15 +185,16 @@ def getElementInfoImage():
 
     if not os.path.exists(fname) or fname == None:
         fname = testImage
-        
 
-    image_binary = open(fname, "rb").read()
 
-    return send_file(
-    io.BytesIO(image_binary),
-    mimetype='image/png',
-    as_attachment=True,
-    attachment_filename=fname)
+    encoded = base64.b64encode(open(fname, "rb").read())
+
+    response = app.response_class(
+        response=json.dumps({"image": encoded.decode()}),
+        status=200,
+        mimetype='application/json'
+    )
+    return response 
 
 @app.route('/stats', methods=['GET', 'POST'])
 def stats():

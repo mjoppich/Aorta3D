@@ -22,6 +22,12 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
 
     neo4jd3: any = null;
 
+    state = {
+        element: {id: null},
+        eleminfo: {},
+        elem_image: ""
+    }
+
     constructor(props) {
         super(props);
     }
@@ -46,13 +52,21 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
     {
         var self=this;
 
-        if ((prevState.element == null) || (prevState.element.id !== self.state.element.id))
+        if (prevProps.element !== this.props.element)
+        {
+            self.setState({element: this.props.element});
+        }
+
+        if ((prevState.element == null) || (prevState.element.id !== self.state.element.id)|| (prevState.element.id !== self.state.element.id))
         {
             console.log(prevState.element)
             console.log(self.state.element)
 
             if (self.state.element.id)
             {
+                console.log("Fetching element info and image")
+                console.log(self.state.element.id)
+
                 axios.post(config.getRestAddress() + "/getElementInfo", {id: self.state.element.id}, config.axiosConfig)
                 .then(function (response) {
         
@@ -66,8 +80,10 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         
                 axios.post(config.getRestAddress() + "/getElementInfoImage", {id: self.state.element.id}, config.axiosConfig)
                 .then(function (response) {
-        
-                  self.setState({elem_image: response.data})
+
+                    console.log(response)
+
+                    self.setState({elem_image: response.data.image})
         
         
                 })
@@ -82,25 +98,14 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
 
     }
 
-    static getDerivedStateFromProps(nextProps, prevState){
-
-        var self = this;
-
-        if ((prevState == null) || (nextProps.element!==prevState.element)){            
-            return {element: nextProps.element}
-        }
-        else return null;
-      }
-
-
     render() {
 
         var self = this;
         return (
             <div>
-                <p>{JSON.stringify(this.state.element, null, 4)}</p>
-                <p>{JSON.stringify(this.state.eleminfo, null, 4)}</p>
-                <img src={`data:image/png;base64,${this.state.elem_image}`} />
+                <p>{JSON.stringify(self.state.element, null, 4)}</p>
+                <p>{JSON.stringify(self.state.eleminfo, null, 4)}</p>
+                <img src={`data:image/png;base64,${self.state["elem_image"]}`} />
             </div>
         )
     }
