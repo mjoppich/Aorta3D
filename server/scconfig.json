@@ -1,0 +1,145 @@
+[
+    {
+        "id": "sc1.main",
+        "type": "scrna",
+        "type_det": ["fibroblasts","macrophages", "smooth muscle cells"],
+        "region": "3",
+        "location": "AR",
+        "path": "../data/sc1.0/hybrid.mouse.bg.mouse/",
+        "info": {"organism": "mouse"},
+        "level": 50
+    },
+    {
+        "id": "sc1.0",
+        "type": "scrna",
+        "type_det": ["fibroblasts","connective tissue"],
+        "parent": "sc1.main",
+        "location": "AR",
+        "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.0.tsv",
+        "level": 50
+    },
+    {
+        "id": "sc1.1",
+        "type": "scrna",
+        "type_det": ["smooth muscle cells","smooth muscle"],
+        "parent": "sc1.main",
+        "location": "AR",
+        "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.1.tsv",
+        "level": 50
+    },
+    {
+        "id": "sc1.2",
+        "type": "scrna",
+        "type_det": ["fibroblasts","connective tissue"],
+        "parent": "sc1.main",
+        "location": "AR",
+        "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.2.tsv",
+        "level": 50
+    },
+    {
+        "id": "sc1.3",
+        "type": "scrna",
+        "type_det": ["macrophages","immune system"],
+        "parent": "sc1.main",
+        "location": "AR",
+        "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.3.tsv",
+        "level": 50
+    },
+    {
+        "id": "sc1.4",
+        "type": "scrna",
+        "type_det": ["smooth muscle cells","smooth muscle"],
+        "parent": "sc1.main",
+        "location": "AR",
+        "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.4.tsv",
+        "level": 50
+    },
+    {
+        "id": "sc1.5",
+        "type": "scrna",
+        "type_det": ["endothelial cells","vasculature"],
+        "parent": "sc1.main",
+        "location": "AR",
+        "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.5.tsv",
+        "level": 50
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {
+        "id": "sc2.main",
+        "type": "scrna",
+        "type_det": ["fibroblasts","macrophages", "smooth muscle cells"],
+        "region": "3",
+        "location": "AR",
+        "path": "../data/sc1.0/hybrid.human.bg.human/",
+        "info": {"organism": "human"},
+        "level": 50
+    },
+    {
+        "id": "sc2.0",
+        "type": "scrna",
+        "type_det": ["fibroblasts","connective tissue"],
+        "parent": "sc2.main",
+        "location": "AR",
+        "path": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.0.tsv",
+        "level": 50
+    },
+    {
+        "id": "sc2.1",
+        "type": "scrna",
+        "type_det": ["smooth muscle cells","smooth muscle"],
+        "parent": "sc2.main",
+        "location": "AR",
+        "path": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.1.tsv",
+        "level": 50
+    },
+    {
+        "id": "sc2.2",
+        "type": "scrna",
+        "type_det": ["fibroblasts","connective tissue"],
+        "parent": "sc2.main",
+        "location": "AR",
+        "path": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.2.tsv",
+        "level": 50
+    },
+    {
+        "id": "sc2.3",
+        "type": "scrna",
+        "type_det": ["macrophages","immune system"],
+        "parent": "sc2.main",
+        "location": "AR",
+        "path": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.3.tsv",
+        "level": 50
+    },
+    {
+        "id": "sc2.4",
+        "type": "scrna",
+        "type_det": ["smooth muscle cells","smooth muscle"],
+        "parent": "sc2.main",
+        "location": "AR",
+        "path": "../data/sc2.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.4.tsv",
+        "level": 50
+    },
+    {
+        "id": "sc2.5",
+        "type": "scrna",
+        "type_det": ["endothelial cells","vasculature"],
+        "parent": "sc2.main",
+        "location": "AR",
+        "path": "../data/sc2.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.5.tsv",
+        "level": 50
+    }
+
+]

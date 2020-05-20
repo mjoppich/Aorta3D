@@ -2,7 +2,7 @@
 
 export default class config {
 
-    static restServer = 'http://weismann.bio.ifi.lmu.de' //"http://localhost";//'https://turingwww.bio.ifi.lmu.de'
+    static restServer = 'http://localhost' //"http://localhost";//'https://turingwww.bio.ifi.lmu.de'
     static restPort = '5005'
     static restFolder = '';//'mingleRNA'
 

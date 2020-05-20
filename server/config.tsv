@@ -1,0 +1,400 @@
+id	type	location	path	png_path	plaqueRate	level
+0	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_1-2.tif	/usr/local/hdd/aorta_images/HE/ZT13_1-2.tif.png	0.483	50
+1	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_8-2.tif	/usr/local/hdd/aorta_images/HE/ZT13_8-2.tif.png	0.605	50
+2	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_6-1.tif	/usr/local/hdd/aorta_images/HE/ZT1_6-1.tif.png	0.477	50
+3	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_1-2.tif	/usr/local/hdd/aorta_images/HE/ZT1_1-2.tif.png	0.248	50
+4	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_3-1.tif	/usr/local/hdd/aorta_images/HE/ZT13_3-1.tif.png	0.766	50
+5	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_6-2.tif	/usr/local/hdd/aorta_images/HE/ZT13_6-2.tif.png	0.675	50
+6	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_1-1.tif	/usr/local/hdd/aorta_images/HE/ZT1_1-1.tif.png	0.611	50
+7	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_2-1.tif	/usr/local/hdd/aorta_images/HE/ZT1_2-1.tif.png	0.28	50
+8	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_9-1.tif	/usr/local/hdd/aorta_images/HE/ZT1_9-1.tif.png	0.544	50
+9	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_4-1.tif	/usr/local/hdd/aorta_images/HE/ZT13_4-1.tif.png	0.722	50
+10	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_5-1.tif	/usr/local/hdd/aorta_images/HE/ZT1_5-1.tif.png	0.189	50
+11	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_10-1.tif	/usr/local/hdd/aorta_images/HE/ZT1_10-1.tif.png	0.624	50
+12	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_4-2.tif	/usr/local/hdd/aorta_images/HE/ZT13_4-2.tif.png	0.748	50
+13	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_2-2.tif	/usr/local/hdd/aorta_images/HE/ZT1_2-2.tif.png	0.12	50
+14	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_1-3.tif	/usr/local/hdd/aorta_images/HE/ZT1_1-3.tif.png	0.076	50
+15	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_8-1.tif	/usr/local/hdd/aorta_images/HE/ZT13_8-1.tif.png	0.78	50
+16	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_5-2.tif	/usr/local/hdd/aorta_images/HE/ZT13_5-2.tif.png	0.671	50
+17	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_4-1.tif	/usr/local/hdd/aorta_images/HE/ZT1_4-1.tif.png	0.314	50
+18	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_7-2.tif	/usr/local/hdd/aorta_images/HE/ZT13_7-2.tif.png	0.705	50
+19	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_3-3.tif	/usr/local/hdd/aorta_images/HE/ZT13_3-3.tif.png	0.566	50
+20	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_1-1.tif	/usr/local/hdd/aorta_images/HE/ZT13_1-1.tif.png	0.337	50
+21	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_10-2.tif	/usr/local/hdd/aorta_images/HE/ZT1_10-2.tif.png	0.607	50
+22	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_5-1.tif	/usr/local/hdd/aorta_images/HE/ZT13_5-1.tif.png	0.538	50
+23	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_8-1.tif	/usr/local/hdd/aorta_images/HE/ZT1_8-1.tif.png	0.371	50
+24	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_4-2.tif	/usr/local/hdd/aorta_images/HE/ZT1_4-2.tif.png	0.037	50
+25	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_10-2.tif	/usr/local/hdd/aorta_images/HE/ZT13_10-2.tif.png	0.681	50
+26	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_1-3.tif	/usr/local/hdd/aorta_images/HE/ZT13_1-3.tif.png	0.407	50
+27	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_3-2.tif	/usr/local/hdd/aorta_images/HE/ZT1_3-2.tif.png	0.1	50
+28	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_7-2.tif	/usr/local/hdd/aorta_images/HE/ZT1_7-2.tif.png	0.24	50
+29	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_9-2.tif	/usr/local/hdd/aorta_images/HE/ZT13_9-2.tif.png	0.679	50
+30	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_6-2.tif	/usr/local/hdd/aorta_images/HE/ZT1_6-2.tif.png	0.245	50
+31	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_3-1.tif	/usr/local/hdd/aorta_images/HE/ZT1_3-1.tif.png	0.174	50
+32	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_10-1.tif	/usr/local/hdd/aorta_images/HE/ZT13_10-1.tif.png	0.757	50
+33	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_3-2.tif	/usr/local/hdd/aorta_images/HE/ZT13_3-2.tif.png	0.6	50
+34	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_8-2.tif	/usr/local/hdd/aorta_images/HE/ZT1_8-2.tif.png	0.262	50
+35	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_7-1.tif	/usr/local/hdd/aorta_images/HE/ZT1_7-1.tif.png	0.431	50
+36	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_6-1.tif	/usr/local/hdd/aorta_images/HE/ZT13_6-1.tif.png	0.783	50
+37	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_2-1.tif	/usr/local/hdd/aorta_images/HE/ZT13_2-1.tif.png	0.603	50
+38	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_5-2.tif	/usr/local/hdd/aorta_images/HE/ZT1_5-2.tif.png	0.287	50
+39	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_7-1.tif	/usr/local/hdd/aorta_images/HE/ZT13_7-1.tif.png	0.687	50
+40	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_2-2.tif	/usr/local/hdd/aorta_images/HE/ZT13_2-2.tif.png	0.462	50
+41	he	AR	/usr/local/hdd/aorta_images/HE/ZT1_9-2.tif	/usr/local/hdd/aorta_images/HE/ZT1_9-2.tif.png	0.27	50
+42	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_2-3.tif	/usr/local/hdd/aorta_images/HE/ZT13_2-3.tif.png	0.667	50
+43	he	AR	/usr/local/hdd/aorta_images/HE/ZT13_9-1.tif	/usr/local/hdd/aorta_images/HE/ZT13_9-1.tif.png	0.734	50
+44	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_10-2/AR ZT1 10-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_10-2/AR ZT1 10-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+45	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_10-2/AR ZT1 10-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_10-2/AR ZT1 10-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+46	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_10-2/AR ZT1 10-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_10-2/AR ZT1 10-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+47	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_10-2/AR ZT1 10-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_10-2/AR ZT1 10-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+48	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_10-2/AR ZT1 10-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_10-2/AR ZT1 10-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+49	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_10-2/AR ZT1 10-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_10-2/AR ZT1 10-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+50	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_10-2/AR ZT1 10-2_TileScan_001_Merging_Crop_ch02.tif	undefined	undefined	50
+51	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_3-1/AR ZT1 3-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_3-1/AR ZT1 3-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+52	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_3-1/AR ZT1 3-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_3-1/AR ZT1 3-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+53	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_3-1/AR ZT1 3-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_3-1/AR ZT1 3-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+54	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_3-1/AR ZT1 3-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_3-1/AR ZT1 3-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+55	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_3-1/AR ZT1 3-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_3-1/AR ZT1 3-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+56	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_3-1/AR ZT1 3-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_3-1/AR ZT1 3-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+57	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_3-1/AR ZT1 3-1_TileScan_001_Merging_Crop_ch05.tif	undefined	undefined	50
+58	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_7-2/AR ZT1 7-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_7-2/AR ZT1 7-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+59	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_7-2/AR ZT1 7-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_7-2/AR ZT1 7-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+60	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_7-2/AR ZT1 7-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_7-2/AR ZT1 7-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+61	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_7-2/AR ZT1 7-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_7-2/AR ZT1 7-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+62	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_7-2/AR ZT1 7-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_7-2/AR ZT1 7-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+63	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_7-2/AR ZT1 7-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_7-2/AR ZT1 7-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+64	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_7-2/AR ZT1 7-2_TileScan_001_Merging_Crop_ch04.tif	undefined	undefined	50
+65	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_8-1/AR ZT13 8-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_8-1/AR ZT13 8-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+66	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_8-1/AR ZT13 8-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_8-1/AR ZT13 8-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+67	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_8-1/AR ZT13 8-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_8-1/AR ZT13 8-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+68	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_8-1/AR ZT13 8-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_8-1/AR ZT13 8-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+69	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_8-1/AR ZT13 8-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_8-1/AR ZT13 8-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+70	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_8-1/AR ZT13 8-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_8-1/AR ZT13 8-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+71	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_8-1/AR ZT13 8-1_TileScan_001_Merging_Crop_ch00.tif	undefined	undefined	50
+72	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-3/AR ZT13 2-3_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-3/AR ZT13 2-3_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+73	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-3/AR ZT13 2-3_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-3/AR ZT13 2-3_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+74	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-3/AR ZT13 2-3_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-3/AR ZT13 2-3_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+75	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-3/AR ZT13 2-3_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-3/AR ZT13 2-3_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+76	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-3/AR ZT13 2-3_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-3/AR ZT13 2-3_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+77	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-3/AR ZT13 2-3_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-3/AR ZT13 2-3_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+78	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-3/AR ZT13 2-3_TileScan_001_Merging_Crop_ch03.tif	undefined	undefined	50
+79	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_9-1/AR ZT13 9-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_9-1/AR ZT13 9-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+80	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_9-1/AR ZT13 9-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_9-1/AR ZT13 9-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+81	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_9-1/AR ZT13 9-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_9-1/AR ZT13 9-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+82	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_9-1/AR ZT13 9-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_9-1/AR ZT13 9-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+83	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_9-1/AR ZT13 9-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_9-1/AR ZT13 9-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+84	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_9-1/AR ZT13 9-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_9-1/AR ZT13 9-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+85	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_9-1/AR ZT13 9-1_TileScan_001_Merging_Crop_ch04.tif	undefined	undefined	50
+86	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_6-2/AR ZT1 6-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_6-2/AR ZT1 6-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+87	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_6-2/AR ZT1 6-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_6-2/AR ZT1 6-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+88	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_6-2/AR ZT1 6-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_6-2/AR ZT1 6-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+89	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_6-2/AR ZT1 6-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_6-2/AR ZT1 6-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+90	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_6-2/AR ZT1 6-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_6-2/AR ZT1 6-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+91	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_6-2/AR ZT1 6-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_6-2/AR ZT1 6-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+92	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_6-2/AR ZT1 6-2_TileScan_001_Merging_Crop_ch02.tif	undefined	undefined	50
+93	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_7-1/AR ZT1 7-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_7-1/AR ZT1 7-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+94	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_7-1/AR ZT1 7-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_7-1/AR ZT1 7-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+95	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_7-1/AR ZT1 7-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_7-1/AR ZT1 7-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+96	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_7-1/AR ZT1 7-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_7-1/AR ZT1 7-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+97	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_7-1/AR ZT1 7-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_7-1/AR ZT1 7-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+98	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_7-1/AR ZT1 7-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_7-1/AR ZT1 7-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+99	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_7-1/AR ZT1 7-1_TileScan_001_Merging_Crop_ch00.tif	undefined	undefined	50
+100	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_10-2/AR ZT13 10-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_10-2/AR ZT13 10-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+101	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_10-2/AR ZT13 10-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_10-2/AR ZT13 10-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+102	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_10-2/AR ZT13 10-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_10-2/AR ZT13 10-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+103	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_10-2/AR ZT13 10-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_10-2/AR ZT13 10-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+104	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_10-2/AR ZT13 10-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_10-2/AR ZT13 10-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+105	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_10-2/AR ZT13 10-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_10-2/AR ZT13 10-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+106	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_10-2/AR ZT13 10-2_TileScan_001_Merging_Crop_ch02.tif	undefined	undefined	50
+107	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_2-2/AR ZT1 2-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_2-2/AR ZT1 2-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+108	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_2-2/AR ZT1 2-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_2-2/AR ZT1 2-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+109	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_2-2/AR ZT1 2-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_2-2/AR ZT1 2-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+110	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_2-2/AR ZT1 2-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_2-2/AR ZT1 2-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+111	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_2-2/AR ZT1 2-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_2-2/AR ZT1 2-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+112	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_2-2/AR ZT1 2-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_2-2/AR ZT1 2-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+113	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_2-2/AR ZT1 2-2_TileScan_001_Merging_Crop_ch04.tif	undefined	undefined	50
+114	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_5-1/AR ZT1 5-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_5-1/AR ZT1 5-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+115	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_5-1/AR ZT1 5-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_5-1/AR ZT1 5-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+116	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_5-1/AR ZT1 5-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_5-1/AR ZT1 5-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+117	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_5-1/AR ZT1 5-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_5-1/AR ZT1 5-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+118	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_5-1/AR ZT1 5-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_5-1/AR ZT1 5-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+119	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_5-1/AR ZT1 5-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_5-1/AR ZT1 5-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+120	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_5-1/AR ZT1 5-1_TileScan_001_Merging_Crop_ch05.tif	undefined	undefined	50
+121	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-1/AR ZT13 4-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-1/AR ZT13 4-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+122	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-1/AR ZT13 4-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-1/AR ZT13 4-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+123	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-1/AR ZT13 4-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-1/AR ZT13 4-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+124	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-1/AR ZT13 4-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-1/AR ZT13 4-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+125	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-1/AR ZT13 4-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-1/AR ZT13 4-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+126	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-1/AR ZT13 4-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-1/AR ZT13 4-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+127	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-1/AR ZT13 4-1_TileScan_001_Merging_Crop_ch00.tif	undefined	undefined	50
+128	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_5-2/AR ZT13 5-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_5-2/AR ZT13 5-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+129	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_5-2/AR ZT13 5-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_5-2/AR ZT13 5-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+130	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_5-2/AR ZT13 5-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_5-2/AR ZT13 5-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+131	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_5-2/AR ZT13 5-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_5-2/AR ZT13 5-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+132	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_5-2/AR ZT13 5-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_5-2/AR ZT13 5-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+133	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_5-2/AR ZT13 5-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_5-2/AR ZT13 5-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+134	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_5-2/AR ZT13 5-2_TileScan_001_Merging_Crop_ch01.tif	undefined	undefined	50
+135	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_7-1/AR ZT13 7-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_7-1/AR ZT13 7-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+136	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_7-1/AR ZT13 7-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_7-1/AR ZT13 7-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+137	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_7-1/AR ZT13 7-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_7-1/AR ZT13 7-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+138	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_7-1/AR ZT13 7-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_7-1/AR ZT13 7-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+139	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_7-1/AR ZT13 7-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_7-1/AR ZT13 7-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+140	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_7-1/AR ZT13 7-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_7-1/AR ZT13 7-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+141	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_7-1/AR ZT13 7-1_TileScan_001_Merging_Crop_ch03.tif	undefined	undefined	50
+142	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_4-1/AR ZT1 4-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_4-1/AR ZT1 4-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+143	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_4-1/AR ZT1 4-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_4-1/AR ZT1 4-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+144	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_4-1/AR ZT1 4-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_4-1/AR ZT1 4-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+145	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_4-1/AR ZT1 4-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_4-1/AR ZT1 4-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+146	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_4-1/AR ZT1 4-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_4-1/AR ZT1 4-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+147	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_4-1/AR ZT1 4-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_4-1/AR ZT1 4-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+148	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_4-1/AR ZT1 4-1_TileScan_001_Merging_Crop_ch04.tif	undefined	undefined	50
+149	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_5-1/AR ZT13 5-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_5-1/AR ZT13 5-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+150	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_5-1/AR ZT13 5-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_5-1/AR ZT13 5-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+151	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_5-1/AR ZT13 5-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_5-1/AR ZT13 5-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+152	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_5-1/AR ZT13 5-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_5-1/AR ZT13 5-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+153	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_5-1/AR ZT13 5-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_5-1/AR ZT13 5-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+154	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_5-1/AR ZT13 5-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_5-1/AR ZT13 5-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+155	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_5-1/AR ZT13 5-1_TileScan_001_Merging_Crop_ch01.tif	undefined	undefined	50
+156	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_7-2/AR ZT13 7-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_7-2/AR ZT13 7-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+157	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_7-2/AR ZT13 7-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_7-2/AR ZT13 7-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+158	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_7-2/AR ZT13 7-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_7-2/AR ZT13 7-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+159	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_7-2/AR ZT13 7-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_7-2/AR ZT13 7-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+160	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_7-2/AR ZT13 7-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_7-2/AR ZT13 7-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+161	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_7-2/AR ZT13 7-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_7-2/AR ZT13 7-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+162	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_7-2/AR ZT13 7-2_TileScan_001_Merging_Crop_ch00.tif	undefined	undefined	50
+163	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_3-2/AR ZT13 3-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_3-2/AR ZT13 3-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+164	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_3-2/AR ZT13 3-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_3-2/AR ZT13 3-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+165	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_3-2/AR ZT13 3-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_3-2/AR ZT13 3-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+166	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_3-2/AR ZT13 3-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_3-2/AR ZT13 3-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+167	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_3-2/AR ZT13 3-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_3-2/AR ZT13 3-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+168	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_3-2/AR ZT13 3-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_3-2/AR ZT13 3-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+169	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_3-2/AR ZT13 3-2_TileScan_001_Merging_Crop_ch05.tif	undefined	undefined	50
+170	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_10-1/AR ZT1 10-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_10-1/AR ZT1 10-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+171	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_10-1/AR ZT1 10-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_10-1/AR ZT1 10-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+172	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_10-1/AR ZT1 10-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_10-1/AR ZT1 10-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+173	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_10-1/AR ZT1 10-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_10-1/AR ZT1 10-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+174	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_10-1/AR ZT1 10-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_10-1/AR ZT1 10-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+175	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_10-1/AR ZT1 10-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_10-1/AR ZT1 10-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+176	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_10-1/AR ZT1 10-1_TileScan_001_Merging_Crop_ch05.tif	undefined	undefined	50
+177	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-3/AR ZT1 1-3_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-3/AR ZT1 1-3_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+178	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-3/AR ZT1 1-3_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-3/AR ZT1 1-3_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+179	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-3/AR ZT1 1-3_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-3/AR ZT1 1-3_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+180	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-3/AR ZT1 1-3_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-3/AR ZT1 1-3_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+181	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-3/AR ZT1 1-3_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-3/AR ZT1 1-3_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+182	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-3/AR ZT1 1-3_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-3/AR ZT1 1-3_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+183	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-3/AR ZT1 1-3_TileScan_001_Merging_Crop_ch03.tif	undefined	undefined	50
+184	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-2d/AR ZT1 1-2d_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-2d/AR ZT1 1-2d_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+185	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-2d/AR ZT1 1-2d_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-2d/AR ZT1 1-2d_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+186	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-2d/AR ZT1 1-2d_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-2d/AR ZT1 1-2d_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+187	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-2d/AR ZT1 1-2d_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-2d/AR ZT1 1-2d_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+188	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-2d/AR ZT1 1-2d_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-2d/AR ZT1 1-2d_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+189	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-2d/AR ZT1 1-2d_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-2d/AR ZT1 1-2d_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+190	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-2d/AR ZT1 1-2d_TileScan_001_Merging_Crop_ch01.tif	undefined	undefined	50
+191	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_9-2/AR ZT1 9-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_9-2/AR ZT1 9-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+192	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_9-2/AR ZT1 9-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_9-2/AR ZT1 9-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+193	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_9-2/AR ZT1 9-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_9-2/AR ZT1 9-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+194	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_9-2/AR ZT1 9-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_9-2/AR ZT1 9-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+195	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_9-2/AR ZT1 9-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_9-2/AR ZT1 9-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+196	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_9-2/AR ZT1 9-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_9-2/AR ZT1 9-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+197	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_9-2/AR ZT1 9-2_TileScan_001_Merging_Crop_ch05.tif	undefined	undefined	50
+198	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-1/AR ZT13 1-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-1/AR ZT13 1-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+199	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-1/AR ZT13 1-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-1/AR ZT13 1-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+200	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-1/AR ZT13 1-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-1/AR ZT13 1-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+201	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-1/AR ZT13 1-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-1/AR ZT13 1-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+202	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-1/AR ZT13 1-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-1/AR ZT13 1-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+203	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-1/AR ZT13 1-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-1/AR ZT13 1-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+204	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-1/AR ZT13 1-1_TileScan_001_Merging_Crop_ch04.tif	undefined	undefined	50
+205	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_6-2/AR ZT13 6-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_6-2/AR ZT13 6-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+206	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_6-2/AR ZT13 6-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_6-2/AR ZT13 6-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+207	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_6-2/AR ZT13 6-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_6-2/AR ZT13 6-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+208	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_6-2/AR ZT13 6-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_6-2/AR ZT13 6-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+209	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_6-2/AR ZT13 6-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_6-2/AR ZT13 6-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+210	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_6-2/AR ZT13 6-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_6-2/AR ZT13 6-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+211	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_6-2/AR ZT13 6-2_TileScan_001_Merging_Crop_ch05.tif	undefined	undefined	50
+212	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_8-1/AR ZT1 8-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_8-1/AR ZT1 8-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+213	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_8-1/AR ZT1 8-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_8-1/AR ZT1 8-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+214	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_8-1/AR ZT1 8-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_8-1/AR ZT1 8-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+215	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_8-1/AR ZT1 8-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_8-1/AR ZT1 8-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+216	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_8-1/AR ZT1 8-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_8-1/AR ZT1 8-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+217	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_8-1/AR ZT1 8-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_8-1/AR ZT1 8-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+218	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_8-1/AR ZT1 8-1_TileScan_001_Merging_Crop_ch00.tif	undefined	undefined	50
+219	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_4-2/AR ZT1 4-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_4-2/AR ZT1 4-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+220	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_4-2/AR ZT1 4-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_4-2/AR ZT1 4-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+221	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_4-2/AR ZT1 4-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_4-2/AR ZT1 4-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+222	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_4-2/AR ZT1 4-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_4-2/AR ZT1 4-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+223	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_4-2/AR ZT1 4-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_4-2/AR ZT1 4-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+224	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_4-2/AR ZT1 4-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_4-2/AR ZT1 4-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+225	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_4-2/AR ZT1 4-2_TileScan_001_Merging_Crop_ch00.tif	undefined	undefined	50
+226	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-2/AR ZT1 1-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-2/AR ZT1 1-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+227	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-2/AR ZT1 1-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-2/AR ZT1 1-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+228	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-2/AR ZT1 1-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-2/AR ZT1 1-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+229	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-2/AR ZT1 1-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-2/AR ZT1 1-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+230	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-2/AR ZT1 1-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-2/AR ZT1 1-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+231	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-2/AR ZT1 1-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-2/AR ZT1 1-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+232	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-2/AR ZT1 1-2_TileScan_001_Merging_Crop_ch05.tif	undefined	undefined	50
+233	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_3-2/AR ZT1 3-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_3-2/AR ZT1 3-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+234	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_3-2/AR ZT1 3-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_3-2/AR ZT1 3-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+235	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_3-2/AR ZT1 3-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_3-2/AR ZT1 3-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+236	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_3-2/AR ZT1 3-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_3-2/AR ZT1 3-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+237	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_3-2/AR ZT1 3-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_3-2/AR ZT1 3-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+238	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_3-2/AR ZT1 3-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_3-2/AR ZT1 3-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+239	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_3-2/AR ZT1 3-2_TileScan_001_Merging_Crop_ch01.tif	undefined	undefined	50
+240	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-2/AR ZT13 1-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-2/AR ZT13 1-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+241	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-2/AR ZT13 1-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-2/AR ZT13 1-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+242	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-2/AR ZT13 1-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-2/AR ZT13 1-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+243	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-2/AR ZT13 1-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-2/AR ZT13 1-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+244	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-2/AR ZT13 1-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-2/AR ZT13 1-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+245	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-2/AR ZT13 1-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-2/AR ZT13 1-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+246	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-2/AR ZT13 1-2_TileScan_001_Merging_Crop_ch03.tif	undefined	undefined	50
+247	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-1/AR ZT1 1-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-1/AR ZT1 1-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+248	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-1/AR ZT1 1-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-1/AR ZT1 1-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+249	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-1/AR ZT1 1-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-1/AR ZT1 1-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+250	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-1/AR ZT1 1-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-1/AR ZT1 1-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+251	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-1/AR ZT1 1-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-1/AR ZT1 1-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+252	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-1/AR ZT1 1-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-1/AR ZT1 1-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+253	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-1/AR ZT1 1-1_TileScan_001_Merging_Crop_ch05.tif	undefined	undefined	50
+254	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-3/AR ZT13 1-3_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-3/AR ZT13 1-3_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+255	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-3/AR ZT13 1-3_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-3/AR ZT13 1-3_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+256	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-3/AR ZT13 1-3_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-3/AR ZT13 1-3_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+257	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-3/AR ZT13 1-3_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-3/AR ZT13 1-3_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+258	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-3/AR ZT13 1-3_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-3/AR ZT13 1-3_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+259	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-3/AR ZT13 1-3_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_1-3/AR ZT13 1-3_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+260	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_1-3/AR ZT13 1-3_TileScan_001_Merging_Crop_ch05.tif	undefined	undefined	50
+261	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_10-1/AR ZT13 10-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_10-1/AR ZT13 10-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+262	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_10-1/AR ZT13 10-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_10-1/AR ZT13 10-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+263	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_10-1/AR ZT13 10-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_10-1/AR ZT13 10-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+264	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_10-1/AR ZT13 10-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_10-1/AR ZT13 10-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+265	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_10-1/AR ZT13 10-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_10-1/AR ZT13 10-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+266	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_10-1/AR ZT13 10-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_10-1/AR ZT13 10-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+267	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_10-1/AR ZT13 10-1_TileScan_001_Merging_Crop_ch00.tif	undefined	undefined	50
+268	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_8-2/AR ZT13 8-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_8-2/AR ZT13 8-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+269	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_8-2/AR ZT13 8-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_8-2/AR ZT13 8-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+270	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_8-2/AR ZT13 8-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_8-2/AR ZT13 8-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+271	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_8-2/AR ZT13 8-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_8-2/AR ZT13 8-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+272	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_8-2/AR ZT13 8-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_8-2/AR ZT13 8-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+273	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_8-2/AR ZT13 8-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_8-2/AR ZT13 8-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+274	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_8-2/AR ZT13 8-2_TileScan_001_Merging_Crop_ch03.tif	undefined	undefined	50
+275	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_6-1/AR ZT1 6-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_6-1/AR ZT1 6-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+276	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_6-1/AR ZT1 6-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_6-1/AR ZT1 6-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+277	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_6-1/AR ZT1 6-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_6-1/AR ZT1 6-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+278	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_6-1/AR ZT1 6-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_6-1/AR ZT1 6-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+279	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_6-1/AR ZT1 6-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_6-1/AR ZT1 6-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+280	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_6-1/AR ZT1 6-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_6-1/AR ZT1 6-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+281	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_6-1/AR ZT1 6-1_TileScan_001_Merging_Crop_ch01.tif	undefined	undefined	50
+282	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_5-2/AR ZT1 5-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_5-2/AR ZT1 5-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+283	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_5-2/AR ZT1 5-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_5-2/AR ZT1 5-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+284	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_5-2/AR ZT1 5-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_5-2/AR ZT1 5-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+285	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_5-2/AR ZT1 5-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_5-2/AR ZT1 5-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+286	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_5-2/AR ZT1 5-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_5-2/AR ZT1 5-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+287	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_5-2/AR ZT1 5-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_5-2/AR ZT1 5-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+288	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_5-2/AR ZT1 5-2_TileScan_001_Merging_Crop_ch00.tif	undefined	undefined	50
+289	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_2-1/AR ZT1 2-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_2-1/AR ZT1 2-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+290	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_2-1/AR ZT1 2-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_2-1/AR ZT1 2-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+291	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_2-1/AR ZT1 2-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_2-1/AR ZT1 2-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+292	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_2-1/AR ZT1 2-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_2-1/AR ZT1 2-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+293	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_2-1/AR ZT1 2-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_2-1/AR ZT1 2-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+294	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_2-1/AR ZT1 2-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_2-1/AR ZT1 2-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+295	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_2-1/AR ZT1 2-1_TileScan_001_Merging_Crop_ch00.tif	undefined	undefined	50
+296	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_8-2/AR ZT1 8-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_8-2/AR ZT1 8-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+297	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_8-2/AR ZT1 8-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_8-2/AR ZT1 8-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+298	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_8-2/AR ZT1 8-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_8-2/AR ZT1 8-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+299	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_8-2/AR ZT1 8-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_8-2/AR ZT1 8-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+300	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_8-2/AR ZT1 8-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_8-2/AR ZT1 8-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+301	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_8-2/AR ZT1 8-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_8-2/AR ZT1 8-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+302	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_8-2/AR ZT1 8-2_TileScan_001_Merging_Crop_ch04.tif	undefined	undefined	50
+303	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-2/AR ZT13 2-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-2/AR ZT13 2-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+304	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-2/AR ZT13 2-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-2/AR ZT13 2-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+305	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-2/AR ZT13 2-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-2/AR ZT13 2-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+306	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-2/AR ZT13 2-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-2/AR ZT13 2-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+307	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-2/AR ZT13 2-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-2/AR ZT13 2-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+308	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-2/AR ZT13 2-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-2/AR ZT13 2-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+309	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-2/AR ZT13 2-2_TileScan_001_Merging_Crop_ch04.tif	undefined	undefined	50
+310	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_3-1/AR ZT13 3-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_3-1/AR ZT13 3-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+311	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_3-1/AR ZT13 3-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_3-1/AR ZT13 3-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+312	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_3-1/AR ZT13 3-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_3-1/AR ZT13 3-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+313	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_3-1/AR ZT13 3-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_3-1/AR ZT13 3-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+314	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_3-1/AR ZT13 3-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_3-1/AR ZT13 3-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+315	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_3-1/AR ZT13 3-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_3-1/AR ZT13 3-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+316	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_3-1/AR ZT13 3-1_TileScan_001_Merging_Crop_ch04.tif	undefined	undefined	50
+317	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_6-1/AR ZT13 6-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_6-1/AR ZT13 6-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+318	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_6-1/AR ZT13 6-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_6-1/AR ZT13 6-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+319	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_6-1/AR ZT13 6-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_6-1/AR ZT13 6-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+320	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_6-1/AR ZT13 6-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_6-1/AR ZT13 6-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+321	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_6-1/AR ZT13 6-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_6-1/AR ZT13 6-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+322	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_6-1/AR ZT13 6-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_6-1/AR ZT13 6-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+323	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_6-1/AR ZT13 6-1_TileScan_001_Merging_Crop_ch01.tif	undefined	undefined	50
+324	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-1/AR ZT13 2-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-1/AR ZT13 2-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+325	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-1/AR ZT13 2-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-1/AR ZT13 2-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+326	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-1/AR ZT13 2-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-1/AR ZT13 2-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+327	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-1/AR ZT13 2-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-1/AR ZT13 2-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+328	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-1/AR ZT13 2-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-1/AR ZT13 2-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+329	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-1/AR ZT13 2-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_2-1/AR ZT13 2-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+330	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_2-1/AR ZT13 2-1_TileScan_001_Merging_Crop_ch04.tif	undefined	undefined	50
+331	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-1-2/AR ZT1 1-1-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-1-2/AR ZT1 1-1-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+332	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-1-2/AR ZT1 1-1-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-1-2/AR ZT1 1-1-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+333	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-1-2/AR ZT1 1-1-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-1-2/AR ZT1 1-1-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+334	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-1-2/AR ZT1 1-1-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-1-2/AR ZT1 1-1-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+335	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-1-2/AR ZT1 1-1-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-1-2/AR ZT1 1-1-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+336	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-1-2/AR ZT1 1-1-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_1-1-2/AR ZT1 1-1-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+337	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_1-1-2/AR ZT1 1-1-2_TileScan_001_Merging_Crop_ch04.tif	undefined	undefined	50
+338	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-2/AR ZT13 4-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-2/AR ZT13 4-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+339	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-2/AR ZT13 4-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-2/AR ZT13 4-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+340	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-2/AR ZT13 4-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-2/AR ZT13 4-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+341	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-2/AR ZT13 4-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-2/AR ZT13 4-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+342	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-2/AR ZT13 4-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-2/AR ZT13 4-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+343	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-2/AR ZT13 4-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-2/AR ZT13 4-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+344	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-2/AR ZT13 4-2_TileScan_001_Merging_Crop_ch00.tif	undefined	undefined	50
+345	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-3/AR ZT13 4-3_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-3/AR ZT13 4-3_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+346	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-3/AR ZT13 4-3_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-3/AR ZT13 4-3_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+347	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-3/AR ZT13 4-3_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-3/AR ZT13 4-3_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+348	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-3/AR ZT13 4-3_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-3/AR ZT13 4-3_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+349	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-3/AR ZT13 4-3_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-3/AR ZT13 4-3_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+350	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-3/AR ZT13 4-3_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_4-3/AR ZT13 4-3_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+351	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_4-3/AR ZT13 4-3_TileScan_001_Merging_Crop_ch01.tif	undefined	undefined	50
+352	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_9-2/AR ZT13 9-2_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT13_9-2/AR ZT13 9-2_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+353	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_9-2/AR ZT13 9-2_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT13_9-2/AR ZT13 9-2_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+354	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_9-2/AR ZT13 9-2_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT13_9-2/AR ZT13 9-2_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+355	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_9-2/AR ZT13 9-2_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT13_9-2/AR ZT13 9-2_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+356	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_9-2/AR ZT13 9-2_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT13_9-2/AR ZT13 9-2_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+357	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_9-2/AR ZT13 9-2_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT13_9-2/AR ZT13 9-2_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+358	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT13_9-2/AR ZT13 9-2_TileScan_001_Merging_Crop_ch00.tif	undefined	undefined	50
+359	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_9-1/AR ZT1 9-1_TileScan_001_Merging_Crop_ch01.tif	/usr/local/hdd/aorta_images/AR_ZT1_9-1/AR ZT1 9-1_TileScan_001_Merging_Crop_ch01.tif.png	undefined	50
+360	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_9-1/AR ZT1 9-1_TileScan_001_Merging_Crop_ch02.tif	/usr/local/hdd/aorta_images/AR_ZT1_9-1/AR ZT1 9-1_TileScan_001_Merging_Crop_ch02.tif.png	undefined	50
+361	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_9-1/AR ZT1 9-1_TileScan_001_Merging_Crop_ch05.tif	/usr/local/hdd/aorta_images/AR_ZT1_9-1/AR ZT1 9-1_TileScan_001_Merging_Crop_ch05.tif.png	undefined	50
+362	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_9-1/AR ZT1 9-1_TileScan_001_Merging_Crop_ch04.tif	/usr/local/hdd/aorta_images/AR_ZT1_9-1/AR ZT1 9-1_TileScan_001_Merging_Crop_ch04.tif.png	undefined	50
+363	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_9-1/AR ZT1 9-1_TileScan_001_Merging_Crop_ch03.tif	/usr/local/hdd/aorta_images/AR_ZT1_9-1/AR ZT1 9-1_TileScan_001_Merging_Crop_ch03.tif.png	undefined	50
+364	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_9-1/AR ZT1 9-1_TileScan_001_Merging_Crop_ch00.tif	/usr/local/hdd/aorta_images/AR_ZT1_9-1/AR ZT1 9-1_TileScan_001_Merging_Crop_ch00.tif.png	undefined	50
+365	immuno	AR	/usr/local/hdd/aorta_images/AR_ZT1_9-1/AR ZT1 9-1_TileScan_001_Merging_Crop_ch00.tif	undefined	undefined	50
+366	msi	BCA	/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+367	msi	BCA	/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+368	msi	BCA	/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+369	msi	BCA	/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+370	msi	BCA	/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+371	msi	BCA	/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+372	msi	BCA	/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+373	msi	BCA	/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+374	msi	BCA	/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+375	msi	BCA	/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+376	msi	BCA	/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+377	msi	BCA	/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+378	msi	BCA	/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+379	msi	BCA	/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+380	msi	BCA	/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+381	msi	BCA	/usr/local/hdd/rita/msimaging/190724_BCA_ZT1_Proteins/190724_BCA_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+382	msi	AR	/usr/local/hdd/rita/msimaging/190927_AR_ZT1_Lipids/190927_AR_ZT1_Lipids.imzML	undefined	undefined	50
+383	msi	AR	/usr/local/hdd/rita/msimaging/190927_AR_ZT1_Lipids/190927_AR_ZT1_Lipids.imzML	undefined	undefined	50
+384	msi	AR	/usr/local/hdd/rita/msimaging/190927_AR_ZT1_Lipids/190927_AR_ZT1_Lipids.imzML	undefined	undefined	50
+385	msi	AR	/usr/local/hdd/rita/msimaging/190927_AR_ZT1_Lipids/190927_AR_ZT1_Lipids.imzML	undefined	undefined	50
+386	msi	AR	/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+387	msi	AR	/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+388	msi	AR	/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+389	msi	AR	/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+390	msi	AR	/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+391	msi	AR	/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+392	msi	AR	/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+393	msi	AR	/usr/local/hdd/rita/msimaging/190724_AR_ZT1_Proteins/190724_AR_ZT1_Proteins_spectra.imzML	undefined	undefined	50
+394	msi	AR	/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML	undefined	undefined	50
+395	msi	AR	/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML	undefined	undefined	50
+396	msi	AR	/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML	undefined	undefined	50
+397	msi	AR	/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML	undefined	undefined	50
+398	msi	AR	/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML	undefined	undefined	50

@@ -6,6 +6,7 @@ import axios from 'axios';
 import config from '../config';
 
 import MaterialTable from 'material-table';
+import { type } from 'os';
 
 
 export interface Aorta3DRelatedExpsViewerProps {
@@ -22,6 +23,32 @@ export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DR
 {
 
     neo4jd3: any = null;
+
+    state = {
+        relatedexps: [
+            {
+                "id": 415,
+                "type": "msi",
+                "type_det": "Lipids",
+                "region": "0",
+                "location": "AR",
+                "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
+                "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
+                "level": 50
+            },
+            {
+                "id": 417,
+                "type": "msi",
+                "type_det": "Lipids",
+                "region": "5",
+                "location": "AR",
+                "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
+                "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
+                "level": 50
+            },
+        ],
+        element: null
+    }
 
     constructor(props) {
         super(props);
@@ -47,20 +74,31 @@ export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DR
     {
         var self=this;
 
-        if ((prevState.element == null) || (self.state.element == null) || (prevState.element.id !== self.state.element.id))
+        if (prevProps.element !== this.props.element)
         {
-            axios.post(config.getRestAddress() + "/getRelatedData", {id: self.state.element.id}, config.axiosConfig)
-            .then(function (response) {
+            self.setState({element: this.props.element});
+        }
+
+        if ((prevState.element == null) || (prevState.element.id !== self.state.element.id)|| (prevState.element.id !== self.state.element.id))
+        {
+
+            console.log(prevState.element)
+            console.log(self.state.element)
+
+            if (self.state.element.id)
+            {
+                console.log("Fetching related data")
+                console.log(self.state.element.id)
+        
+                axios.post(config.getRestAddress() + "/getRelatedData", {id: self.state.element.id}, config.axiosConfig)
+                .then(function (response) {
+                    self.setState({relatedexps: response.data})    
+                })
+                .catch(function (error) {
     
-              console.log(response.data)
-              self.setRelatedExps(response.data);
-    
-    
-            })
-            .catch(function (error) {
-              console.log(error)
-              self.setRelatedExps([]);
-            });
+                });
+            }
+            
         }
     }
 
@@ -86,36 +124,16 @@ export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DR
         var self = this;
         return (
             <MaterialTable
-            title="Custom Filtering Algorithm Preview"
+            title="Related Experiments"
             columns={[
               { title: 'Experiment ID', field: 'id', type: 'numeric' },
               { title: 'Exp-Type', field: 'type' },
-              { title: 'Detail Type', field: 'type_det' },
+              { title: 'Detail Type', field: 'type_det', render: rowData => Array.isArray(rowData.type_det) ? <div>{rowData.type_det.join("; ")}</div> : <div>{rowData.type_det}</div>},
               { title: 'Sample Location', field: 'location' },
               { title: 'Plaque Level', field: 'level' },
+              { title: "Plaque Rate", field: "plaqueRate", type: "numeric"}
             ]}
-            data={[
-                {
-                    "id": 415,
-                    "type": "msi",
-                    "type_det": "Lipids",
-                    "region": "0",
-                    "location": "AR",
-                    "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
-                    "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
-                    "level": 50
-                },
-                {
-                    "id": 417,
-                    "type": "msi",
-                    "type_det": "Lipids",
-                    "region": "5",
-                    "location": "AR",
-                    "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
-                    "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
-                    "level": 50
-                },
-            ]}
+            data={self.state.relatedexps}
             options={{
               filtering: true
             }}

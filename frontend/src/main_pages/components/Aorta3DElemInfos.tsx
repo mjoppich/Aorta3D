@@ -105,7 +105,7 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
             <div>
                 <p>{JSON.stringify(self.state.element, null, 4)}</p>
                 <p>{JSON.stringify(self.state.eleminfo, null, 4)}</p>
-                <img src={`data:image/png;base64,${self.state["elem_image"]}`} />
+                <img style={{maxWidth: "400px"}} src={`data:image/png;base64,${self.state["elem_image"]}`} />
             </div>
         )
     }

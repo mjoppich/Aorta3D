@@ -23,7 +23,7 @@ import base64
 
 
 dataurl = str(os.path.dirname(os.path.realpath(__file__))) + "/../" + 'frontend/src/static/'
-config_path = "../config.json"
+config_path = str(os.path.dirname(os.path.realpath(__file__))) + "/config.json"
 
 app = Flask(__name__, static_folder=dataurl, static_url_path='/static')
 CORS(app)
@@ -95,6 +95,8 @@ def getRelatedData():
             targetInfo = elem
             break
 
+    print("Found elem", targetInfo)
+
     if targetInfo == None:
         response = app.response_class(
             response=json.dumps([]),
@@ -103,26 +105,40 @@ def getRelatedData():
         )
         return response
 
+    
 
-    if targetInfo["type"] == "msi":
+    if targetInfo.get("type", None) == "msi":
         targetPath = targetInfo["path"]
         for elem in config_file:            #look for further regions in the same imZML
             if elem["path"] == targetPath:
                 data.append(elem)
-    elif targetInfo["type"] == "he":
+    elif targetInfo.get("type", None) == "he":
         for elem in config_file:            #look for channel images that correspond to HE ID AND HE that have 0.1 similar plaque rate
             if elem["type"] == "immuno" and elem["parent"] == fetchID:
                 data.append(elem)
             if elem["type"] == "he" and abs(float(elem["plaqueRate"]) - float(targetInfo["plaqueRate"])) <= 0.1:
                 data.append(elem)
+
     else:
-        for elem in config_file:            #look for HE parent image AND the images of different channels
-            if elem["type"] == "he" and elem["id"] == targetInfo["parent"]:
-                data.append(elem)
-            if elem["type"] == "immuno" and not elem["type_det"] == targetInfo["type_det"]:
+        #for elem in config_file:            #look for HE parent image AND the images of different channels
+        #    #if elem["type"] == "he" and elem["id"] == targetInfo["parent"]:
+        #    #    data.append(elem)
+        #    #if elem["type"] == "immuno" and not elem["type_det"] == targetInfo["type_det"]:
+        #    #    data.append(elem)
+
+        for elem in config_file:
+
+            detTypes = elem.get("type_det", [])
+            if type(detTypes) == str:
+                detTypes = [detTypes]
+
+            ints = list(set(detTypes) & set(targetInfo.get("type_det", [])))
+
+            if len(ints) > 0:
                 data.append(elem)
 
-    f.close()
+
+
 
     response = app.response_class(
         response=json.dumps(data),
@@ -146,7 +162,6 @@ def getElementInfo():
         if elem["id"] == fetchID:
             data = elem
             break
-    f.close()
 
     response = app.response_class(
         response=json.dumps(data),
@@ -207,14 +222,11 @@ def stats():
         config_file = json.load(f)
 
     datasets = 0
-    datatypes = {}
+    datatypes = Counter()
 
     for elem in config_file:
         datasets += 1
-        if not elem["type"] in list(datatypes.keys()):
-            datatypes[elem["type"]] = 1
-        else: 
-            datatypes[elem["type"]] += 1
+        datatypes[elem.get("type", "Unknown")] += 1
     f.close()
     
     data = {"datasets": datasets, "datatypes": list(datatypes.keys()), "overview": datatypes}
