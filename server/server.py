@@ -64,9 +64,9 @@ def fetchViewableData():
     reduced_data = []
 
     for elem in config_file:
-        #if elem["type"] == "msi": #temporary extraction of only MSI data   
-        reduced_elem = {"id": elem["id"], "type": elem["type"], "type_det": elem["type_det"], "location": elem["location"], "level": elem["level"]}
-        reduced_data.append(reduced_elem)
+        if elem.get("type") == "msi" and elem.get("type_det")[0] == "Proteins": #temporary extraction of only MSI data   
+            reduced_elem = {"id": elem.get("id"), "type": elem.get("type"), "type_det": elem.get("type_det"), "location": elem.get("location"), "level": elem.get("level")}
+            reduced_data.append(reduced_elem)
 
     f.close()
 
@@ -223,13 +223,24 @@ def stats():
 
     datasets = 0
     datatypes = Counter()
+    datasubtypes = {}
 
     for elem in config_file:
         datasets += 1
-        datatypes[elem.get("type", "Unknown")] += 1
+        type_ = elem.get("type")
+        if type_ is None:
+            type_ = "other"
+        datatypes[type_] += 1
+        if "type_det" in elem:
+            type_det = elem.get("type_det")[0]
+            if type_ in datasubtypes:
+                if not (type_det in datasubtypes[type_]):
+                    datasubtypes[type_].append(type_det)
+            else:
+                datasubtypes[type_] = [type_det]
     f.close()
     
-    data = {"datasets": datasets, "datatypes": list(datatypes.keys()), "overview": datatypes}
+    data = {"datasets": datasets, "datatypes": list(datatypes.keys()), "datasubtypes": datasubtypes, "overview": datatypes}
     response = app.response_class(
         response=json.dumps(data),
         status=200,

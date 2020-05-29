@@ -138,6 +138,9 @@ mesh.position.set( -500.0,  -700.0, 0 );
             elemInfo = {
                 elemData
             }
+            rotation = {
+                mrot
+            }
             />;
 
             curlist.push(nmesh);
@@ -156,12 +159,31 @@ mesh.position.set( -500.0,  -700.0, 0 );
 
         var scaleFactor = 0.1;
 
-        self.loadBaseElement(loader, "model/base/membrane1.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, -Math.PI / 2, 0], {id: "mem1", descr: "Membrane 1", type_det: ["endothelial"]});
-        self.loadBaseElement(loader, "model/base/membrane2.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#00ff00", [0, -Math.PI / 2, 0], {id: "mem2", descr: "Membrane 2", type_det: ["endothelial"]});
-        self.loadBaseElement(loader, "model/base/membrane3.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#0000ff", [0, -Math.PI / 2, 0], {id: "mem3", descr: "Membrane 3", type_det: ["endothelial"]});
-        self.loadBaseElement(loader, "model/base/plaque.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, -Math.PI / 2, 0], {id: "plq", descr: "Plaque", type_det: ["plaque"]});
-        self.loadBaseElement(loader, "model/base/macrophage.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, -Math.PI / 2, 0], {id: "mac", descr: "Macrophage", type_det: ["macrophage"]});
+        var pushLevels = 0;
 
+        self.loadBaseElement(loader, "model/base/membrane1.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, 0, 0], {id: "mem1", descr: "Membrane 1", type_det: ["endothelial"]});
+        self.loadBaseElement(loader, "model/base/membrane2.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#00ff00", [0, 0, 0], {id: "mem2", descr: "Membrane 2", type_det: ["endothelial"]});
+        self.loadBaseElement(loader, "model/base/membrane3.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#0000ff", [0, 0, 0], {id: "mem3", descr: "Membrane 3", type_det: ["endothelial"]});
+        self.loadBaseElement(loader, "model/base/plaque.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, 0, 0], {id: "plq", descr: "Plaque", type_det: ["plaque"]});
+        self.loadBaseElement(loader, "model/base/macrophage.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, 0, 0], {id: "mac", descr: "Macrophage", type_det: ["macrophage"]});
+
+        axios.post(config.getRestAddress() + "/fetchViewableData", {}, config.axiosConfig)
+        .then(function (response) {
+        
+          //response.data.forEach(element => {
+          //  self.loadBaseElement(loader, "model/mini_plaque_slide/circ_mini_plaque.stl", [1, pushLevels, 0], [scaleFactor/3, scaleFactor/3, scaleFactor/3], "#48e5d4", [-Math.PI / 2, 0, 0], {id: response.data[0].id, descr: response.data[0].type, type_det: response.data[0].type_det});
+          //  pushLevels = pushLevels + 2
+          //});  
+          //console.log(response.data[0].id)
+          self.loadBaseElement(loader, "model/mini_plaque_slide/circ_mini_plaque.stl", [1, 0, 0], [scaleFactor/3, scaleFactor/3, scaleFactor/3], "#48e5d4", [-Math.PI / 2, 0, 0], {id: response.data[0].id, descr: response.data[0].type, type_det: response.data[0].type_det});
+
+          //self.setState({stats: response.data})
+
+        })
+        .catch(function (error) {
+          console.log(error)
+          //self.setState({stats: {}})
+        });
 
 
     }
