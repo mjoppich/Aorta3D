@@ -335,7 +335,7 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
                 <table>
                     <tr>
                         <td style={{width: this.props.width+10, height: this.props.height+10}}>
-                            <div style={{position:"absolute"}}>
+                            <div style={{position:"relative",width: this.props.width, height: this.props.height}}>
                                 <canvas ref={this.canvas1} style={{top: "0px", left: "0px", position: "absolute", zIndex: 1}}>
                                 </canvas>
                                 <canvas ref={this.canvas2} style={{top: "0px", left: "0px", position: "absolute", zIndex: 2}}>

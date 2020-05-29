@@ -37,10 +37,14 @@ export interface Aorta3DRendererState {
 
 export default class Aorta3DRenderer extends React.Component < Aorta3DRendererProps, Aorta3DRendererState > {
 
-    neo4jd3: any = null;
+    glrendererdiv: any;
+    glrendercomponent: any;
 
     constructor(props) {
         super(props);
+
+        this.glrendererdiv = React.createRef();
+        this.glrendercomponent = [];
     }
 
     public static defaultProps: Partial < Aorta3DRendererProps > = {
@@ -64,32 +68,6 @@ export default class Aorta3DRenderer extends React.Component < Aorta3DRendererPr
         return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';
     }
 
-    componentWillMount() {
-        var self = this;
-
-        var width = this.props.width;
-        var height = this.props.height;
-
-        var cameraXOffset = 50;
-
-        var camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000)
-        camera.position.set(cameraXOffset, 0, 0);
-        camera.lookAt([0, 0, 0])
-        camera.updateProjectionMatrix();
-
-        var controls = require('orbit-controls')({
-            position: [cameraXOffset, 0, 0]
-        });
-
-        var raycaster = new THREE.Raycaster();
-
-        this.setState({
-            globject: [],
-            glCamera: camera,
-            glControls: controls,
-            glRaycaster: raycaster
-        });
-    }
 
     loadBaseElement(loader, elempath, mpos = [0, 0, 0], mscale = [1, 1, 1], mcolor = "#ffffff", mrot = [0, 0, 0], elemData=null) {
         var self = this;
@@ -151,14 +129,57 @@ mesh.position.set( -500.0,  -700.0, 0 );
         });
     }
 
+    componentDidUpdate() {
+
+        var self=this;
+        console.log("did update")
+        console.log(self.state)
+    
+    }
+
     componentDidMount() {
 
 
         var self = this;
+
+        console.log("in component did mount")
+
+        // BELOW WAS COMPONENT WILL MOUNT
+
+        var width = this.props.width;
+        var height = this.props.height;
+
+        var cameraXOffset = 50;
+
+        var camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000)
+        camera.position.set(cameraXOffset, 0, 0);
+        camera.lookAt([0, 0, 0])
+        camera.updateProjectionMatrix();
+
+        var raycaster = new THREE.Raycaster();
+        console.log("orbit controls")
+        console.log(this.glrendererdiv.current)
+
+        var controls = require('orbit-controls')({
+            position: [50, 0, 0],
+            parent: this.glrendererdiv.current,
+            element: this.glrendererdiv.current
+        });
+
+        this.setState({
+            globject: [],
+            glCamera: camera,
+            glControls: controls,
+            glRaycaster: raycaster
+        });
+
+        // ABOVE WAS COMPONENT WILL MOUNT
+
+
+
         var loader = new STLLoader();
 
         var scaleFactor = 0.1;
-
         var pushLevels = 0;
 
         self.loadBaseElement(loader, "model/base/membrane1.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, 0, 0], {id: "mem1", descr: "Membrane 1", type_det: ["endothelial"]});
@@ -175,7 +196,8 @@ mesh.position.set( -500.0,  -700.0, 0 );
           //  pushLevels = pushLevels + 2
           //});  
           //console.log(response.data[0].id)
-          self.loadBaseElement(loader, "model/mini_plaque_slide/circ_mini_plaque.stl", [1, 0, 0], [scaleFactor/3, scaleFactor/3, scaleFactor/3], "#48e5d4", [-Math.PI / 2, 0, 0], {id: response.data[0].id, descr: response.data[0].type, type_det: response.data[0].type_det});
+          self.loadBaseElement(loader, "model/mini_plaque_slide/circ_mini_plaque.stl", [1, 0, 0], [scaleFactor/3, scaleFactor/3, scaleFactor/3], "#48e5d4", [-Math.PI / 2, 0, 0], response.data[0]);
+          // {id: response.data[0].id, descr: response.data[0].type, type_det: response.data[0].type_det}
 
           //self.setState({stats: response.data})
 
@@ -203,7 +225,6 @@ mesh.position.set( -500.0,  -700.0, 0 );
             console.log(objs)
             this.waslogged=true;
             this.CANVAS = objs.domElement.getElementsByTagName("canvas")[0]
-
         }
 
         if ((this.CANVAS) && (this.MOUSE))
@@ -264,7 +285,8 @@ mesh.position.set( -500.0,  -700.0, 0 );
 
     onMouseMove(event) {
 
-        event.preventDefault();
+        //event.preventDefault();
+        event.stopPropagation();
 
         var mousePos = new THREE.Vector2(event.clientX, event.clientY);
         mousePos = this.getMousePosition(mousePos);
@@ -279,67 +301,102 @@ mesh.position.set( -500.0,  -700.0, 0 );
     render() {
 
         var self = this;
-        return (
 
-            <WebGLRenderer key = "nq"
-            deferred = {
-                false
-            }
-            physicallyCorrectLights = {
-                true
-            }
-            gammaInput = {
-                true
-            }
-            gammaOutput = {
-                true
-            }
-            shadowMap = {
-                {
-                    enabled: true
-                }
-            }
-            toneMapping = {
-                THREE.ReinhardToneMapping
-            }
-            antialias = {
-                true
-            }
-            bgColor = {
-                0xafafaf
-            }
-            setPixelRatio = {
-                window.devicePixelRatio
-            }
-            setSize = {
-                [this.props.width, this.props.height]
-            }
-            controls = {
-                this.state.glControls
-            }
-            camera = {
-                this.state.glCamera
-            }
-            scene = {
-                new THREE.Scene()
-            }
-            onMount = {
-                (objs) => this.initRendering(objs)
-            }
-            onAnimate = {
-                (objs) => this.onRender(objs)
-            }
-            onMouseMove = {
-                (evt) => this.onMouseMove(evt)
-            }
-            >
+        var glrendercomponent = [];
 
-            <AmbientLight/>
+
+        if (this.state != null)
+        {
+            var cameraUnset = this.state.glCamera === null;
+            var controlsUnset = this.state.glControls === null;
+            var raycasterUnset = this.state.glRaycaster === null;
+            var sceneUnset = this.state.glScene === null;
+    
+            console.log("render")
+            console.log("Camera unset " + cameraUnset)
+            console.log("controls unset " + controlsUnset)
+            console.log("ray unset " + raycasterUnset)
+            console.log("scene unset " + sceneUnset)
+            
+            var allUnset = cameraUnset || controlsUnset || raycasterUnset || sceneUnset;
+            
+    
+            if (!allUnset)
             {
-                self.state.globject
+                console.log("updating render component")
+    
+                glrendercomponent.push(
+                    <WebGLRenderer key = "nq"
+                    deferred = {
+                        false
+                    }
+                    physicallyCorrectLights = {
+                        true
+                    }
+                    gammaInput = {
+                        true
+                    }
+                    gammaOutput = {
+                        true
+                    }
+                    shadowMap = {
+                        {
+                            enabled: true
+                        }
+                    }
+                    toneMapping = {
+                        THREE.ReinhardToneMapping
+                    }
+                    antialias = {
+                        true
+                    }
+                    bgColor = {
+                        0xafafaf
+                    }
+                    setPixelRatio = {
+                        window.devicePixelRatio
+                    }
+                    setSize = {
+                        [this.props.width, this.props.height]
+                    }
+                    controls = {
+                        this.state.glControls
+                    }
+                    camera = {
+                        this.state.glCamera
+                    }
+                    scene = {
+                        new THREE.Scene()
+                    }
+                    onMount = {
+                        (objs) => this.initRendering(objs)
+                    }
+                    onAnimate = {
+                        (objs) => this.onRender(objs)
+                    }
+                    onMouseMove = {
+                        (evt) => this.onMouseMove(evt)
+                    }
+                    >
+    
+                    <AmbientLight/>
+                    {
+                        self.state.globject
+                    }
+    
+                    </WebGLRenderer>
+                        )
             }
+        }
 
-            </WebGLRenderer>
+        
+
+
+
+        return (
+            <div ref={this.glrendererdiv}>
+                {glrendercomponent}
+            </div>
 
         )
     }

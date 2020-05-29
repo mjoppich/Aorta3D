@@ -65,8 +65,8 @@ def fetchViewableData():
 
     for elem in config_file:
         if elem.get("type") == "msi" and elem.get("type_det")[0] == "Proteins": #temporary extraction of only MSI data   
-            reduced_elem = {"id": elem.get("id"), "type": elem.get("type"), "type_det": elem.get("type_det"), "location": elem.get("location"), "level": elem.get("level")}
-            reduced_data.append(reduced_elem)
+            #reduced_elem = {"id": elem.get("id"), "type": elem.get("type"), "type_det": elem.get("type_det"), "location": elem.get("location"), "level": elem.get("level")}
+            reduced_data.append(elem)
 
     f.close()
 
