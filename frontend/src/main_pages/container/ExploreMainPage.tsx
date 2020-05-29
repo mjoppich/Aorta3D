@@ -13,7 +13,7 @@ import { json } from 'body-parser';
 
 
 export interface ExplorePageProps { switchTab?: any };
-export interface ExplorePageState { selected_element: any};
+export interface ExplorePageState { selected_element: any, selected_element_exp: any};
 
 export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePageState> {
 
@@ -27,7 +27,7 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
 
     componentWillMount()
     {
-        this.setState({selected_element: {}})
+        this.setState({selected_element: {}, selected_element_exp: null})
     }
 
 
@@ -37,6 +37,13 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
         console.log("received element")
         console.log(element)
         this.setState({selected_element: element})
+    }
+
+    handleExpDetailSelected(element)
+    {
+        console.log("Element details selected")
+        console.log(element)
+        this.setState({selected_element_exp: element})
     }
 
     /**
@@ -82,44 +89,25 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
 
                     <CardText>
 
-                    <Grid container
-                        direction="row"
-                        justify="space-between"
-                        alignItems="flex-start"
-                        spacing={(2) as GridSpacing}
-                        style={{width: "100%", height: "100%"}}>
-                        <Grid item xs>
-                            <Aorta3DRenderer width={600} height={pageHeight} onSelectElement={(element) => this.handleElementSelected(element)}/>
+                        <Grid container
+                            direction="row"
+                            justify="space-between"
+                            alignItems="flex-start"
+                            spacing={(2) as GridSpacing}
+                            style={{width: "100%", height: "100%"}}>
+                            <Grid item xs>
+                                <Aorta3DRenderer width={600} height={pageHeight} onSelectElement={(element) => this.handleElementSelected(element)}/>
+                            </Grid>
+                            <Grid item xs>
+                                <Aorta3DElemInfos element={this.state.selected_element} onSelectElement={(element) => this.handleElementSelected(element)} />
+                            </Grid>
+                            <Grid item xs>
+                                <Aorta3DRelatedExpsViewer element={this.state.selected_element} onSelectElement={(elem) => this.handleExpDetailSelected(elem)}/>
+                            </Grid>
+                            <Grid item xs>
+                                <Aorta3DElemInfos element={this.state.selected_element_exp} onSelectElement={(element) => this.handleElementSelected(element)} />
+                            </Grid>
                         </Grid>
-                        <Grid item xs>
-                            <Paper style={{width: "100%"}}>
-
-                                <Grid container
-                                    direction="column"
-                                    justify="space-between"
-                                    alignItems="flex-start"
-                                    spacing={(2) as GridSpacing}
-                                    style={{width: "100%"}}>
-                                    <Grid item xs>
-                                        <Aorta3DElemInfos element={this.state.selected_element} onSelectElement={(elem) => console.log(elem)} />
-                                    </Grid>
-                                    <Grid item xs>
-                                        <Aorta3DRelatedExpsViewer element={this.state.selected_element} onSelectElement={(elem) => console.log(elem)}/>
-                                    </Grid>
-                                    <Grid item xs>
-                                        <Paper style={{width: "100%"}}>
-                                            <p>Hello World</p>
-                                            <p>{JSON.stringify(this.state.selected_element, null, 4)}</p>
-                                        </Paper>
-                                    </Grid>
-                                </Grid>
-
-                            </Paper>
-                        </Grid>
-                    </Grid>
-
-
-
                     </CardText>
 
                 </Card>

@@ -64,11 +64,17 @@ def fetchViewableData():
     reduced_data = []
     counter = 0
     for elem in config_file:
+<<<<<<< HEAD
         #if elem.get("type") == "msi" and elem.get("type_det")[0] == "Proteins": #temporary extraction of only MSI data 
         if counter < 5 and str(elem.get("id")).isdigit():  
             reduced_elem = {"id": elem.get("id"), "type": elem.get("type"), "type_det": elem.get("type_det"), "location": elem.get("location"), "level": elem.get("level")}
             reduced_data.append(reduced_elem)
             counter += 1
+=======
+        if elem.get("type") == "msi" and elem.get("type_det")[0] == "Proteins": #temporary extraction of only MSI data   
+            #reduced_elem = {"id": elem.get("id"), "type": elem.get("type"), "type_det": elem.get("type_det"), "location": elem.get("location"), "level": elem.get("level")}
+            reduced_data.append(elem)
+>>>>>>> 68be3625cbcb250b2ad1d366eb04c4ad68d45741
 
     f.close()
 
@@ -149,8 +155,92 @@ def getRelatedData():
     )
     return response
 
+
+@app.route('/getElementInfoImage', methods=['GET', 'POST'])
+def getElementInfoImage():
+
+    content = request.get_json(silent=True)
+    fetchID = content.get("id", -1)
+
+    with open(config_path) as f:
+        config_file = json.load(f)
+
+    data = {}
+    elementData = {}
+
+    for elem in config_file:
+        if elem["id"] == fetchID:
+            elementData = elem
+            break
+
+
+    if "info_path" in elementData:
+        with open(elementData["info_path"]) as f:
+            elem_info_file = json.load(f)
+            data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
+
+        assert(len(data) <= 1)
+
+        if len(data) == 0:
+            data = {}
+        elif len(data) == 1:
+            data = data[0]
+
+        if "path_upgma" in data:
+            encoded = base64.b64encode(open(data["path_upgma"], "rb").read())
+            data = {"image": encoded.decode()}
+        else:
+            data = {}
+
+
+    response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
+
 @app.route('/getElementInfo', methods=['GET', 'POST'])
 def getElementInfo():
+
+    content = request.get_json(silent=True)
+    fetchID = content.get("id", -1)
+
+    with open(config_path) as f:
+        config_file = json.load(f)
+
+    data = {}
+    elementData = {}
+
+    for elem in config_file:
+        if elem["id"] == fetchID:
+            elementData = elem
+            break
+
+
+    if "info_path" in elementData:
+        with open(elementData["info_path"]) as f:
+            elem_info_file = json.load(f)
+            data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
+
+        assert(len(data) <= 1)
+
+        if len(data) == 0:
+            data = {}
+        elif len(data) == 1:
+            data = data[0]
+
+    response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
+
+@app.route('/getElement', methods=['GET', 'POST'])
+def getElement():
 
     content = request.get_json(silent=True)
     fetchID = content.get("id", -1)
@@ -172,8 +262,8 @@ def getElementInfo():
     )
     return response
 
-@app.route('/getElementInfoImage', methods=['POST'])
-def getElementInfoImage():
+@app.route('/getElementImage', methods=['POST'])
+def getElementImage():
 
     content = request.get_json(silent=True)
     fetchID = content.get("id", -1)

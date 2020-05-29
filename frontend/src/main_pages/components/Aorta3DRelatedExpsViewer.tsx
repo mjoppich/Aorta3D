@@ -4,6 +4,7 @@ import ChipInput from 'material-ui-chip-input'
 import AutoComplete from 'material-ui/AutoComplete'
 import axios from 'axios';
 import config from '../config';
+import FlatButton from 'material-ui/FlatButton';
 
 import MaterialTable from 'material-table';
 import { type } from 'os';
@@ -57,6 +58,14 @@ export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DR
     public static defaultProps: Partial < Aorta3DRelatedExpsViewerProps > = {
     };
 
+    getRowDetails(rowdata)
+    {
+        if (this.isFunction(this.props.onSelectElement))
+        {
+            this.props.onSelectElement(rowdata);
+        }
+
+    }
 
 
     isFunction(functionToCheck) {
@@ -131,12 +140,22 @@ export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DR
               { title: 'Detail Type', field: 'type_det', render: rowData => Array.isArray(rowData.type_det) ? <div>{rowData.type_det.join("; ")}</div> : <div>{rowData.type_det}</div>},
               { title: 'Sample Location', field: 'location' },
               { title: 'Plaque Level', field: 'level' },
-              { title: "Plaque Rate", field: "plaqueRate", type: "numeric"}
+              { title: "Plaque Rate", field: "plaqueRate", type: "numeric"},
+              { title: 'Details', render: rowData => <FlatButton onClick={() => {this.getRowDetails(rowData)}}>Details</FlatButton> },
             ]}
             data={self.state.relatedexps}
+            actions={[
+                {
+                  icon: 'save',
+                  tooltip: 'Check Details',
+                  onClick: (event, rowData) => self.isFunction(self.props.onSelectElement) ? self.props.onSelectElement(rowData) : function() {}
+                }
+              ]}
             options={{
-              filtering: true
+              filtering: true,
+              selection: true
             }}
+            onSelectionChange={(rows) => alert('You selected ' + rows.length + ' rows')}
           />
         )
     }

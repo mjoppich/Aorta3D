@@ -5208,5 +5208,16 @@
     {"id": "mem2", "descr": "Membrane 2", "type_det": ["endothelial cells"]},
     {"id": "mem3", "descr": "Membrane 3", "type_det": ["fibroblasts"]},
     {"id": "plq", "descr": "Plaque", "type_det": ["plaque"]},
-    {"id": "mac", "descr": "Macrophage", "type_det": ["macrophages"]}
+    {"id": "mac", "descr": "Macrophage", "type_det": ["macrophages"]},
+
+    {
+        "id": "test1",
+        "type": "msi",
+        "region": 0,
+        "type_det": ["plaque"],
+        "location": "BCA",
+        "path": "../data/test_msi/181114_AT1_Slide_D_Proteins.imzML",
+        "png_path": "../data/test_msi/181114_AT1_Slide_D_Proteins.imzML_0_upgma.png",
+        "info_path": "../data/test_msi/181114_AT1_Slide_D_Proteins.imzML.info"
+    }
 ]
