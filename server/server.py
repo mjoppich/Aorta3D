@@ -62,11 +62,13 @@ def fetchViewableData():
         config_file = json.load(f)
 
     reduced_data = []
-
+    counter = 0
     for elem in config_file:
-        if elem.get("type") == "msi" and elem.get("type_det")[0] == "Proteins": #temporary extraction of only MSI data   
+        #if elem.get("type") == "msi" and elem.get("type_det")[0] == "Proteins": #temporary extraction of only MSI data 
+        if counter < 5 and str(elem.get("id")).isdigit():  
             reduced_elem = {"id": elem.get("id"), "type": elem.get("type"), "type_det": elem.get("type_det"), "location": elem.get("location"), "level": elem.get("level")}
             reduced_data.append(reduced_elem)
+            counter += 1
 
     f.close()
 

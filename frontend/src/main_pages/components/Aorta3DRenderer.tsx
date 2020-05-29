@@ -170,12 +170,12 @@ mesh.position.set( -500.0,  -700.0, 0 );
         axios.post(config.getRestAddress() + "/fetchViewableData", {}, config.axiosConfig)
         .then(function (response) {
         
-          //response.data.forEach(element => {
-          //  self.loadBaseElement(loader, "model/mini_plaque_slide/circ_mini_plaque.stl", [1, pushLevels, 0], [scaleFactor/3, scaleFactor/3, scaleFactor/3], "#48e5d4", [-Math.PI / 2, 0, 0], {id: response.data[0].id, descr: response.data[0].type, type_det: response.data[0].type_det});
-          //  pushLevels = pushLevels + 2
-          //});  
+          response.data.forEach(element => {
+            self.loadBaseElement(loader, "model/mini_plaque_slide/circ_mini_plaque.stl", [1, pushLevels, 0], [scaleFactor/3, scaleFactor/3, scaleFactor/3], "#48e5d4", [-Math.PI / 2, 0, 0], {id: response.data[0].id, descr: response.data[0].type, type_det: response.data[0].type_det});
+            pushLevels = pushLevels - 2
+          });  
           //console.log(response.data[0].id)
-          self.loadBaseElement(loader, "model/mini_plaque_slide/circ_mini_plaque.stl", [1, 0, 0], [scaleFactor/3, scaleFactor/3, scaleFactor/3], "#48e5d4", [-Math.PI / 2, 0, 0], {id: response.data[0].id, descr: response.data[0].type, type_det: response.data[0].type_det});
+          //self.loadBaseElement(loader, "model/mini_plaque_slide/circ_mini_plaque.stl", [1, 0, 0], [scaleFactor/3, scaleFactor/3, scaleFactor/3], "#48e5d4", [-Math.PI / 2, 0, 0], {id: response.data[0].id, descr: response.data[0].type, type_det: response.data[0].type_det});
 
           //self.setState({stats: response.data})
 
