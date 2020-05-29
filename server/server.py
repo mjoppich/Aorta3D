@@ -147,8 +147,92 @@ def getRelatedData():
     )
     return response
 
+
+@app.route('/getElementInfoImage', methods=['GET', 'POST'])
+def getElementInfoImage():
+
+    content = request.get_json(silent=True)
+    fetchID = content.get("id", -1)
+
+    with open(config_path) as f:
+        config_file = json.load(f)
+
+    data = {}
+    elementData = {}
+
+    for elem in config_file:
+        if elem["id"] == fetchID:
+            elementData = elem
+            break
+
+
+    if "info_path" in elementData:
+        with open(elementData["info_path"]) as f:
+            elem_info_file = json.load(f)
+            data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
+
+        assert(len(data) <= 1)
+
+        if len(data) == 0:
+            data = {}
+        elif len(data) == 1:
+            data = data[0]
+
+        if "path_upgma" in data:
+            encoded = base64.b64encode(open(data["path_upgma"], "rb").read())
+            data = {"image": encoded.decode()}
+        else:
+            data = {}
+
+
+    response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
+
 @app.route('/getElementInfo', methods=['GET', 'POST'])
 def getElementInfo():
+
+    content = request.get_json(silent=True)
+    fetchID = content.get("id", -1)
+
+    with open(config_path) as f:
+        config_file = json.load(f)
+
+    data = {}
+    elementData = {}
+
+    for elem in config_file:
+        if elem["id"] == fetchID:
+            elementData = elem
+            break
+
+
+    if "info_path" in elementData:
+        with open(elementData["info_path"]) as f:
+            elem_info_file = json.load(f)
+            data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
+
+        assert(len(data) <= 1)
+
+        if len(data) == 0:
+            data = {}
+        elif len(data) == 1:
+            data = data[0]
+
+    response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
+
+@app.route('/getElement', methods=['GET', 'POST'])
+def getElement():
 
     content = request.get_json(silent=True)
     fetchID = content.get("id", -1)
@@ -170,8 +254,8 @@ def getElementInfo():
     )
     return response
 
-@app.route('/getElementInfoImage', methods=['POST'])
-def getElementInfoImage():
+@app.route('/getElementImage', methods=['POST'])
+def getElementImage():
 
     content = request.get_json(silent=True)
     fetchID = content.get("id", -1)
