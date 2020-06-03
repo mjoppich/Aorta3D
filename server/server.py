@@ -175,12 +175,15 @@ def getElementInfoImage():
     elementData = {}
 
     for elem in config_file:
-        if elem["id"] == fetchID:
+        if elem.get("id") == fetchID:
             elementData = elem
             break
+    if "png_path" in elementData:
+        pth = os.path.dirname(__file__) + "/../" + elementData["png_path"]
+        encoded = base64.b64encode(open(pth, "rb").read())
+        data = {"image": encoded.decode()}
 
-
-    if "info_path" in elementData:
+    elif "info_path" in elementData:
         with open(elementData["info_path"]) as f:
             elem_info_file = json.load(f)
             data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
@@ -195,8 +198,8 @@ def getElementInfoImage():
         if "path_upgma" in data:
             encoded = base64.b64encode(open(data["path_upgma"], "rb").read())
             data = {"image": encoded.decode()}
-        else:
-            data = {}
+    else:
+        data = {}
 
 
     response = app.response_class(
@@ -219,22 +222,25 @@ def getElementInfo():
     elementData = {}
 
     for elem in config_file:
-        if elem["id"] == fetchID:
+        if elem.get("id") == fetchID:
             elementData = elem
             break
 
-
     if "info_path" in elementData:
-        with open(elementData["info_path"]) as f:
+        pth = os.path.dirname(__file__) + "/../" + elementData["info_path"]
+        with open(pth) as f:
             elem_info_file = json.load(f)
-            data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
+            if elementData.get("type") == "msi":
+                data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
+            else:
+                data["info"] = elem_info_file[0]
 
-        assert(len(data) <= 1)
+        #assert(len(data) <= 1)
 
-        if len(data) == 0:
-            data = {}
-        elif len(data) == 1:
-            data = data[0]
+        #if len(data) == 0:
+        #    data = {}
+        #elif len(data) == 1:
+        #    data = data[0]
 
     response = app.response_class(
         response=json.dumps(data),
@@ -255,7 +261,7 @@ def getElement():
     data = {}
 
     for elem in config_file:
-        if elem["id"] == fetchID:
+        if elem.get("id") == fetchID:
             data = elem
             break
 
@@ -293,10 +299,6 @@ def getElementImage():
     
     else:   
         fname = os.path.dirname(__file__) + "/../" + data.get("png_path")
-        #if data["type"] == "MSI":
-        #    fname = ".".join([data["path"],"_upgma_", data["region"], ".png"])
-        #else:
-        #    fname = ".".join([data["path"], ".png"])
 
     if not os.path.exists(fname) or fname == None:
         fname = testImage

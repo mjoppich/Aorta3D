@@ -105,9 +105,8 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         var detailElement = null;
         var self=this;
 
-        var isMSI = (self.state!= null) && (self.state.eleminfo != null) && (["msi"].indexOf(self.state.eleminfo["type"]) >= 0)
+        var isMSI = (self.state!= null) && (self.state.eleminfo != null) && (["msi"].indexOf(self.state.eleminfo["type"]) >= 0 || ["scheme"].indexOf(self.state.eleminfo["type"]) >= 0)
         console.log("Is this MSI " + isMSI);
-        console.log(["msi"].indexOf(self.state.eleminfo["type"]) >= 0)
         console.log(self.state)
         console.log(self.state.eleminfo)
         if (isMSI)

@@ -1,7 +1,8 @@
 [
     {
         "id": 0,
-        "type": "no",
+        "type": "scheme",
+        "type_det": ["no"],
         "color": "#ffff00",
         "right": 0,
         "path": "model/no_plaque_slide/no_plaque.stl",
@@ -10,16 +11,18 @@
     },
     {
         "id": 1,
-        "type": "mini",
+        "type": "scheme",
+        "type_det": ["mini"],
         "color": "#99ff33",
         "right": 0,
         "path": "model/mini_plaque_slide/mini_plaque.stl",
         "png_path": "data/models/mini_plaque_slide/mini_plaque.small.png",
-        "info_path": "data/modelsmini_plaque_slide/mini_plaque.info"
+        "info_path": "data/models/mini_plaque_slide/mini_plaque.info"
     },
     {
         "id": 3,
-        "type": "massive",
+        "type": "scheme",
+        "type_det": ["massive"],
         "color": "#00ccff",
         "right": 0,
         "path": "model/massive_plaque/massive_plaque.stl",
@@ -28,7 +31,8 @@
     },
     {
         "id": 2,
-        "type": "medium",
+        "type": "scheme",
+        "type_det": ["medium"],
         "color": "#00ff99",
         "right": 1,
         "path": "model/medium_plaque/medium_plaque.stl",
@@ -37,7 +41,8 @@
     },
     {
         "id": 4,
-        "type": "rupture",
+        "type": "scheme",
+        "type_det": ["rupture"],
         "color": "#ff0000",
         "right": 1,
         "path": "model/rupture_plaque/rupture_plaque.stl",
