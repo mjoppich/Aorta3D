@@ -23,7 +23,7 @@ import base64
 
 
 dataurl = str(os.path.dirname(os.path.realpath(__file__))) + "/../" + 'frontend/src/static/'
-config_path = str(os.path.dirname(os.path.realpath(__file__))) + "/config.json"
+config_path = str(os.path.dirname(os.path.realpath(__file__))) + "/configs/"
 
 app = Flask(__name__, static_folder=dataurl, static_url_path='/static')
 CORS(app)
@@ -55,28 +55,36 @@ def models(filename):
 def test():
     return "<html><body>miRExplore Server v0.01</body></html>", 200, None
 
+def loadConfigs():
+
+    allConfigFiles = [f for f in os.listdir(config_path) if os.path.isfile(os.path.join(config_path, f)) and f.endswith(".json")]
+
+    allconfigs = []
+
+    for configFile in allConfigFiles:
+        with open(os.path.join(config_path, configFile)) as f:
+            config_file = json.load(f)
+
+            for x in config_file:
+                x["id"] = configFile + ":" + str(x["id"])
+
+                if "parent" in x:
+                    x["parent"] = configFile + ":" + str(x["parent"])
+
+            allconfigs = config_file + allconfigs
+
+    return allconfigs
+
 @app.route('/fetchViewableData', methods=['POST'])
 def fetchViewableData():
     
-    with open(config_path) as f:
-        config_file = json.load(f)
+    config_file = loadConfigs()
 
     reduced_data = []
     counter = 0
     for elem in config_file:
-<<<<<<< HEAD
-        #if elem.get("type") == "msi" and elem.get("type_det")[0] == "Proteins": #temporary extraction of only MSI data 
-        if counter < 5 and str(elem.get("id")).isdigit():  
-            reduced_elem = {"id": elem.get("id"), "type": elem.get("type"), "type_det": elem.get("type_det"), "location": elem.get("location"), "level": elem.get("level")}
-            reduced_data.append(reduced_elem)
-            counter += 1
-=======
-        if elem.get("type") == "msi" and elem.get("type_det")[0] == "Proteins": #temporary extraction of only MSI data   
-            #reduced_elem = {"id": elem.get("id"), "type": elem.get("type"), "type_det": elem.get("type_det"), "location": elem.get("location"), "level": elem.get("level")}
+        if elem.get("id").startswith("scheme"): 
             reduced_data.append(elem)
->>>>>>> 68be3625cbcb250b2ad1d366eb04c4ad68d45741
-
-    f.close()
 
     response = app.response_class(
         response=json.dumps(reduced_data),
@@ -92,8 +100,7 @@ def getRelatedData():
     content = request.get_json(silent=True)
     fetchID = content.get("id", -1)
 
-    with open(config_path) as f:
-        config_file = json.load(f)
+    config_file = loadConfigs()
 
     targetInfo = None
     data = []
@@ -162,8 +169,7 @@ def getElementInfoImage():
     content = request.get_json(silent=True)
     fetchID = content.get("id", -1)
 
-    with open(config_path) as f:
-        config_file = json.load(f)
+    config_file = loadConfigs()
 
     data = {}
     elementData = {}
@@ -207,8 +213,7 @@ def getElementInfo():
     content = request.get_json(silent=True)
     fetchID = content.get("id", -1)
 
-    with open(config_path) as f:
-        config_file = json.load(f)
+    config_file = loadConfigs()
 
     data = {}
     elementData = {}
@@ -245,8 +250,7 @@ def getElement():
     content = request.get_json(silent=True)
     fetchID = content.get("id", -1)
 
-    with open(config_path) as f:
-        config_file = json.load(f)
+    config_file = loadConfigs()
 
     data = {}
 
@@ -272,27 +276,27 @@ def getElementImage():
         response="Bad request",
         status=400    )
 
-    with open(config_path) as f:
-        config_file = json.load(f)
+    config_file = loadConfigs()
 
     data = None
     fname = None
 
     for elem in config_file:
-        if elem["id"] == fetchID:
+        if elem.get("id") == fetchID:
             data = elem
             break
 
-    testImage = os.path.dirname(__file__) + "../data/images/test_image.png"
+    testImage = os.path.dirname(__file__) + "/../data/images/test_image.png"
 
-    if data == None or not "path" in data:
+    if data == None or not "png_path" in data:
         fname = testImage
     
     else:   
-        if data["type"] == "MSI":
-            fname = ".".join([data["path"],"_upgma_", data["region"], ".png"])
-        else:
-            fname = ".".join([data["path"], ".png"])
+        fname = os.path.dirname(__file__) + "/../" + data.get("png_path")
+        #if data["type"] == "MSI":
+        #    fname = ".".join([data["path"],"_upgma_", data["region"], ".png"])
+        #else:
+        #    fname = ".".join([data["path"], ".png"])
 
     if not os.path.exists(fname) or fname == None:
         fname = testImage
@@ -310,8 +314,7 @@ def getElementImage():
 @app.route('/stats', methods=['GET', 'POST'])
 def stats():
 
-    with open(config_path) as f:
-        config_file = json.load(f)
+    config_file = loadConfigs() 
 
     datasets = 0
     datatypes = Counter()
@@ -330,7 +333,6 @@ def stats():
                     datasubtypes[type_].append(type_det)
             else:
                 datasubtypes[type_] = [type_det]
-    f.close()
     
     data = {"datasets": datasets, "datatypes": list(datatypes.keys()), "datasubtypes": datasubtypes, "overview": datatypes}
     response = app.response_class(

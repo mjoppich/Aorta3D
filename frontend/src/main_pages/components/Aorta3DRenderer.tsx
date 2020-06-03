@@ -74,13 +74,6 @@ export default class Aorta3DRenderer extends React.Component < Aorta3DRendererPr
 
         loader.load(config.getRestAddress() + "/" + elempath, function (geometry) {
 
-            /*
-
-mesh.position.set( -500.0,  -700.0, 0 );
-                                        mesh.rotation.set( 0, 0, 0 );
-                                        mesh.scale.set( 2,2,2 );
-
-            */
             geometry.computeBoundingBox();
             geometry.center()
 
@@ -104,7 +97,8 @@ mesh.position.set( -500.0,  -700.0, 0 );
             }
             material = {
                 new THREE.MeshStandardMaterial({
-                    color: mcolor
+                    color: mcolor,
+                    shininess: 50
                 })
             }
             scale = {
@@ -180,7 +174,7 @@ mesh.position.set( -500.0,  -700.0, 0 );
         var loader = new STLLoader();
 
         var scaleFactor = 0.1;
-        var pushLevels = 0;
+        var pushLevels = -30;
 
         self.loadBaseElement(loader, "model/base/membrane1.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, 0, 0], {id: "mem1", descr: "Membrane 1", type_det: ["endothelial"]});
         self.loadBaseElement(loader, "model/base/membrane2.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#00ff00", [0, 0, 0], {id: "mem2", descr: "Membrane 2", type_det: ["endothelial"]});
@@ -192,23 +186,13 @@ mesh.position.set( -500.0,  -700.0, 0 );
         .then(function (response) {
         
           response.data.forEach(element => {
-            self.loadBaseElement(loader, "model/mini_plaque_slide/circ_mini_plaque.stl", [1, pushLevels, 0], [scaleFactor/3, scaleFactor/3, scaleFactor/3], "#48e5d4", [-Math.PI / 2, 0, 0], {id: response.data[0].id, descr: response.data[0].type, type_det: response.data[0].type_det});
-            pushLevels = pushLevels - 2
+            self.loadBaseElement(loader, element.path, [1, pushLevels, 0], [scaleFactor/3, scaleFactor/3, scaleFactor/3], element.color, [Math.PI / 2, element.right * Math.PI, 0], {id: element.id, descr: element.type});
+            pushLevels = pushLevels + 10
           });  
-          //console.log(response.data[0].id)
-<<<<<<< HEAD
-          //self.loadBaseElement(loader, "model/mini_plaque_slide/circ_mini_plaque.stl", [1, 0, 0], [scaleFactor/3, scaleFactor/3, scaleFactor/3], "#48e5d4", [-Math.PI / 2, 0, 0], {id: response.data[0].id, descr: response.data[0].type, type_det: response.data[0].type_det});
-=======
-          self.loadBaseElement(loader, "model/mini_plaque_slide/circ_mini_plaque.stl", [1, 0, 0], [scaleFactor/3, scaleFactor/3, scaleFactor/3], "#48e5d4", [-Math.PI / 2, 0, 0], response.data[0]);
-          // {id: response.data[0].id, descr: response.data[0].type, type_det: response.data[0].type_det}
->>>>>>> 68be3625cbcb250b2ad1d366eb04c4ad68d45741
-
-          //self.setState({stats: response.data})
 
         })
         .catch(function (error) {
           console.log(error)
-          //self.setState({stats: {}})
         });
 
 

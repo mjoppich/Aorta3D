@@ -1,0 +1,47 @@
+[
+    {
+        "id": 0,
+        "type": "no",
+        "color": "#ffff00",
+        "right": 0,
+        "path": "model/no_plaque_slide/no_plaque.stl",
+        "png_path": "data/models/no_plaque_slide/no_plaque.small.png",
+        "info_path": "data/models/no_plaque_slide/no_plaque.info"
+    },
+    {
+        "id": 1,
+        "type": "mini",
+        "color": "#99ff33",
+        "right": 0,
+        "path": "model/mini_plaque_slide/mini_plaque.stl",
+        "png_path": "data/models/mini_plaque_slide/mini_plaque.small.png",
+        "info_path": "data/modelsmini_plaque_slide/mini_plaque.info"
+    },
+    {
+        "id": 3,
+        "type": "massive",
+        "color": "#00ccff",
+        "right": 0,
+        "path": "model/massive_plaque/massive_plaque.stl",
+        "png_path": "data/models/massive_plaque/massive_plaque.small.png",
+        "info_path": "data/models/massive_plaque/massive_plaque.info"
+    },
+    {
+        "id": 2,
+        "type": "medium",
+        "color": "#00ff99",
+        "right": 1,
+        "path": "model/medium_plaque/medium_plaque.stl",
+        "png_path": "data/models/medium_plaque/medium_plaque.small.png",
+        "info_path": "data/models/medium_plaque/medium_plaque.info"
+    },
+    {
+        "id": 4,
+        "type": "rupture",
+        "color": "#ff0000",
+        "right": 1,
+        "path": "model/rupture_plaque/rupture_plaque.stl",
+        "png_path": "data/models/rupture_plaque/rupture_plaque.small.png",
+        "info_path": "data/models/rupture_plaque/rupture_plaque.info"
+    }
+]
