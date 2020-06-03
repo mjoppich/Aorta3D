@@ -80,6 +80,9 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
         {
             console.log("canvas click registered")
             self.canvas2.current.addEventListener("click", (event) => this.handleCanvasClick(event));
+
+            self.canvas2.current.width = self.props.width;
+            self.canvas2.current.height = self.props.height;
         } else {
             console.log("canvas click NOT registered")
         }
