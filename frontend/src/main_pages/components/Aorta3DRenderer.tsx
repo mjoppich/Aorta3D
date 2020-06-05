@@ -98,7 +98,7 @@ export default class Aorta3DRenderer extends React.Component < Aorta3DRendererPr
             material = {
                 new THREE.MeshStandardMaterial({
                     color: mcolor,
-                    shininess: 50
+                    metalness: 0
                 })
             }
             scale = {
