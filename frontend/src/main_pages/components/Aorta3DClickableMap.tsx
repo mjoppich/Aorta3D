@@ -217,9 +217,7 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
         console.log(this.imageOrigSize)
         console.log(pixelData)
 
-        var imagePosTuple = [imageX, this.imageOrigSize.y-imageY]
-
-
+        var imagePosTuple = [imageX, imageY]
         var paintedpixels = 0;
 
         var origImageContext = self.canvas.getContext("2d");
