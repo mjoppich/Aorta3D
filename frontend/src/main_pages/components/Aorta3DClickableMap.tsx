@@ -7,7 +7,7 @@ import config from '../config';
 
 
 export interface Aorta3DClickableMapProps {
-    onSelectElement?: any,
+    onSelectRegion?: any,
     element: any,
     width: any,
     height: any
@@ -217,7 +217,7 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
         console.log(this.imageOrigSize)
         console.log(pixelData)
 
-        var imagePosTuple = [this.imageOrigSize.x-imageX, this.imageOrigSize.y-imageY]
+        var imagePosTuple = [imageX, this.imageOrigSize.y-imageY]
 
 
         var paintedpixels = 0;
@@ -268,9 +268,20 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
                 position: {x: imagePosTuple[0], y:imagePosTuple[1]},
                 region: pixelRegion,
                 types: pixelTypes,
-                painted: paintedpixels
+                painted: paintedpixels,
+                element: self.state.current_element
             }
     
+            if (self.isFunction(self.props.onSelectRegion))
+            {
+
+                const clone = JSON.parse(JSON.stringify(self.state.current_element));
+                clone["cluster"] = pixelRegion
+                console.log(clone)
+
+                self.props.onSelectRegion(clone);
+            }
+
             console.log("pixelinfo finished");
             console.log(pixelinfo);
             self.setState({pixelinfo: pixelinfo})

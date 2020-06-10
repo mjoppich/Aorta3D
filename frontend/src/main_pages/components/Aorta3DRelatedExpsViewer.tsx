@@ -23,8 +23,6 @@ export interface Aorta3DRelatedExpsViewerState {
 export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DRelatedExpsViewerProps, Aorta3DRelatedExpsViewerState>
 {
 
-    neo4jd3: any = null;
-
     state = {
         relatedexps: [
             {

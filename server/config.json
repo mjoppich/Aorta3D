@@ -5078,7 +5078,7 @@
         "type_det": ["fibroblasts","connective tissue"],
         "parent": "sc1.main",
         "location": "AR",
-        "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.0.tsv",
+        "de_data": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.0.tsv",
         "level": 50
     },
     {
@@ -5087,7 +5087,7 @@
         "type_det": ["smooth muscle cells","smooth muscle"],
         "parent": "sc1.main",
         "location": "AR",
-        "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.1.tsv",
+        "de_data": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.1.tsv",
         "level": 50
     },
     {
@@ -5096,7 +5096,7 @@
         "type_det": ["fibroblasts","connective tissue"],
         "parent": "sc1.main",
         "location": "AR",
-        "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.2.tsv",
+        "de_data": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.2.tsv",
         "level": 50
     },
     {
@@ -5105,7 +5105,7 @@
         "type_det": ["macrophages","immune system"],
         "parent": "sc1.main",
         "location": "AR",
-        "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.3.tsv",
+        "de_data": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.3.tsv",
         "level": 50
     },
     {
@@ -5114,7 +5114,7 @@
         "type_det": ["smooth muscle cells","smooth muscle"],
         "parent": "sc1.main",
         "location": "AR",
-        "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.4.tsv",
+        "de_data": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.4.tsv",
         "level": 50
     },
     {
@@ -5123,7 +5123,7 @@
         "type_det": ["Endothelial cells","Vasculature"],
         "parent": "sc1.main",
         "location": "AR",
-        "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.5.tsv",
+        "de_data": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.5.tsv",
         "level": 50
     },
 
@@ -5156,7 +5156,7 @@
         "type_det": ["fibroblasts","connective tissue"],
         "parent": "sc2.main",
         "location": "AR",
-        "path": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.0.tsv",
+        "de_data": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.0.tsv",
         "level": 50
     },
     {
@@ -5165,7 +5165,7 @@
         "type_det": ["smooth muscle cells","smooth muscle"],
         "parent": "sc2.main",
         "location": "AR",
-        "path": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.1.tsv",
+        "de_data": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.1.tsv",
         "level": 50
     },
     {
@@ -5174,7 +5174,7 @@
         "type_det": ["fibroblasts","connective tissue"],
         "parent": "sc2.main",
         "location": "AR",
-        "path": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.2.tsv",
+        "de_data": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.2.tsv",
         "level": 50
     },
     {
@@ -5183,7 +5183,7 @@
         "type_det": ["macrophages","immune system"],
         "parent": "sc2.main",
         "location": "AR",
-        "path": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.3.tsv",
+        "de_data": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.3.tsv",
         "level": 50
     },
     {
@@ -5192,7 +5192,7 @@
         "type_det": ["smooth muscle cells","smooth muscle"],
         "parent": "sc2.main",
         "location": "AR",
-        "path": "../data/sc2.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.4.tsv",
+        "de_data": "../data/sc2.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.4.tsv",
         "level": 50
     },
     {
@@ -5201,7 +5201,7 @@
         "type_det": ["endothelial cells","Vasculature"],
         "parent": "sc2.main",
         "location": "AR",
-        "path": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.5.tsv",
+        "de_data": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.5.tsv",
         "level": 50
     },
     {"id": "mem1", "descr": "Membrane 1", "type_det": ["endothelial cells"]},
@@ -5217,7 +5217,7 @@
         "type_det": ["plaque"],
         "location": "BCA",
         "path": "../data/test_msi/181114_AT1_Slide_D_Proteins.imzML",
-        "png_path": "../data/test_msi/181114_AT1_Slide_D_Proteins.imzML_0_upgma.png",
-        "info_path": "../data/test_msi/181114_AT1_Slide_D_Proteins.imzML.info"
+        "png_path": "../data/test_msi/slided.0.upgma.png",
+        "info_path": "../data/test_msi/slided.0.info"
     }
 ]

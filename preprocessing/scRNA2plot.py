@@ -29,8 +29,16 @@ for ridx, row in enumerate(fin):
 
         continue
 
+    pvalColName = None
+    if "p_val_adj" in col2idx:
+        pvalColName = "p_val_adj"
+    elif "qvalue" in col2idx:
+        pvalColName = "qvalue"
+
+    assert(pvalColName != None)
+
     rowFC = float(arow[ col2idx["avg_logFC"]])
-    rowPV = float(arow[ col2idx["p_val_adj"]])
+    rowPV = float(arow[ col2idx[pvalColName]])
 
     if rowFC == None or rowPV == None:
         continue

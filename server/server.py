@@ -31,6 +31,26 @@ CORS(app)
 app.config['DEBUG'] = False
 app.config['UPLOAD_FOLDER'] = ""
 
+allConfigFiles = [config_path]
+
+def loadConfig():
+
+    allconfigs = []
+
+    for configFile in allConfigFiles:
+        with open(config_path) as f:
+            config_file = json.load(f)
+
+            for x in config_file:
+                x["id"] = configFile + ":" + x["id"]
+
+                if "parent" in x:
+                    x["parent"] = configFile + ":" + x["parent"]
+
+            allconfigs = config_file + allconfigs
+
+    return allconfigs
+
 
 # For a given file, return whether it's an allowed type or not
 def allowed_file(filename):
@@ -64,19 +84,14 @@ def fetchViewableData():
     reduced_data = []
     counter = 0
     for elem in config_file:
-<<<<<<< HEAD
-        #if elem.get("type") == "msi" and elem.get("type_det")[0] == "Proteins": #temporary extraction of only MSI data 
-        if counter < 5 and str(elem.get("id")).isdigit():  
-            reduced_elem = {"id": elem.get("id"), "type": elem.get("type"), "type_det": elem.get("type_det"), "location": elem.get("location"), "level": elem.get("level")}
-            reduced_data.append(reduced_elem)
-            counter += 1
-=======
         if elem.get("type") == "msi" and elem.get("type_det")[0] == "Proteins": #temporary extraction of only MSI data   
             #reduced_elem = {"id": elem.get("id"), "type": elem.get("type"), "type_det": elem.get("type_det"), "location": elem.get("location"), "level": elem.get("level")}
             reduced_data.append(elem)
->>>>>>> 68be3625cbcb250b2ad1d366eb04c4ad68d45741
 
     f.close()
+
+    if len(reduced_data) > 2:
+        reduced_data = reduced_data[0:2]
 
     response = app.response_class(
         response=json.dumps(reduced_data),
@@ -155,6 +170,70 @@ def getRelatedData():
     )
     return response
 
+
+@app.route('/getElementInfoDE', methods=['GET', 'POST'])
+def getElementInfoDE():
+
+    content = request.get_json(silent=True)
+    fetchID = content.get("id", -1)
+
+    with open(config_path) as f:
+        config_file = json.load(f)
+
+    data = {}
+    elementData = {}
+
+    for elem in config_file:
+        if elem["id"] == fetchID:
+            elementData = elem
+            break
+
+    print(elementData)
+
+    if not "de_data" in elementData:
+        data = None
+        with open(elementData["info_path"]) as f:
+            elem_info_file = json.load(f)
+            data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
+
+        if len(data) > 0:
+            data = data[0]
+
+            elementData = data.get("info", {}).get(content["cluster"], None)
+
+        else:
+            data = None
+
+    print("Reading Table", elementData.get("de_data", None))
+    print(elementData)
+
+    deTable = []
+    if elementData != None and "de_data" in elementData:
+        
+        with open(elementData["de_data"], 'r') as fin:
+
+            colname2idx = {}
+            for lidx, line in enumerate(fin):
+                line = line.strip().split("\t")
+                if lidx == 0:
+                    for eidx, elem in enumerate(line):
+                        colname2idx[elem] = eidx+1
+
+                    continue
+
+                rowelem = {}
+                for col in colname2idx:
+                    rowelem[col] = line[colname2idx[col]]
+                                        
+                
+                deTable.append(rowelem)
+
+    response = app.response_class(
+        response=json.dumps(deTable),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 
 @app.route('/getElementInfoImage', methods=['GET', 'POST'])
 def getElementInfoImage():

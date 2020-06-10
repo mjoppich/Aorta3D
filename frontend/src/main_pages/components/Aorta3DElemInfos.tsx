@@ -6,7 +6,7 @@ import axios from 'axios';
 import config from '../config';
 
 import Aorta3DClickableMap from '../components/Aorta3DClickableMap';
-
+import Aorta3DDEResViewer from '../components/Aorta3DDEResViewer';
 
 export interface Aorta3DElemInfosProps {
     onSelectElement?: any
@@ -15,7 +15,8 @@ export interface Aorta3DElemInfosProps {
 export interface Aorta3DElemInfosState {
     eleminfo: any,
     element: any,
-    elem_image: any
+    elem_image: any,
+    selected_region: any
 };
 
 
@@ -27,7 +28,8 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
     state = {
         element: {id: null},
         eleminfo: {},
-        elem_image: ""
+        elem_image: "",
+        selected_region: null
     }
 
     constructor(props) {
@@ -100,19 +102,36 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
 
     }
 
+
+    handleSelectedRegionChange( newRegion )
+    {
+        console.log("new region selected")
+        console.log(newRegion)
+
+        this.setState({selected_region: newRegion})
+    }
+
+
     render() {
 
         var detailElement = null;
         var self=this;
 
         var isMSI = (self.state!= null) && (self.state.eleminfo != null) && (["msi"].indexOf(self.state.eleminfo["type"]) >= 0)
+        var isSCRNASeq = (self.state!= null) && (self.state.eleminfo != null) && (["scrna"].indexOf(self.state.eleminfo["type"]) >= 0)
+
         console.log("Is this MSI " + isMSI);
         console.log(["msi"].indexOf(self.state.eleminfo["type"]) >= 0)
         console.log(self.state)
         console.log(self.state.eleminfo)
         if (isMSI)
         {
-            detailElement = <Aorta3DClickableMap element={self.state.eleminfo}/>
+            detailElement = [
+                    <Aorta3DClickableMap key="0" element={self.state.eleminfo} onSelectRegion={(regionInfo) => self.handleSelectedRegionChange(regionInfo)} />,
+                    <Aorta3DDEResViewer key="1" element={self.state.selected_region} exp_type={self.state.eleminfo["type"]} />,
+            ]
+        } else if (isSCRNASeq) {
+            detailElement = [<Aorta3DDEResViewer key="1" element={self.state.eleminfo} exp_type={self.state.eleminfo["type"]}/>]
         } else {
             detailElement = <img style={{maxWidth: "400px"}} src={`data:image/png;base64,${self.state["elem_image"]}`} />
         }
