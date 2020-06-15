@@ -90,21 +90,21 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
                     <CardText>
 
                         <Grid container
-                            direction="row"
+                            direction="column"
                             justify="space-between"
                             alignItems="flex-start"
                             spacing={(2) as GridSpacing}
                             style={{width: "100%", height: "100%"}}>
-                            <Grid item xs>
+                            <Grid item xs style={{width: "100%", backgroundColor: "#FF0000"}}>
                                 <Aorta3DRenderer width={600} height={pageHeight} onSelectElement={(element) => this.handleElementSelected(element)}/>
                             </Grid>
-                            <Grid item xs>
+                            <Grid item xs style={{width: "100%", backgroundColor: "#00FF00"}}>
                                 <Aorta3DElemInfos element={this.state.selected_element} onSelectElement={(element) => this.handleElementSelected(element)} />
                             </Grid>
-                            <Grid item xs>
+                            <Grid item xs style={{width: "100%", backgroundColor: "#0000FF"}}>
                                 <Aorta3DRelatedExpsViewer element={this.state.selected_element} onSelectElement={(elem) => this.handleExpDetailSelected(elem)}/>
                             </Grid>
-                            <Grid item xs>
+                            <Grid item xs style={{width: "100%", backgroundColor: "#FF00FF"}}> 
                                 <Aorta3DElemInfos element={this.state.selected_element_exp} onSelectElement={(element) => this.handleElementSelected(element)} />
                             </Grid>
                         </Grid>

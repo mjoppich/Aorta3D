@@ -191,8 +191,7 @@ def getElementInfoDE():
     content = request.get_json(silent=True)
     fetchID = content.get("id", -1)
 
-    with open(config_path) as f:
-        config_file = json.load(f)
+    config_file = loadConfigs()
 
     data = {}
     elementData = {}
@@ -213,6 +212,7 @@ def getElementInfoDE():
         if len(data) > 0:
             data = data[0]
 
+            print(content)
             elementData = data.get("info", {}).get(content["cluster"], None)
 
         else:
@@ -265,7 +265,7 @@ def getElementInfoImage():
             elementData = elem
             break
     if "png_path" in elementData:
-        pth = os.path.dirname(__file__) + "/../" + elementData["png_path"]
+        pth = os.path.dirname(os.path.abspath(__file__)) + "/" + elementData["png_path"]
         encoded = base64.b64encode(open(pth, "rb").read())
         data = {"image": encoded.decode()}
 
@@ -313,7 +313,7 @@ def getElementInfo():
             break
 
     if "info_path" in elementData:
-        pth = os.path.dirname(__file__) + "/../" + elementData["info_path"]
+        pth = os.path.dirname(os.path.abspath(__file__)) + "/" + elementData["info_path"]
         with open(pth) as f:
             elem_info_file = json.load(f)
             if elementData.get("type") == "msi":
@@ -325,8 +325,8 @@ def getElementInfo():
 
         #if len(data) == 0:
         #    data = {}
-        #elif len(data) == 1:
-        #    data = data[0]
+        if len(data) == 1 and isinstance(data, (tuple, list)):
+            data = data[0]
 
     response = app.response_class(
         response=json.dumps(data),
@@ -415,7 +415,13 @@ def stats():
             type_ = "other"
         datatypes[type_] += 1
         if "type_det" in elem:
-            type_det = elem.get("type_det")[0]
+            type_det = elem.get("type_det", [None])
+
+            if type_det == None or len(type_det) == 0:
+                continue
+
+            type_det = type_det[0]
+
             if type_ in datasubtypes:
                 if not (type_det in datasubtypes[type_]):
                     datasubtypes[type_].append(type_det)

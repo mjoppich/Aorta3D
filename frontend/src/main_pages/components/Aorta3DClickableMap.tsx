@@ -62,7 +62,7 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
     }
 
     public static defaultProps: Partial < Aorta3DClickableMapProps > = {
-        width: 300,
+        width: 400,
         height: 400,
         element: {}
     };

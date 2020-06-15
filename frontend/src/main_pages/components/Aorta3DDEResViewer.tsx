@@ -229,13 +229,21 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
           {
             x: scatterData.x,
             y: scatterData.y,
+            hovertemplate: '<b>%{text}</b>',
             text: scatterData.text,
             type: 'scatter',
             mode: 'markers',
             marker: {color: 'red'},
           },
         ]}
-        layout={{width: 800, height: 400, title: 'Volcano Plot of DE Genes (abs log2FC > 0.5, adj. pval < 0.05)', xaxis_title: "Avg. log2FC", yaxis_title:"-log adj. p-value",}}
+        layout={{
+            width: 800,
+            height: 400,
+            hovermode:'closest',
+            title: 'Volcano Plot of DE Genes (abs log2FC > 0.5, adj. pval < 0.05)',
+            xaxis_title: "Avg. log2FC",
+            yaxis_title:"-log adj. p-value"
+        }}
       />
 
             </div>

@@ -4,6 +4,14 @@ import ChipInput from 'material-ui-chip-input';
 import AutoComplete from 'material-ui/AutoComplete';
 import axios from 'axios';
 import config from '../config';
+import Grid, { GridSpacing } from '@material-ui/core/Grid';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 import Aorta3DClickableMap from '../components/Aorta3DClickableMap';
 import Aorta3DDEResViewer from '../components/Aorta3DDEResViewer';
@@ -27,7 +35,7 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
 
     state = {
         element: {id: null},
-        eleminfo: {},
+        eleminfo: null,
         elem_image: "",
         selected_region: null
     }
@@ -114,7 +122,6 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
 
     render() {
 
-        var detailElement = null;
         var self=this;
 
         var isMSI = (self.state!= null) && (self.state.eleminfo != null) && (["msi"].indexOf(self.state.eleminfo["type"]) >= 0)
@@ -125,30 +132,76 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         console.log(self.state)
         console.log(self.state.eleminfo)
 
+        var detailElement = [];
+        var extraElements = [];
+        //{ "id": "scheme_config.json:0", "type": "scheme", "type_det": [ "no" ], "color": "#f0ff00", "right": 0, "path": "model/no_plaque_slide/no_plaque.stl", "png_path": "data/models/no_plaque_slide/no_plaque.small.png", "info_path": "data/models/no_plaque_slide/no_plaque.info" 
+
+        var rows = []
+
+        if (self.state.eleminfo)
+        {
+            rows.push({key: "Element ID", value: self.state.eleminfo.id})
+            rows.push({key: "Element Type", value: self.state.eleminfo.type})
+            rows.push({key: "Aorta Types", value: self.state.eleminfo.type_det.join(", ")})
+        }
+
+        detailElement.push(
+            <Grid item xs key={detailElement.length} style={{width: "400px"}}>
+                <TableContainer component={Paper} >
+                    <Table aria-label="Element Info">
+                        <TableHead>
+                        <TableRow>
+                            <TableCell component="th" scope="row">Key</TableCell>
+                            <TableCell align="right">Value</TableCell>
+                        </TableRow>
+                        </TableHead>
+                        <TableBody>
+                        {rows.map((row) => (
+                            <TableRow key={row.name}>
+                            <TableCell component="th" scope="row">{row.key}</TableCell>
+                            <TableCell align="right">{row.value}</TableCell>
+                            </TableRow>
+                        ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </Grid>
+        )
+
         if (isScheme)
         {
-            detailElement = [
-                <Aorta3DClickableMap key="0" element={self.state.eleminfo} onSelectRegion={(regionInfo) => self.handleSelectedRegionChange(regionInfo)} />
-            ]
+            detailElement.push(
+                <Grid item xs key={detailElement.length}><Aorta3DClickableMap element={self.state.eleminfo} onSelectRegion={(regionInfo) => self.handleSelectedRegionChange(regionInfo)} /></Grid>
+            )
         } else if (isMSI)
         {
-            detailElement = [
-                    <Aorta3DClickableMap key="0" element={self.state.eleminfo} onSelectRegion={(regionInfo) => self.handleSelectedRegionChange(regionInfo)} />,
-                    <Aorta3DDEResViewer key="1" element={self.state.selected_region} exp_type={self.state.eleminfo["type"]} />,
-            ]
+            detailElement.push(
+                <Grid item xs key={detailElement.length}><Aorta3DClickableMap element={self.state.eleminfo} onSelectRegion={(regionInfo) => self.handleSelectedRegionChange(regionInfo)} /></Grid>)
+            extraElements.push(
+                <Aorta3DDEResViewer key={extraElements.length} element={self.state.selected_region} exp_type={self.state.eleminfo["type"]} />
+                )
+
         } else if (isSCRNASeq) {
-            detailElement = [<Aorta3DDEResViewer key="1" element={self.state.eleminfo} exp_type={self.state.eleminfo["type"]}/>]
+            detailElement.push(<Grid item xs key={detailElement.length}><Aorta3DDEResViewer element={self.state.eleminfo} exp_type={self.state.eleminfo["type"]}/></Grid>)
         } else {
-            detailElement = <img style={{maxWidth: "400px"}} src={`data:image/png;base64,${self.state["elem_image"]}`} />
+            detailElement.push(<Grid item xs key={detailElement.length}><img style={{maxHeight: "200px", maxWidth: "400px"}} src={`data:image/png;base64,${self.state["elem_image"]}`} /></Grid>)
         }
 
         var self = this;
+
+
         return (
-            <div>
-                <p>{JSON.stringify(self.state.element, null, 4)}</p>
-                <p>{JSON.stringify(self.state.eleminfo, null, 4)}</p>
-                {detailElement}
-            </div>
+                <div>
+                    <Grid container
+                        direction="row"
+                        justify="space-between"
+                        alignItems="flex-start"
+                        spacing={(2) as GridSpacing}
+                        style={{width: "100%", height: "450px"}}>
+                        {detailElement}
+                    </Grid>
+                    {extraElements}
+                </div>
         )
     }
 }
