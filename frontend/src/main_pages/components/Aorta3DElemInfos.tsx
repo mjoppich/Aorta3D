@@ -128,7 +128,9 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         var isScheme = (self.state!= null) && (self.state.eleminfo != null) && (["scheme"].indexOf(self.state.eleminfo["type"]) >= 0)
         var isSCRNASeq = (self.state!= null) && (self.state.eleminfo != null) && (["scrna"].indexOf(self.state.eleminfo["type"]) >= 0)
 
-        console.log("Is this MSI " + isMSI);
+        console.log("Is this msi " + isMSI);
+        console.log("Is this scheme " + isScheme);
+        console.log("Is this scrna " + isSCRNASeq);
         console.log(self.state)
         console.log(self.state.eleminfo)
 

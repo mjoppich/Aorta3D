@@ -139,8 +139,8 @@
         "type_det": ["smooth muscle cells","smooth muscle"],
         "parent": "sc2.main",
         "location": "AR",
-        "path": "../data/sc2.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.4.tsv",
-        "de_data": "../data/sc2.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.4.tsv",
+        "path": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.4.tsv",
+        "de_data": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.4.tsv",
         "level": 50
     },
     {
@@ -149,8 +149,8 @@
         "type_det": ["endothelial cells","vasculature"],
         "parent": "sc2.main",
         "location": "AR",
-        "path": "../data/sc2.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.5.tsv",
-        "de_data": "../data/sc2.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.5.tsv",
+        "path": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.5.tsv",
+        "de_data": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.5.tsv",
         "level": 50
     }
 
