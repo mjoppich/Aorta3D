@@ -135,7 +135,9 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
         if (self.state.current_element != null)
         {
             var cols= [];
-            var scatterData = {x: [], y:[], text: []}
+            var scatterData = {x: [], y:[], text: [], text_pval: []}
+
+            var maxNegLog = 200
 
             if (this.props.exp_type == "msi")
             {
@@ -152,21 +154,22 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
                   ]
 
                   this.state.current_table.forEach((elem) => {
-                    var negLog = 100;
+                    var negLog = maxNegLog;
                     var pvalAdj = elem["qvalue"];
                     if (pvalAdj > 0)
                     {
                         negLog = -Math.log(pvalAdj)
 
-                        if (negLog > 100)
+                        if (negLog > maxNegLog)
                         {
-                            negLog = 100
+                            negLog = maxNegLog
                         }
                     }
 
                     scatterData.x.push(elem["avg_logFC"])
                     scatterData.y.push(negLog)
-                    scatterData.text.push(elem["gene"] + "<br/>" + "avg log2FC: " + elem["avg_logFC"] + "<br/>" + "adj. p/q-value: " + pvalAdj)
+                    scatterData.text.push(elem["gene"])
+                    scatterData.text_pval.push(pvalAdj)
 
               })
 
@@ -183,22 +186,23 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
 
 
                   this.state.current_table.forEach((elem) => {
-                        var negLog = 100;
+                        var negLog = maxNegLog;
                         var pvalAdj = elem["p_val_adj"];
                         if (pvalAdj > 0)
                         {
                             negLog = -Math.log(pvalAdj)
 
-                            if (negLog > 100)
+                            if (negLog > maxNegLog)
                             {
-                                negLog = 100
+                                negLog = maxNegLog
                             }
                         }
 
 
                         scatterData.x.push(elem["avg_logFC"])
                         scatterData.y.push(negLog)
-                        scatterData.text.push(elem["gene"] + "<br/>" + "avg log2FC: " + elem["avg_logFC"] + "<br/>" + "adj. p/q-value: " + pvalAdj)
+                        scatterData.text.push(elem["gene"])
+                        scatterData.text_pval.push(pvalAdj)
                   })
 
             }
@@ -207,7 +211,7 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
 
             return (<div>
                 <MaterialTable
-                title="Related Experiments"
+                title="Differential Analysis Results"
                 columns={cols}
                 data={self.state.current_table.slice(1, self.state.current_element.length)}
                 actions={[
@@ -229,7 +233,8 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
           {
             x: scatterData.x,
             y: scatterData.y,
-            hovertemplate: '<b>%{text}</b>',
+            hovertemplate: '<b>%{text}</b><br><i>Adj. p-Value</i>: %{customdata}<br><i>Avg. log2FC</i>: %{x}',
+            customdata: scatterData.text_pval,
             text: scatterData.text,
             type: 'scatter',
             mode: 'markers',
@@ -238,7 +243,7 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
         ]}
         layout={{
             width: 800,
-            height: 400,
+            height: 600,
             hovermode:'closest',
             title: 'Volcano Plot of DE Genes (abs log2FC > 0.5, adj. pval < 0.05)',
             xaxis_title: "Avg. log2FC",

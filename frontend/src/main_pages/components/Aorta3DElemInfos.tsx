@@ -182,7 +182,7 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
                 )
 
         } else if (isSCRNASeq) {
-            detailElement.push(<Grid item xs key={detailElement.length}><Aorta3DDEResViewer element={self.state.eleminfo} exp_type={self.state.eleminfo["type"]}/></Grid>)
+            extraElements.push(<Aorta3DDEResViewer element={self.state.eleminfo} exp_type={self.state.eleminfo["type"]}/>)
         } else {
             detailElement.push(<Grid item xs key={detailElement.length}><img style={{maxHeight: "200px", maxWidth: "400px"}} src={`data:image/png;base64,${self.state["elem_image"]}`} /></Grid>)
         }

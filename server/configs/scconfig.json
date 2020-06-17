@@ -16,6 +16,7 @@
         "parent": "sc1.main",
         "location": "AR",
         "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.0.tsv",
+        "de_data": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.0.tsv",
         "level": 50
     },
     {
@@ -25,6 +26,7 @@
         "parent": "sc1.main",
         "location": "AR",
         "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.1.tsv",
+        "de_data": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.1.tsv",
         "level": 50
     },
     {
@@ -34,6 +36,7 @@
         "parent": "sc1.main",
         "location": "AR",
         "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.2.tsv",
+        "de_data": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.2.tsv",
         "level": 50
     },
     {
@@ -43,6 +46,7 @@
         "parent": "sc1.main",
         "location": "AR",
         "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.3.tsv",
+        "de_data": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.3.tsv",
         "level": 50
     },
     {
@@ -52,6 +56,7 @@
         "parent": "sc1.main",
         "location": "AR",
         "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.4.tsv",
+        "de_data": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.4.tsv",
         "level": 50
     },
     {
@@ -61,6 +66,7 @@
         "parent": "sc1.main",
         "location": "AR",
         "path": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.5.tsv",
+        "de_data": "../data/sc1.0/hybrid.mouse.bg.mouse/hybrid.mouse.bg.mouse.cluster.5.tsv",
         "level": 50
     },
 
@@ -94,6 +100,7 @@
         "parent": "sc2.main",
         "location": "AR",
         "path": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.0.tsv",
+        "de_data": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.0.tsv",
         "level": 50
     },
     {
@@ -103,6 +110,7 @@
         "parent": "sc2.main",
         "location": "AR",
         "path": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.1.tsv",
+        "de_data": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.1.tsv",
         "level": 50
     },
     {
@@ -112,6 +120,7 @@
         "parent": "sc2.main",
         "location": "AR",
         "path": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.2.tsv",
+        "de_data": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.2.tsv",
         "level": 50
     },
     {
@@ -121,6 +130,7 @@
         "parent": "sc2.main",
         "location": "AR",
         "path": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.3.tsv",
+        "de_data": "../data/sc1.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.3.tsv",
         "level": 50
     },
     {
@@ -130,6 +140,7 @@
         "parent": "sc2.main",
         "location": "AR",
         "path": "../data/sc2.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.4.tsv",
+        "de_data": "../data/sc2.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.4.tsv",
         "level": 50
     },
     {
@@ -139,6 +150,7 @@
         "parent": "sc2.main",
         "location": "AR",
         "path": "../data/sc2.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.5.tsv",
+        "de_data": "../data/sc2.0/hybrid.human.bg.human/hybrid.human.bg.human.cluster.5.tsv",
         "level": 50
     }
 

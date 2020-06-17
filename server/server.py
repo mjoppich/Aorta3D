@@ -204,6 +204,7 @@ def getElementInfoDE():
     print(elementData)
 
     if not "de_data" in elementData:
+        # meant for MSI slides
         data = None
         with open(elementData["info_path"]) as f:
             elem_info_file = json.load(f)
