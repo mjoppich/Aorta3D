@@ -169,8 +169,6 @@ export default class Aorta3DRenderer extends React.Component < Aorta3DRendererPr
 
         // ABOVE WAS COMPONENT WILL MOUNT
 
-
-
         var loader = new STLLoader();
 
         var scaleFactor = 0.1;
@@ -189,11 +187,6 @@ export default class Aorta3DRenderer extends React.Component < Aorta3DRendererPr
             self.loadBaseElement(loader, element.path, [1, pushLevels, 0], [scaleFactor/3, scaleFactor/3, scaleFactor/3], element.color, [Math.PI / 2, element.right * Math.PI, 0], {id: element.id, descr: element.type});
             pushLevels = pushLevels + 10
           });  
-          //console.log(response.data[0].id)
-          self.loadBaseElement(loader, "model/mini_plaque_slide/circ_mini_plaque.stl", [1, 0, 0], [scaleFactor/3, scaleFactor/3, scaleFactor/3], "#48e5d4", [-Math.PI / 2, 0, 0], response.data[0]);
-          // {id: response.data[0].id, descr: response.data[0].type, type_det: response.data[0].type_det}
-
-          //self.setState({stats: response.data})
 
         })
         .catch(function (error) {
