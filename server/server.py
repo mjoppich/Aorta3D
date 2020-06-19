@@ -104,9 +104,9 @@ def fetchViewableData():
     for elem in config_file:
         if elem.get("id").startswith("scheme"): 
             reduced_data.append(elem)
-
-    if len(reduced_data) > 2:
-        reduced_data = reduced_data[0:2]
+    print(reduced_data)
+    #if len(reduced_data) > 2:
+    #    reduced_data = reduced_data[0:2]
 
     response = app.response_class(
         response=json.dumps(reduced_data),

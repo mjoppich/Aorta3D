@@ -171,21 +171,22 @@ export default class Aorta3DRenderer extends React.Component < Aorta3DRendererPr
 
         var loader = new STLLoader();
 
-        var scaleFactor = 0.1;
-        var pushLevels = -30;
+        var scaleFactor = 0.5;//0.1;
+        var scaleFactor2 = 2.7;//3;
+        var pushLevels = -15;//-30;
 
-        self.loadBaseElement(loader, "model/base/membrane1.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, 0, 0], {id: "config.json:mem1", descr: "Membrane 1", type_det: ["endothelial"]});
-        self.loadBaseElement(loader, "model/base/membrane2.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#00ff00", [0, 0, 0], {id: "config.json:mem2", descr: "Membrane 2", type_det: ["endothelial"]});
-        self.loadBaseElement(loader, "model/base/membrane3.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#0000ff", [0, 0, 0], {id: "config.json:mem3", descr: "Membrane 3", type_det: ["endothelial"]});
-        self.loadBaseElement(loader, "model/base/plaque.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, 0, 0], {id: "config.json:plq", descr: "Plaque", type_det: ["plaque"]});
-        self.loadBaseElement(loader, "model/base/macrophage.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, 0, 0], {id: "config.json:mac", descr: "Macrophage", type_det: ["macrophage"]});
+        self.loadBaseElement(loader, "model/base/membrane1.small.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ffffff", [0, 0, 0], {id: "config.json:mem1", descr: "Membrane 1", type_det: ["endothelial"]});
+        self.loadBaseElement(loader, "model/base/membrane2.small.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#9f9f9f", [0, 0, 0], {id: "config.json:mem2", descr: "Membrane 2", type_det: ["endothelial"]});
+        self.loadBaseElement(loader, "model/base/membrane3.small.stl", [0, -1.7, 0], [scaleFactor, scaleFactor, scaleFactor], "#009900", [0, 0, 0], {id: "config.json:mem3", descr: "Membrane 3", type_det: ["endothelial"]});
+        self.loadBaseElement(loader, "model/base/plaque.small.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, 0, 0], {id: "config.json:plq", descr: "Plaque", type_det: ["plaque"]});
+        self.loadBaseElement(loader, "model/base/macrophage.small.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ffff00", [0, 0, 0], {id: "config.json:mac", descr: "Macrophage", type_det: ["macrophage"]});
 
         axios.post(config.getRestAddress() + "/fetchViewableData", {}, config.axiosConfig)
         .then(function (response) {
         
           response.data.forEach(element => {
-            self.loadBaseElement(loader, element.path, [1, pushLevels, 0], [scaleFactor/3, scaleFactor/3, scaleFactor/3], element.color, [Math.PI / 2, element.right * Math.PI, 0], {id: element.id, descr: element.type});
-            pushLevels = pushLevels + 10
+            self.loadBaseElement(loader, element.path, [1, pushLevels, 0], [scaleFactor/scaleFactor2, scaleFactor/scaleFactor2, scaleFactor/scaleFactor2], element.color, [Math.PI / 2, element.right * Math.PI, 0], {id: element.id, descr: element.type});
+            pushLevels = pushLevels + 5//10
           });  
 
         })
