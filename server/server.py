@@ -118,23 +118,30 @@ def fetchViewableData():
 def geneFound(elementData, gene):
 
     if not "de_data" in elementData and "info_path" in elementData:
-        # meant for MSI slides
-        data = None
-        with open(elementData["info_path"]) as f:
-            elem_info_file = json.load(f)
-            data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
 
-        if len(data) > 0:
-            data = data[0]
-
-            elementData = data.get("info", {})#.get(content["cluster"], None)
-
-        else:
+        try:
+            # meant for MSI slides
             data = None
+            with open(elementData["info_path"]) as f:
+                print("Loading", elementData["info_path"])
+                elem_info_file = json.load(f)
+                data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
+
+            if len(data) > 0:
+                data = data[0]
+
+                elementData = data.get("info", {})#.get(content["cluster"], None)
+
+            else:
+                data = None
+
+        except FileNotFoundError:
+            return False
 
     if elementData != None and "de_data" in elementData:
         try:
             with open(elementData["de_data"], 'r') as fin:
+                print("Loading", elementData["de_data"])
 
                 colname2idx = {}
                 for lidx, line in enumerate(fin):
@@ -149,8 +156,9 @@ def geneFound(elementData, gene):
                     for col in colname2idx:
                         rowelem[col] = line[colname2idx[col]]
 
-                    if rowelem["gene"] == gene:
+                    if rowelem["gene"].upper() == gene.upper():
                         return True
+
         except FileNotFoundError:
             return False
 
@@ -188,9 +196,11 @@ def getGeneRelatedData():
 
     
     for elem in config_file:
-        if elem.get("type") == "scrna" or elem.get("type") == "msi":
-            print("geneFound ", geneFound(elem, fetchGene))
-            if geneFound(elem, fetchGene):
+        if elem.get("type", None) in ["scrna", "msi"]:
+
+            geneFoundRes = geneFound(elem, fetchGene)
+            print("geneFound ", geneFoundRes, elem.get("info_path", "-"), elem.get("de_data", "-"))
+            if geneFoundRes:
                 data.append(elem)
 
     response = app.response_class(
