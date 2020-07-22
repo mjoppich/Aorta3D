@@ -12,7 +12,8 @@ import { type } from 'os';
 
 export interface Aorta3DRelatedExpsViewerProps {
     onSelectElement?: any,
-    element?: any
+    element?: any,
+    onSelectGene?: any
 };
 export interface Aorta3DRelatedExpsViewerState {
     relatedexps: any,
@@ -21,7 +22,7 @@ export interface Aorta3DRelatedExpsViewerState {
 
 
 export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DRelatedExpsViewerProps, Aorta3DRelatedExpsViewerState>
-{
+{ 
 
     state = {
         relatedexps: [
@@ -57,7 +58,7 @@ export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DR
     };
 
     getRowDetails(rowdata)
-    {
+    {   
         if (this.isFunction(this.props.onSelectElement))
         {
             this.props.onSelectElement(rowdata);
@@ -80,30 +81,44 @@ export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DR
     componentDidUpdate(prevProps, prevState, snapshot)
     {
         var self=this;
-
+        console.log("in related!!!!!")
+        console.log(self.props.onSelectGene)
         if (prevProps.element !== this.props.element)
         {
             self.setState({element: this.props.element});
         }
-
-        if ((prevState.element == null) || (prevState.element.id !== self.state.element.id)|| (prevState.element.id !== self.state.element.id))
+        
+        if ((prevState.element == null) || (prevState.element.id !== self.state.element.id)|| (prevState.element.id !== self.state.element.id) || self.props.onSelectGene !== prevProps.onSelectGene)
         {
-
+            
             console.log(prevState.element)
             console.log(self.state.element)
 
             if (self.state.element.id)
             {
                 console.log("Fetching related data")
-                console.log(self.state.element.id)
+                if (self.props.onSelectGene === null || self.props.onSelectGene === undefined)
+                {
+                    axios.post(config.getRestAddress() + "/getRelatedData", {id: self.state.element.id}, config.axiosConfig)
+                    .then(function (response) {
+                        self.setState({relatedexps: response.data})    
+                    })
+                    .catch(function (error) {
         
-                axios.post(config.getRestAddress() + "/getRelatedData", {id: self.state.element.id}, config.axiosConfig)
-                .then(function (response) {
-                    self.setState({relatedexps: response.data})    
-                })
-                .catch(function (error) {
-    
-                });
+                    });   
+                }
+                else
+                {
+                    axios.post(config.getRestAddress() + "/getGeneRelatedData", {id: self.state.element.id, gene:self.props.onSelectGene}, config.axiosConfig)
+                    .then(function (response) {
+                        self.setState({relatedexps: response.data})    
+                    })
+                    .catch(function (error) {
+        
+                    });
+
+
+                }
             }
             
         }
