@@ -15,7 +15,7 @@ import Plot from 'react-plotly.js';
 export interface Aorta3DDEResViewerProps {
     onSelectGene?: any,
     element: any,
-    exp_type: any
+    exp_type: any,
 };
 export interface Aorta3DDEResViewerState {
     eleminfo: any,
@@ -42,11 +42,8 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
 
     getRowDetails(rowdata)
     {
-        if (this.isFunction(this.props.onSelectGene))
-        {
-            this.props.onSelectGene(rowdata);
-        }
-
+        console.log(rowdata.gene)
+        this.props.onSelectGene(rowdata.gene)
     }
 
 
@@ -131,6 +128,7 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
 
        
     }
+
 
 
     render() {
@@ -226,7 +224,7 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
                     {
                       icon: 'save',
                       tooltip: 'Check Details',
-                      onClick: (event, rowData) => self.isFunction(self.props.onSelectGene) ? self.props.onSelectGene(rowData) : function() {}
+                      onClick: (event, rowData) => self.isFunction(self.props.onSelectGene) ? self.props.onSelectGene(rowData.gene) : function() {}
                     }
                   ]}
                 options={{

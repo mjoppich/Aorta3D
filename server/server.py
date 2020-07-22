@@ -115,6 +115,91 @@ def fetchViewableData():
     )
     return response
 
+def geneFound(elementData, gene):
+
+    if not "de_data" in elementData and "info_path" in elementData:
+        # meant for MSI slides
+        data = None
+        with open(elementData["info_path"]) as f:
+            elem_info_file = json.load(f)
+            data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
+
+        if len(data) > 0:
+            data = data[0]
+
+            elementData = data.get("info", {})#.get(content["cluster"], None)
+
+        else:
+            data = None
+
+    if elementData != None and "de_data" in elementData:
+        try:
+            with open(elementData["de_data"], 'r') as fin:
+
+                colname2idx = {}
+                for lidx, line in enumerate(fin):
+                    line = line.strip().split("\t")
+                    if lidx == 0:
+                        for eidx, elem in enumerate(line):
+                            colname2idx[elem] = eidx+1
+
+                        continue
+
+                    rowelem = {}
+                    for col in colname2idx:
+                        rowelem[col] = line[colname2idx[col]]
+
+                    if rowelem["gene"] == gene:
+                        return True
+        except FileNotFoundError:
+            return False
+
+    return False
+
+    
+
+@app.route('/getGeneRelatedData', methods=['POST'])
+def getGeneRelatedData():
+
+    content = request.get_json(silent=True)
+    fetchID = content.get("id", -1)
+    fetchGene = content.get("gene", -1)
+    print("id ", fetchID)
+    print("gene ", fetchGene)
+    config_file = loadConfigs()
+
+    targetInfo = None
+    data = []
+
+    for elem in config_file:
+        if elem["id"] == fetchID:
+            targetInfo = elem
+            break
+
+    print("Found elem", targetInfo)
+
+    if targetInfo == None:
+        response = app.response_class(
+            response=json.dumps([]),
+            status=200,
+            mimetype='application/json'
+        )
+        return response
+
+    
+    for elem in config_file:
+        if elem.get("type") == "scrna" or elem.get("type") == "msi":
+            print("geneFound ", geneFound(elem, fetchGene))
+            if geneFound(elem, fetchGene):
+                data.append(elem)
+
+    response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+    print(data)
+    return response
 
 @app.route('/getRelatedData', methods=['POST'])
 def getRelatedData():
@@ -203,7 +288,7 @@ def getElementInfoDE():
 
     print(elementData)
 
-    if not "de_data" in elementData:
+    if not "de_data" in elementData and "info_path" in elementData:
         # meant for MSI slides
         data = None
         with open(elementData["info_path"]) as f:
@@ -242,13 +327,14 @@ def getElementInfoDE():
                                         
                 
                 deTable.append(rowelem)
-
+    
     response = app.response_class(
         response=json.dumps(deTable),
         status=200,
         mimetype='application/json'
     )
     return response
+
 
 @app.route('/getElementInfoImage', methods=['GET', 'POST'])
 def getElementInfoImage():

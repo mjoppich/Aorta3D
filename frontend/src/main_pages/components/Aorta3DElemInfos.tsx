@@ -19,6 +19,7 @@ import Aorta3DDEResViewer from '../components/Aorta3DDEResViewer';
 export interface Aorta3DElemInfosProps {
     onSelectElement?: any
     element?: any
+    onSelectGene?: any
 };
 export interface Aorta3DElemInfosState {
     eleminfo: any,
@@ -46,7 +47,7 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
 
     public static defaultProps: Partial < Aorta3DElemInfosProps > = {
     };
-
+    
 
 
     isFunction(functionToCheck) {
@@ -117,6 +118,14 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         console.log(newRegion)
 
         this.setState({selected_region: newRegion})
+        this.props.onSelectGene(null);
+    }
+
+    handleSelectedGene( selectedGene )
+    {
+        console.log("selected gene in Aorta3DElemInfos")
+        console.log(selectedGene)
+        this.props.onSelectGene(selectedGene);
     }
 
 
@@ -139,7 +148,7 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         //{ "id": "scheme_config.json:0", "type": "scheme", "type_det": [ "no" ], "color": "#f0ff00", "right": 0, "path": "model/no_plaque_slide/no_plaque.stl", "png_path": "data/models/no_plaque_slide/no_plaque.small.png", "info_path": "data/models/no_plaque_slide/no_plaque.info" 
 
         var rows = []
-
+        
         if (self.state.eleminfo)
         {
             rows.push({key: "Element ID", value: self.state.eleminfo.id})
@@ -180,11 +189,11 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
             detailElement.push(
                 <Grid item xs key={detailElement.length}><Aorta3DClickableMap element={self.state.eleminfo} onSelectRegion={(regionInfo) => self.handleSelectedRegionChange(regionInfo)} /></Grid>)
             extraElements.push(
-                <Aorta3DDEResViewer key={extraElements.length} element={self.state.selected_region} exp_type={self.state.eleminfo["type"]} />
+                <Aorta3DDEResViewer key={extraElements.length} element={self.state.selected_region} onSelectGene={(rowData) => self.handleSelectedGene(rowData)} exp_type={self.state.eleminfo["type"]} />
                 )
 
         } else if (isSCRNASeq) {
-            extraElements.push(<Aorta3DDEResViewer element={self.state.eleminfo} exp_type={self.state.eleminfo["type"]}/>)
+            extraElements.push(<Aorta3DDEResViewer element={self.state.eleminfo} onSelectGene={(rowData) => self.handleSelectedGene(rowData)} exp_type={self.state.eleminfo["type"]}/>)
         } else {
             detailElement.push(<Grid item xs key={detailElement.length}><img style={{maxHeight: "200px", maxWidth: "400px"}} src={`data:image/png;base64,${self.state["elem_image"]}`} /></Grid>)
         }
