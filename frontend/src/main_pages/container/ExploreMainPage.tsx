@@ -61,6 +61,7 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
 
         // new THREE.PerspectiveCamera(45, 2, 0.1, 1000)
 
+        // backgroundColor: "#FF0000", backgroundColor: "#00FF00", backgroundColor: "#0000FF", backgroundColor: "#FF00FF"
 
         return (
 
@@ -95,16 +96,16 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
                             alignItems="flex-start"
                             spacing={(2) as GridSpacing}
                             style={{width: "100%", height: "100%"}}>
-                            <Grid item xs style={{width: "100%", backgroundColor: "#FF0000"}}>
+                            <Grid item xs style={{width: "100%"}}>
                                 <Aorta3DRenderer width={600} height={pageHeight} onSelectElement={(element) => this.handleElementSelected(element)}/>
                             </Grid>
-                            <Grid item xs style={{width: "100%", backgroundColor: "#00FF00"}}>
+                            <Grid item xs style={{width: "100%"}}>
                                 <Aorta3DElemInfos element={this.state.selected_element} onSelectElement={(element) => this.handleElementSelected(element)} />
                             </Grid>
-                            <Grid item xs style={{width: "100%", backgroundColor: "#0000FF"}}>
+                            <Grid item xs style={{width: "100%"}}>
                                 <Aorta3DRelatedExpsViewer element={this.state.selected_element} onSelectElement={(elem) => this.handleExpDetailSelected(elem)}/>
                             </Grid>
-                            <Grid item xs style={{width: "100%", backgroundColor: "#FF00FF"}}> 
+                            <Grid item xs style={{width: "100%"}}> 
                                 <Aorta3DElemInfos element={this.state.selected_element_exp} onSelectElement={(element) => this.handleElementSelected(element)} />
                             </Grid>
                         </Grid>

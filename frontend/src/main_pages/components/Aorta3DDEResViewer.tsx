@@ -73,11 +73,14 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
         if ((!this.state.current_element) || ( this.state.current_element !== this.props.element))
         {
 
-            console.log("[DE RES]: Setting current element from props")
-            console.log(this.props.element)
-            self.setState({current_element: this.props.element});
-
-            return;
+            if (this.props.element !== null)
+            {
+                console.log("[DE RES]: Setting current element from props")
+                console.log(this.props.element)
+                self.setState({current_element: this.props.element});
+    
+                return;
+            }
         }
 
         if (self.state.current_element == null)
