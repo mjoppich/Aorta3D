@@ -118,14 +118,22 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         console.log(newRegion)
 
         this.setState({selected_region: newRegion})
-        this.props.onSelectGene(null);
+
+        if (this.isFunction(this.props.onSelectGene))
+        {
+            this.props.onSelectGene(null);
+        }
     }
 
     handleSelectedGene( selectedGene )
     {
         console.log("selected gene in Aorta3DElemInfos")
         console.log(selectedGene)
-        this.props.onSelectGene(selectedGene);
+
+        if (this.isFunction(this.props.onSelectGene))
+        {
+            this.props.onSelectGene(selectedGene);
+        }
     }
 
 
@@ -199,6 +207,13 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         }
 
         var self = this;
+
+        if ((self.state) && (self.state.eleminfo == null))
+        {
+            // empty lists
+            detailElement.splice(0, detailElement.length);
+            extraElements.splice(0, extraElements.length);
+        }
 
 
         return (

@@ -43,14 +43,14 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
     {
         console.log("Element details selected")
         console.log(element)
-        this.setState({selected_element_exp: element})
+        this.setState({selected_element_exp: element, selected_gene: null})
     }
     handleSelectedGene(element)
     {
         console.log("Gene selected")
         console.log(element)
         this.setState({selected_gene: element})
-        if (element.size != 0){
+        if ((element != null) && (element.size != 0)){
             this.render()
         }
     }
@@ -108,14 +108,24 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
                             <Grid item xs style={{width: "100%"}}>
                                 <Aorta3DRenderer width={600} height={pageHeight} onSelectElement={(element) => this.handleElementSelected(element)}/>
                             </Grid>
-                            <Grid item xs style={{width: "100%", backgroundColor: "#00FF00"}}>
-                                <Aorta3DElemInfos element={this.state.selected_element} onSelectElement={(element) => this.handleElementSelected(element)} onSelectGene={(rowData) => self.handleSelectedGene(rowData)} />
+                            <Grid item xs style={{width: "100%"}}>
+                                <Aorta3DElemInfos
+                                    element={this.state.selected_element}
+                                    onSelectElement={(element) => this.handleElementSelected(element)}
+                                    //onSelectGene={(rowData) => self.handleSelectedGene(rowData)}
+                                    />
                             </Grid>
-                            <Grid item xs style={{width: "100%", backgroundColor: "#0000FF"}}>
-                                <Aorta3DRelatedExpsViewer element={this.state.selected_element} onSelectElement={(elem) => this.handleExpDetailSelected(elem)} onSelectGene={this.state.selected_gene}/>
+                            <Grid item xs style={{width: "100%"}}>
+                                <Aorta3DRelatedExpsViewer
+                                    element={this.state.selected_element}
+                                    onSelectElement={(elem) => this.handleExpDetailSelected(elem)}
+                                    selectedGene={this.state.selected_gene}/>
                             </Grid>
-                            <Grid item xs style={{width: "100%", backgroundColor: "#FF00FF"}}> 
-                                <Aorta3DElemInfos element={this.state.selected_element_exp} onSelectElement={(element) => this.handleElementSelected(element)} onSelectGene={(rowData) => self.handleSelectedGene(rowData)} />
+                            <Grid item xs style={{width: "100%"}}> 
+                                <Aorta3DElemInfos
+                                    element={this.state.selected_element_exp}
+                                    onSelectElement={(element) => this.handleElementSelected(element)}
+                                    onSelectGene={(rowData) => self.handleSelectedGene(rowData)} />
                             </Grid>
                         </Grid>
                     </CardText>

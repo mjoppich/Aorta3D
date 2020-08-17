@@ -13,7 +13,7 @@ import { type } from 'os';
 export interface Aorta3DRelatedExpsViewerProps {
     onSelectElement?: any,
     element?: any,
-    onSelectGene?: any
+    selectedGene?: any
 };
 export interface Aorta3DRelatedExpsViewerState {
     relatedexps: any,
@@ -82,13 +82,13 @@ export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DR
     {
         var self=this;
         console.log("in related!!!!!")
-        console.log(self.props.onSelectGene)
+        console.log(self.props.selectedGene)
         if (prevProps.element !== this.props.element)
         {
             self.setState({element: this.props.element});
         }
         
-        if ((prevState.element == null) || (prevState.element.id !== self.state.element.id)|| (prevState.element.id !== self.state.element.id) || self.props.onSelectGene !== prevProps.onSelectGene)
+        if ((prevState.element == null) || (prevState.element.id !== self.state.element.id)|| (prevState.element.id !== self.state.element.id) || self.props.selectedGene !== prevProps.selectedGene)
         {
             
             console.log(prevState.element)
@@ -97,7 +97,7 @@ export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DR
             if (self.state.element.id)
             {
                 console.log("Fetching related data")
-                if (self.props.onSelectGene === null || self.props.onSelectGene === undefined)
+                if (self.props.selectedGene === null || self.props.selectedGene === undefined)
                 {
                     axios.post(config.getRestAddress() + "/getRelatedData", {id: self.state.element.id}, config.axiosConfig)
                     .then(function (response) {
@@ -109,7 +109,7 @@ export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DR
                 }
                 else
                 {
-                    axios.post(config.getRestAddress() + "/getGeneRelatedData", {id: self.state.element.id, gene:self.props.onSelectGene}, config.axiosConfig)
+                    axios.post(config.getRestAddress() + "/getGeneRelatedData", {id: self.state.element.id, gene:self.props.selectedGene}, config.axiosConfig)
                     .then(function (response) {
                         self.setState({relatedexps: response.data})    
                     })
