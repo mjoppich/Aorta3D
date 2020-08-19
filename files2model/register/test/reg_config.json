@@ -1,9 +1,0 @@
-{
-    "avg_diff": 0.243,
-    "files": {
-        "0": "/usr/local/hdd/rita/hiwi/Aorta3D/files2model/register/test/ZT13_5-1.tif.small.tif_reg.png",
-        "1": "/usr/local/hdd/rita/hiwi/Aorta3D/files2model/register/test/ZT13_6-1.tif.small.tif_reg.png",
-        "2": "/usr/local/hdd/rita/hiwi/Aorta3D/files2model/register/test/ZT13_7-1.tif.small.tif_reg.png",
-        "3": "/usr/local/hdd/rita/hiwi/Aorta3D/files2model/register/test/ZT13_8-1.tif.small.tif_reg.png"
-    }
-}
