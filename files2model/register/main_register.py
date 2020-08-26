@@ -71,26 +71,37 @@ def main():
         images = [ cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) for img in images]
         images = [ np.asarray(img, dtype=np.float32) for img in images]
         masks = [np.copy(image) for image in images]
+        segs = [np.copy(image) for image in images]
         for k in range(len(images)):
-            mask = np.copy(images[k])
+            mask = masks[k]
+            seg = segs[k]
 
             (values,counts) = np.unique(mask, return_counts=True)
             ind=np.argmax(counts)
             background = values[ind]
+            plaque = list()
 
             for i in range(images[k].shape[0]):
                 for j in range(images[k].shape[1]):
                     if images[k][i,j] == background:
                         mask[i][j] = 0
+                        seg[i][j] = 0
                     elif check_neighbour(images[k], i, j, background):
                         mask[i][j] = 1
+                        seg[i][j] = 1
                     else:
+                        if not check_neighbour(images[k], i, j, background) and check_neighbour(seg, i, j, 1) or images[k][i][j] in plaque:
+                            seg[i][j] = 2
+                            plaque.append(images[k][i][j])
+                        else: 
+                            seg[i][j] = 0
                         mask[i][j] = 0
             
             masks[k] = mask
+            segs[k] = seg
         
         masks = [resize(m, (m.shape[0]*4, m.shape[1]*4)) for m in masks]
-        images = [resize(img, (img.shape[0]*4, img.shape[1]*4)) for img in images]
+        images = [resize(img, (img.shape[0]*4, img.shape[1]*4)) for img in segs]
         images = [img.astype(int) for img in images]
     else:
         model = register_pair.compile_model()
@@ -112,23 +123,25 @@ def main():
             else:
                 trans = register_pair.start_ransac(img1=rgb2gray(masks[mostSimilar]), img2=rgb2gray(masks[i]), brief=True, common_factor=0.5)
             reg_mask = warp(masks[i], np.linalg.inv(trans))
-            
+
             eval_diff += difference(masks[mostSimilar], reg_mask)/masks[mostSimilar].size
-
-            rescale_trans = np.amin([ images[i].shape[0]/masks[i].shape[0], images[i].shape[1]/masks[i].shape[1] ])
-            rescaled_transform = register_pair.rescale_transform_matrix(trans, rescale_trans)
-
-            reg_image = warp(images[i], np.linalg.inv(rescaled_transform))
+            print(masks[i].shape, images[i].shape)
             if msi:
-                reg_image = np.nan_to_num(reg_image)
+                reg_image = warp(images[i], np.linalg.inv(trans), mode='constant', cval=0, preserve_range=True)
+            else:
+                rescale_trans = np.amin([ images[i].shape[0]/masks[i].shape[0], images[i].shape[1]/masks[i].shape[1] ])
+                rescaled_transform = register_pair.rescale_transform_matrix(trans, rescale_trans)
+
+                reg_image = warp(images[i], np.linalg.inv(rescaled_transform))
+            if msi:
+                #reg_image = np.nan_to_num(reg_image)
                 reg_image = reg_image/np.max(reg_image)
             fname = paths[i].split("/")[-1]
-
-            matplotlib.image.imsave(output_dir + fname + '_regm.png', img_as_ubyte(reg_mask))
-            matplotlib.image.imsave(output_dir + fname + '_reg.png', img_as_ubyte(reg_image))
+            #matplotlib.image.imsave(output_dir + fname + '_regm.png', img_as_ubyte(reg_mask), cmap='gray')
+            matplotlib.image.imsave(output_dir + fname + '_reg.png', img_as_ubyte(reg_image), cmap='gray')
             res[counter] = os.path.join(output_dir, fname + '_reg.png')
         else:
-            matplotlib.image.imsave(output_dir + mostSimilar_fname + '_reg.png', img_as_ubyte(images[mostSimilar]))
+            matplotlib.image.imsave(output_dir + mostSimilar_fname + '_reg.png', img_as_ubyte(images[mostSimilar]), cmap='gray')
             res[counter] = os.path.join(output_dir, mostSimilar_fname + '_reg.png')
         counter += 1
 
