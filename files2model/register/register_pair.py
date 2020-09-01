@@ -136,7 +136,7 @@ def start_ransac(img1, img2, brief=True, common_factor=0.25):
     dst = keypoints1 [ matches12[:, 0]][:, ::-1]
 
     model_robust, inliers = \
-        ransac((src, dst), transform.SimilarityTransform, min_samples=4, max_trials=100, residual_threshold=2)
+        ransac((src, dst), transform.SimilarityTransform, min_samples=4, residual_threshold=2)
 
     model_robust_tmatrix =  np.copy(model_robust.params)
     model_robust_tmatrix[0, 2] = model_robust_tmatrix[0, 2]/common_factor

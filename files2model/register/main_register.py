@@ -51,12 +51,46 @@ def check_neighbour(mat, x, y, background):
     else:
         return False
 
+def get_msi_masks(images):
+    masks = [np.copy(image) for image in images]
+    segs = [np.copy(image) for image in images]
+    for k in range(len(images)):
+        mask = masks[k]
+        seg = segs[k]
+
+        (values,counts) = np.unique(mask, return_counts=True)
+        ind=np.argmax(counts)
+        background = values[ind]
+        plaque = list()
+        #aorta = list()
+        for i in range(images[k].shape[0]):
+            for j in range(images[k].shape[1]):
+                if images[k][i,j] == background:
+                    mask[i][j] = 0
+                    seg[i][j] = 0
+                elif check_neighbour(images[k], i, j, background):# or images[k][i][j] in aorta:
+                    mask[i][j] = 1
+                    seg[i][j] = 1
+                    #aorta.append(images[k][i][j])
+                else:
+                    if not check_neighbour(images[k], i, j, background) and check_neighbour(seg, i, j, 1) or images[k][i][j] in plaque:
+                        seg[i][j] = 2
+                        plaque.append(images[k][i][j])
+                    else: 
+                        seg[i][j] = 0
+                    mask[i][j] = 0
+        
+        masks[k] = mask
+        segs[k] = seg
+    return masks, segs
+
 
 def main():
     parser = argparse.ArgumentParser(description='Register sequence of images.')
     parser.add_argument('--msi', action='store_true')
-    parser.add_argument('--files', nargs="+", type=str)
-    parser.add_argument('--o', type=str)
+    parser.add_argument('--files', nargs="+", type=str, required=True)
+    parser.add_argument('--masks', nargs="+", type=str, )
+    parser.add_argument('--o', type=str, required=True)
 
     result_config = {}
 
@@ -64,41 +98,24 @@ def main():
 
     msi = args.msi
     paths = sorted(args.files)
+    mask_paths = args.masks
     output_dir = args.o
 
-    if msi:
+    if mask_paths:
         images = [ cv2.imread(img_path) for img_path in paths]
         images = [ cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) for img in images]
         images = [ np.asarray(img, dtype=np.float32) for img in images]
-        masks = [np.copy(image) for image in images]
-        segs = [np.copy(image) for image in images]
-        for k in range(len(images)):
-            mask = masks[k]
-            seg = segs[k]
 
-            (values,counts) = np.unique(mask, return_counts=True)
-            ind=np.argmax(counts)
-            background = values[ind]
-            plaque = list()
+        mask_paths = sorted(mask_paths)
+        masks = [ cv2.imread(path) for path in mask_paths]
+        masks = [ np.asarray(img, dtype=np.float32) for img in masks]
 
-            for i in range(images[k].shape[0]):
-                for j in range(images[k].shape[1]):
-                    if images[k][i,j] == background:
-                        mask[i][j] = 0
-                        seg[i][j] = 0
-                    elif check_neighbour(images[k], i, j, background):
-                        mask[i][j] = 1
-                        seg[i][j] = 1
-                    else:
-                        if not check_neighbour(images[k], i, j, background) and check_neighbour(seg, i, j, 1) or images[k][i][j] in plaque:
-                            seg[i][j] = 2
-                            plaque.append(images[k][i][j])
-                        else: 
-                            seg[i][j] = 0
-                        mask[i][j] = 0
-            
-            masks[k] = mask
-            segs[k] = seg
+    elif msi:
+        images = [ cv2.imread(img_path) for img_path in paths]
+        images = [ cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) for img in images]
+        images = [ np.asarray(img, dtype=np.float32) for img in images]
+        
+        masks, segs = get_msi_masks(images)
         
         masks = [resize(m, (m.shape[0]*4, m.shape[1]*4)) for m in masks]
         images = [resize(img, (img.shape[0]*4, img.shape[1]*4)) for img in segs]
@@ -137,7 +154,7 @@ def main():
                 #reg_image = np.nan_to_num(reg_image)
                 reg_image = reg_image/np.max(reg_image)
             fname = paths[i].split("/")[-1]
-            #matplotlib.image.imsave(output_dir + fname + '_regm.png', img_as_ubyte(reg_mask), cmap='gray')
+            #matplotlib.image.imsave(output_dir + fname + '_regm.png', img_as_ubyte(masks[i]), cmap='gray')
             matplotlib.image.imsave(output_dir + fname + '_reg.png', img_as_ubyte(reg_image), cmap='gray')
             res[counter] = os.path.join(output_dir, fname + '_reg.png')
         else:
