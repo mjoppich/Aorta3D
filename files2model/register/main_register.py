@@ -6,10 +6,9 @@ import numpy as np
 import sys, argparse
 import sys, argparse, os, imageio
 from skimage import io
-from skimage.transform import warp
 from skimage.color import rgb2gray
 from skimage import img_as_ubyte
-from skimage.transform import resize
+from skimage.transform import resize, warp
 import matplotlib
 
 
@@ -108,7 +107,13 @@ def main():
 
         mask_paths = sorted(mask_paths)
         masks = [ cv2.imread(path) for path in mask_paths]
+        if not msi:
+            masks = [ cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) for img in masks]
         masks = [ np.asarray(img, dtype=np.float32) for img in masks]
+
+        _, segs = main_register.get_msi_masks(images)
+        images = [resize(img, (img.shape[0]*4, img.shape[1]*4)) for img in segs]
+        images = [img.astype(int) for img in images]
 
     elif msi:
         images = [ cv2.imread(img_path) for img_path in paths]
@@ -154,10 +159,11 @@ def main():
                 #reg_image = np.nan_to_num(reg_image)
                 reg_image = reg_image/np.max(reg_image)
             fname = paths[i].split("/")[-1]
-            #matplotlib.image.imsave(output_dir + fname + '_regm.png', img_as_ubyte(masks[i]), cmap='gray')
+            matplotlib.image.imsave(output_dir + fname + '_regm.png', img_as_ubyte(masks[i]), cmap='gray')
             matplotlib.image.imsave(output_dir + fname + '_reg.png', img_as_ubyte(reg_image), cmap='gray')
             res[counter] = os.path.join(output_dir, fname + '_reg.png')
         else:
+            matplotlib.image.imsave(output_dir + mostSimilar_fname + '_regm.png', img_as_ubyte(masks[i]), cmap='gray')
             matplotlib.image.imsave(output_dir + mostSimilar_fname + '_reg.png', img_as_ubyte(images[mostSimilar]), cmap='gray')
             res[counter] = os.path.join(output_dir, mostSimilar_fname + '_reg.png')
         counter += 1
