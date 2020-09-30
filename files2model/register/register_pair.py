@@ -45,12 +45,12 @@ def plot_test_pred(test_image, test_pred, testIdx=0):
 
 def compile_model():
     # load json and create model
-    json_file = open('model_softmax_hist_640_ZT113.json', 'r')
+    json_file = open('register/model_softmax_hist_640_ZT113.json', 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     model = model_from_json(loaded_model_json)
     # load weights into new model
-    model.load_weights("model_softmax_hist_ZT113.h5")
+    model.load_weights("resgister/model_softmax_hist_ZT113.h5")
     print("Loaded model from disk")
 
     # evaluate loaded model on test data
@@ -136,7 +136,7 @@ def start_ransac(img1, img2, brief=True, common_factor=0.25):
     dst = keypoints1 [ matches12[:, 0]][:, ::-1]
 
     model_robust, inliers = \
-        ransac((src, dst), transform.SimilarityTransform, min_samples=4, max_trials=100, residual_threshold=2)
+        ransac((src, dst), transform.SimilarityTransform, min_samples=4, residual_threshold=2)
 
     model_robust_tmatrix =  np.copy(model_robust.params)
     model_robust_tmatrix[0, 2] = model_robust_tmatrix[0, 2]/common_factor
