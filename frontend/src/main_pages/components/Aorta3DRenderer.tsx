@@ -11,7 +11,7 @@ var STLLoader = require('three-stl-loader')(THREE)
 import {
     WebGLRenderer,
     PointLight,
-    AmbientLight,
+    AmbientLight, HemisphereLight,
     Mesh
 } from 'threact';
 import {
@@ -69,58 +69,85 @@ export default class Aorta3DRenderer extends React.Component < Aorta3DRendererPr
     }
 
 
-    loadBaseElement(loader, elempath, mpos = [0, 0, 0], mscale = [1, 1, 1], mcolor = "#ffffff", mrot = [0, 0, 0], elemData=null) {
+    loadBaseElement(loader, elemID, mpos = [0, 0, 0], mscale = [1, 1, 1], mcolor = "#ffffff", mselcolor = "#ffffff", mrot = [0, 0, 0], elemData=null) {
         var self = this;
 
-        loader.load(config.getRestAddress() + "/" + elempath, function (geometry) {
+        axios.post(config.getRestAddress() + "/get_model", {id: elemID}, config.axiosConfig)
+        .then(function (response:any) {
 
-            geometry.computeBoundingBox();
-            geometry.center()
+            console.log("loading stl")
+            console.log(elemID)
 
-            console.log(geometry)
-            //var geomSize = {x: geometry.boundingBox.max.x-geometry.boundingBox.min.x, y: geometry.boundingBox.max.y-geometry.boundingBox.min.y, z: geometry.boundingBox.max.z-geometry.boundingBox.min.z}
-            //mpos = [-geomSize.x*mscale[0]/2.0 + mpos[0], -geomSize.y*mscale[1]/2.0 + mpos[1], -geomSize.z*mscale[2]/2.0 + mpos[2]]
+            var modelDescr = atob(response.data.model);
 
+            //loader.load(config.getRestAddress() + "/" + elempath, function (geometry) {
+            var geometry = loader.parse(modelDescr)
+            {
 
+                console.log("got geometry")
 
-            console.log("loaded stl")
-            console.log(elempath)
-            console.log(geometry.boundingBox)
+                geometry.computeBoundingBox();
+                geometry.center()
+    
+                console.log(geometry)
+                //var geomSize = {x: geometry.boundingBox.max.x-geometry.boundingBox.min.x, y: geometry.boundingBox.max.y-geometry.boundingBox.min.y, z: geometry.boundingBox.max.z-geometry.boundingBox.min.z}
+                //mpos = [-geomSize.x*mscale[0]/2.0 + mpos[0], -geomSize.y*mscale[1]/2.0 + mpos[1], -geomSize.z*mscale[2]/2.0 + mpos[2]]
+    
 
-            var curlist = self.state.globject;
-
-            var nmesh = < Mesh key = {
-                curlist.length
-            }
-            geometry = {
-                geometry
-            }
-            material = {
-                new THREE.MeshStandardMaterial({
-                    color: mcolor,
-                    metalness: 0
+                console.log(geometry.boundingBox)
+    
+                var curlist = self.state.globject;
+    
+                var nmesh = < Mesh key = {
+                    curlist.length
+                }
+                geometry = {
+                    geometry
+                }
+                selcolor={mselcolor}
+                material = {
+                    new THREE.MeshStandardMaterial({
+                        color: mcolor,
+                        metalness: 0
+                    })
+                }
+                selected_material = {
+                    new THREE.MeshStandardMaterial({
+                        color: mselcolor,
+                        metalness: 0
+                    })
+                }
+                normal_material = {
+                    new THREE.MeshStandardMaterial({
+                        color: mcolor,
+                        metalness: 0
+                    })
+                }
+                scale = {
+                    mscale
+                }
+                position = {
+                    mpos
+                }
+                elemInfo = {
+                    elemData
+                }
+                rotation = {
+                    mrot
+                }
+                />;
+    
+                curlist.push(nmesh);
+    
+                self.setState({
+                    globject: curlist
                 })
             }
-            scale = {
-                mscale
-            }
-            position = {
-                mpos
-            }
-            elemInfo = {
-                elemData
-            }
-            rotation = {
-                mrot
-            }
-            />;
 
-            curlist.push(nmesh);
 
-            self.setState({
-                globject: curlist
-            })
-        });
+        })
+
+
     }
 
     componentDidUpdate() {
@@ -175,18 +202,27 @@ export default class Aorta3DRenderer extends React.Component < Aorta3DRendererPr
         var scaleFactor2 = 2.7;//3;
         var pushLevels = -15;//-30;
 
-        self.loadBaseElement(loader, "model/base/membrane1.small.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ffffff", [0, 0, 0], {id: "config.json:mem1", descr: "Membrane 1", type_det: ["endothelial"]});
-        self.loadBaseElement(loader, "model/base/membrane2.small.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#9f9f9f", [0, 0, 0], {id: "config.json:mem2", descr: "Membrane 2", type_det: ["endothelial"]});
-        self.loadBaseElement(loader, "model/base/membrane3.small.stl", [0, -1.7, 0], [scaleFactor, scaleFactor, scaleFactor], "#009900", [0, 0, 0], {id: "config.json:mem3", descr: "Membrane 3", type_det: ["endothelial"]});
-        self.loadBaseElement(loader, "model/base/plaque.small.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, 0, 0], {id: "config.json:plq", descr: "Plaque", type_det: ["plaque"]});
-        self.loadBaseElement(loader, "model/base/macrophage.small.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ffff00", [0, 0, 0], {id: "config.json:mac", descr: "Macrophage", type_det: ["macrophage"]});
+        //self.loadBaseElement(loader, "model/base/membrane1.small.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ffffff", [0, 0, 0], {id: "config.json:mem1", descr: "Membrane 1", type_det: ["endothelial"]});
+        //self.loadBaseElement(loader, "model/base/membrane2.small.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#9f9f9f", [0, 0, 0], {id: "config.json:mem2", descr: "Membrane 2", type_det: ["endothelial"]});
+        //self.loadBaseElement(loader, "model/base/membrane3.small.stl", [0, -1.7, 0], [scaleFactor, scaleFactor, scaleFactor], "#009900", [0, 0, 0], {id: "config.json:mem3", descr: "Membrane 3", type_det: ["endothelial"]});
+        //self.loadBaseElement(loader, "model/base/plaque.small.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ff0000", [0, 0, 0], {id: "config.json:plq", descr: "Plaque", type_det: ["plaque"]});
+        //self.loadBaseElement(loader, "model/base/macrophage.small.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ffff00", [0, 0, 0], {id: "config.json:mac", descr: "Macrophage", type_det: ["macrophage"]});
 
         axios.post(config.getRestAddress() + "/fetchViewableData", {}, config.axiosConfig)
         .then(function (response) {
         
           response.data.forEach(element => {
-            self.loadBaseElement(loader, element.path, [1, pushLevels, 0], [scaleFactor/scaleFactor2, scaleFactor/scaleFactor2, scaleFactor/scaleFactor2], element.color, [Math.PI / 2, element.right * Math.PI, 0], {id: element.id, descr: element.type});
-            pushLevels = pushLevels + 5//10
+
+            if (element.bg_elem)
+            {
+                self.loadBaseElement(loader, element.id, [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], element.color, element.selected_color || element.color , [0, 0, 0], element);
+            } else {
+                
+                // display stacked
+                self.loadBaseElement(loader, element.id, [1, pushLevels, 0], [scaleFactor/scaleFactor2, scaleFactor/scaleFactor2, scaleFactor/scaleFactor2], element.color, element.selected_color || element.color, [Math.PI / 2, element.right * Math.PI, 0], {id: element.id, descr: element.type});
+                pushLevels = pushLevels + 5//10
+
+            }
           });  
 
         })
@@ -224,11 +260,17 @@ export default class Aorta3DRenderer extends React.Component < Aorta3DRendererPr
     
                 if (self.INTERSECTED != intersects[0].object) {
     
-                    if (self.INTERSECTED) self.INTERSECTED.material.emissive.setHex(self.INTERSECTED.currentHex);
+                    if (self.INTERSECTED)
+                    {
+                        self.INTERSECTED.material.emissive.setHex(self.INTERSECTED.currentHex);
+                    }
     
                     self.INTERSECTED = intersects[0].object;
+                    
+
                     self.INTERSECTED.currentHex = self.INTERSECTED.material.emissive.getHex();
-                    self.INTERSECTED.material.emissive.setHex(0xff0000);
+                    self.INTERSECTED.material.emissive.setHex(0xffffff);
+                    console.log(self.INTERSECTED)
                        
                     if (self.isFunction(self.props.onSelectElement))
                     {
@@ -365,8 +407,12 @@ export default class Aorta3DRenderer extends React.Component < Aorta3DRendererPr
                         (evt) => this.onMouseMove(evt)
                     }
                     >
+
+                    <HemisphereLight
+                    skyColor={0xddeeff}
+                    groundColor={0x0f0e0d}/>
     
-                    <AmbientLight/>
+                
                     {
                         self.state.globject
                     }

@@ -16,3 +16,13 @@ After installation, edit file `node_modules/material-table/types/index.d.ts` and
 
 In theory this should setup everything as we need it.
 Remember to `npm install` each time you pull the repository!
+
+
+Python packages that are required:
+
+opencv-python
+keras
+scikit-image
+pynrrd
+tensorflow
+numpy-stl

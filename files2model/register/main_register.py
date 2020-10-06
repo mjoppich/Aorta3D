@@ -2,14 +2,12 @@ import os
 import json 
 import cv2
 import register_pair
+import stlstuff
+
 import numpy as np
 import sys, argparse, os, imageio
-<<<<<<< HEAD
 from skimage import io, data
 from skimage.transform import warp
-=======
-from skimage import io
->>>>>>> b6287cfd51eef520a4d163f642d7b6f2dd678075
 from skimage.color import rgb2gray
 from skimage import img_as_ubyte
 from skimage.transform import resize, warp
@@ -24,319 +22,56 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 from collections import defaultdict
-from stl import mesh
 
 from pythreejs import *
 
-class SurfaceNets:
 
-    def __init__(self):
 
-        self.cube_edges = None
-        self.edge_table = None
 
-        k = 0
-        cube_edges = {}
-        for  i in range(0,8):
-            for j in [1,2,4]:
-                p = i^j
-
-                if i <= p:
-                    cube_edges[k] = i
-                    k += 1
-                    cube_edges[k] = p
-                    k += 1
-
-        self.cube_edges = [0] * k
-
-        for x in cube_edges:
-            self.cube_edges[x] = cube_edges[x]
-
-        self.cube_edges = tuple(self.cube_edges)
-
-
-        self.edge_table = [0] * 256
-        for i in range(0, 256):
-            em = 0
-
-            for j in range(0, 24, 2):
-                a = not (i & (1 << cube_edges[j]))
-                b = not (i & (1 << cube_edges[j+1]))
-
-                em |= (1 << (j >> 1)) if a != b else 0
-
-            self.edge_table[i] = em
-            
-        self.edge_table = tuple(self.edge_table)
-
-
-    def surface_net(self, data, level=1):
-
-        R = [0] * 3
-        x = [0] * 3
-        grid = [0] * 8
-
-        vertices = []
-        faces = []
-
-        buf_no = 1
-        n = 0
-        m = 0
-
-        dims = data.shape
-        
-        print(dims)
-
-        R[0] = 1
-        R[1] =  dims[0] + 1
-        R[2] = (dims[0] + 1) * (dims[1] + 1)
-
-        buffer = [0] * 4096
-
-        if R[2] * 2 >= len(buffer):
-            buffer = [0] * (R[2]*2)
-
-        vdata = np.array(data, copy=True)
-        vdata = np.reshape(vdata, dims[0]*dims[1]*dims[2])
-                
-        vdata = [0] * dims[0]*dims[1]*dims[2]
-        vdata = np.array(vdata)
-        
-        for i in range(0, dims[0]):
-            for j in range(0, dims[1]):
-                for k in range(0, dims[2]):       
-                    
-                    vidx = i + dims[0] * j + dims[0]*dims[1] * k
-                    
-                    if vidx >= len(vdata):
-                        print(i,j,k, dims)
-                    
-                    vdata[vidx]= data[i,j,k]
-
-        visIdx = set()
-        
-        x[2] = 0
-        while x[2] < dims[2]-1: # outerloop
-            m = 1 + (dims[0]+1) * (1 + (buf_no * (dims[1]+1)))
-
-            x[1] = 0
-            while x[1] < dims[1]-1: # middleloop
-
-                x[0] = 0
-                while x[0] < dims[0]-1: # innerloop
-                    
-                    mask = 0
-                    g = 0
-                    idx = n
-                    
-                    if idx in visIdx:
-                        print("double index")
-                    
-                    visIdx.add(idx)
-
-                    for k in range(0,2):
-                        for j in range(0,2):
-                            for i in range(0,2):
-
-                                p = vdata[idx] - level
-
-                                grid[g] = p
-                                mask |= (1 << g) if (p<0) else 0
-
-                                # loop stuff
-
-                                #i += 1
-                                g += 1
-                                idx += 1
-
-                            #j += 1
-                            idx += dims[0]-2
-
-                        idx += dims[0] * (dims[1]-2)
-
-                    
-                    #print(n, vdata[n], mask, x, dims)
-                    if mask == 0 or mask == 0xff:
-                        
-                        #if mask == 0xff:
-                        #    inObj[x[0], x[1], x[2]] = 1
-                        #elif mask == 0:
-                        #    outObj[x[0], x[1], x[2]] = 0
-                            
-                        
-                        # innerloop
-                        x[0] += 1
-                        n += 1
-                        m += 1
-                        continue
-
-                    
-                    edge_mask = self.edge_table[mask]
-
-                    v = [0] * 3
-                    e_count = 0
-
-                    for i in range(0, 12):
-
-
-                        if (edge_mask & (1<<i)) == 0:
-                            continue
-
-                            
-                        e_count += 1
-
-                        e0 = self.cube_edges[ i << 1]
-                        e1 = self.cube_edges[(i << 1) + 1]
-
-                        g0 = grid[e0]
-                        g1 = grid[e1]
-
-                        t = g0-g1
-
-                        if abs(t) > 1e-2:
-                            t = g0 / t
-                        else:
-                            continue
-
-                        k=1
-
-                        for j in range(0, 3):
-
-                            a = e0 & k
-                            b = e1 & k
-
-                            if (a!= b):
-                                v[j] += 1.0-t if a else t
-                            else:
-                                v[j] += 1.0 if a else 0.0
-
-                            k = k << 1
-
-
-
-                    s = 1.0/e_count
-
-                    for i in range(0, 3):
-                        v[i] = x[i] + s * v[i]
-
-
-                    #print(m, len(buffer), len(vertices))
-                    buffer[m] = len(vertices)
-                    vertices.append(v)
-
-                    for i in range(0,3):
-
-
-                        if not (edge_mask & (1 << i)):
-                            continue
-
-                            
-                        iu = (i+1)%3
-                        iv = (i+2)%3
-
-                        if x[iu] == 0 or x[iv] == 0:
-                            continue
-
-                            
-                        du = R[iu]
-                        dv = R[iv]
-
-                        #print(m, iu, iv, du, dv, m-du-dv, m-du, m-dv)
-                        
-                        if (mask & 1):
-                        
-                            faces.append((
-                                buffer[m], buffer[m-du-dv], buffer[m-du]
-                            ))
-
-                            faces.append((
-                                buffer[m], buffer[m-dv], buffer[m-du-dv]
-                            ))
-                            
-                        else:
-                            faces.append((
-                                buffer[m], buffer[m-du-dv], buffer[m-dv]
-                            ))
-
-                            faces.append((
-                                buffer[m], buffer[m-du], buffer[m-du-dv]
-                            ))
-                            
-                            
-                        
-                    ## inner loop update
-                    x[0] += 1
-                    n += 1
-                    m += 1    
-                    
-                ## middle loop update
-                x[1] += 1
-                n += 1
-                m += 2
-                                        
-
-            
-            if x[2] % 10 == 0:
-                print(x)
-            
-            ## outer loop update
-            x[2] += 1
-            n += dims[0]
-            buf_no ^= 1
-            R[2] = -R[2]
-                    
-        print("visIdx", len(visIdx), dims[0]*dims[1]*dims[2])
-                
-        return vertices, faces
-
-
-def saveMesh(aVertices, aFaces, outname):
-    print(len(aVertices), len(aFaces))
-
-    aorta = mesh.Mesh(np.zeros(len(aFaces), dtype=mesh.Mesh.dtype))
-    for i, f in enumerate(aFaces):
-
-        for j in range(3):
-
-            aorta.vectors[i][j] = aVertices[f[j]]
-
-    posElem = defaultdict(list)
-
-    for i in range(3):
-        for vert in aorta.vectors:
-            posElem[i].append(vert[i])
-
-    for posidx in posElem:
-        print(posidx, np.min(posElem[posidx]), np.max(posElem[posidx]))
-
-    aorta.save(outname)
-
-
-def createStlModel( images, outname ):
+def createStlModel( images, outname, outname_plaque, full=False ):
 
     V = None
 
-    sliceWidth = 20
+    slideSpacing = 10
+    sliceWidth = 10
+
+    if slideSpacing < sliceWidth:
+        slideSpacing = sliceWidth
+
     numElems = len(images)
 
     #this keeps some gap at the top/bottom part
     emptyStart = 10
     emptyEnd = 10
 
-    allimg = sorted(images, key=lambda x : int(x.split("_")[1].split("-")[0]))
+    print(images)
+
+    maxX = 0
+    maxY = 0
 
     for iidx, imgfile in enumerate(images):
         
-        print(imgfile)
+        print(iidx, imgfile)
         
-        image = data.imread(imgfile)
+        image = cv2.imread(imgfile)
         rgbimg = rgb2gray(image)
+
+        maxX = max(maxX, rgbimg.shape[0])
+        maxY = max(maxY, rgbimg.shape[1])
+
+
+    V = np.zeros((maxX, maxY, (emptyStart+emptyEnd) + numElems*sliceWidth ))
+
+    for iidx, imgfile in enumerate(images):
+
+        print(iidx, imgfile)
         
-        if iidx==0:
-            V = np.zeros((rgbimg.shape[0], rgbimg.shape[1], (emptyStart+emptyEnd) + numElems*sliceWidth ))
+        image = cv2.imread(imgfile)
+        rgbimg = rgb2gray(image)
+                    
             
         for imgi in range(0, sliceWidth):
-            V[:, :, (iidx*sliceWidth)+imgi+emptyStart] = rgbimg
+            V[ 0:rgbimg.shape[0] , 0:rgbimg.shape[1], (iidx*slideSpacing)+imgi+emptyStart] = rgbimg
             
             
         if iidx +1 >= numElems:
@@ -345,34 +80,40 @@ def createStlModel( images, outname ):
         
 
     V = V / np.max(V)
-    Vt = v * 100
+    Vt = V * 100
 
-    from skimage.transform import resize
 
     Vt = Vt.copy()
-    Vt = resize(Vt, (Vt.shape[0]/5, Vt.shape[1]/5, Vt.shape[2]/4))
+    #Vt = resize(Vt, (Vt.shape[0]/5, Vt.shape[1]/5, Vt.shape[2]/4))
 
     trshd = 45
 
-    Vtplaque = np.array(Vt, copy=True)  
     Vtaorta = np.array(Vt, copy=True)  
 
-    Vtaorta[Vtaorta > 75] = 0
-    Vtaorta[Vtaorta > 40] = 100
+    if full:
+        Vtaorta[Vtaorta > 10] = 100
 
-    Vtplaque[Vtplaque < 75] = 0
-    Vtplaque[Vtplaque > 75] = 100
+    else:
+        Vtaorta[Vtaorta > 75] = 0
+        Vtaorta[Vtaorta > 30] = 100
 
-    sn = SurfaceNets()
+
+    sn = stlstuff.SurfaceNets()
 
     s_aortaVertices,s_aortaFaces = sn.surface_net(Vtaorta, 75)
-    s_plaqueVertices,s_plaqueFaces = sn.surface_net(Vtplaque, 75)
-
     print(len(s_aortaVertices), len(s_aortaFaces))
-    print(len(s_plaqueVertices), len(s_plaqueFaces))
+    stlstuff.saveAorta(s_aortaVertices,s_aortaFaces, outname)
 
-    saveAorta(s_aortaVertices,s_aortaFaces, outname)
+    if outname_plaque != None:
+        Vtplaque = np.array(Vt, copy=True)  
+        Vtplaque[Vtplaque < 75] = 0
+        Vtplaque[Vtplaque > 75] = 100
 
+        s_plaqueVertices,s_plaqueFaces = sn.surface_net(Vtplaque, 75)
+        print(len(s_plaqueVertices), len(s_plaqueFaces))
+        stlstuff.saveAorta(s_plaqueVertices,s_plaqueFaces, outname_plaque)
+
+    
 
 
 def difference(a1, a2):
@@ -452,16 +193,16 @@ def main():
     parser.add_argument('--msi', action='store_true')
     parser.add_argument('--files', nargs="+", type=str, required=True)
     parser.add_argument('--masks', nargs="+", type=str, )
-    parser.add_argument('--o', type=str, required=True)
+    parser.add_argument('--output', type=str, required=True)
 
     result_config = {}
 
     args = parser.parse_args()
 
     msi = args.msi
-    paths = sorted(args.files)
+    paths = args.files#sorted(args.files)
     mask_paths = args.masks
-    output_dir = args.o
+    output_dir = args.output
 
     if mask_paths:
         images = [ cv2.imread(img_path) for img_path in paths]
@@ -474,7 +215,7 @@ def main():
             masks = [ cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) for img in masks]
         masks = [ np.asarray(img, dtype=np.float32) for img in masks]
 
-        _, segs = main_register.get_msi_masks(images)
+        _, segs = get_msi_masks(images)
         images = [resize(img, (img.shape[0]*4, img.shape[1]*4)) for img in segs]
         images = [img.astype(int) for img in images]
 
@@ -497,46 +238,63 @@ def main():
     mostSimilar = getMostSimilar(masks)
     mostSimilar_fname = paths[mostSimilar].split("/")[-1]
 
+    print("Determined most similar image: {}, {}".format(mostSimilar, mostSimilar_fname))
+
     res = {}
-    counter = 0
     eval_diff = 0
 
     for i in range(len(paths)):
+
+        curImgPaths = paths[i]
+        curImgMask = masks[i]
+        curImg = images[i]
+
+        fname = curImgPaths.split("/")[-1]
+
         if i != mostSimilar:
+
+            cf = 0.5
             if msi:
-                trans = register_pair.start_ransac(img1=rgb2gray(masks[mostSimilar]), img2=rgb2gray(masks[i]), brief=True, common_factor=1)
-            else:
-                trans = register_pair.start_ransac(img1=rgb2gray(masks[mostSimilar]), img2=rgb2gray(masks[i]), brief=True, common_factor=0.5)
-            reg_mask = warp(masks[i], np.linalg.inv(trans))
+                cf=1.0
+
+            trans = register_pair.start_ransac(img1=rgb2gray(masks[mostSimilar]), img2=rgb2gray(curImgMask), brief=True, common_factor=cf)
+            
+            reg_mask = warp(curImgMask, np.linalg.inv(trans))
 
             eval_diff += difference(masks[mostSimilar], reg_mask)/masks[mostSimilar].size
-            print(masks[i].shape, images[i].shape)
+            
             if msi:
-                reg_image = warp(images[i], np.linalg.inv(trans), mode='constant', cval=0, preserve_range=True)
-            else:
-                rescale_trans = np.amin([ images[i].shape[0]/masks[i].shape[0], images[i].shape[1]/masks[i].shape[1] ])
-                rescaled_transform = register_pair.rescale_transform_matrix(trans, rescale_trans)
-
-                reg_image = warp(images[i], np.linalg.inv(rescaled_transform))
-            if msi:
-                #reg_image = np.nan_to_num(reg_image)
+                reg_image = warp(curImg, np.linalg.inv(trans), mode='constant', cval=0, preserve_range=True)
                 reg_image = reg_image/np.max(reg_image)
-            fname = paths[i].split("/")[-1]
-            matplotlib.image.imsave(output_dir + fname + '_regm.png', img_as_ubyte(masks[i]), cmap='gray')
-            matplotlib.image.imsave(output_dir + fname + '_reg.png', img_as_ubyte(reg_image), cmap='gray')
-            res[counter] = os.path.join(output_dir, fname + '_reg.png')
-        else:
-            matplotlib.image.imsave(output_dir + mostSimilar_fname + '_regm.png', img_as_ubyte(masks[i]), cmap='gray')
-            matplotlib.image.imsave(output_dir + mostSimilar_fname + '_reg.png', img_as_ubyte(images[mostSimilar]), cmap='gray')
-            res[counter] = os.path.join(output_dir, mostSimilar_fname + '_reg.png')
 
-        counter += 1
+            else:
+                rescale_trans = np.amin([ curImg.shape[0]/curImgMask.shape[0], curImg.shape[1]/curImgMask.shape[1] ])
+                rescaled_transform = register_pair.rescale_transform_matrix(trans, rescale_trans)
+                reg_image = warp(curImg, np.linalg.inv(rescaled_transform))
+
+
+            print(curImgPaths, curImgMask.shape, reg_mask.shape, curImg.shape, reg_image.shape)
+            
+            matplotlib.image.imsave(output_dir + fname + '_regm.png', img_as_ubyte(reg_mask), cmap='gray')
+            matplotlib.image.imsave(output_dir + fname + '_reg.png', img_as_ubyte(reg_image), cmap='gray')
+            res[i] = os.path.join(output_dir, fname + '_reg.png')
+
+
+        else:
+            matplotlib.image.imsave(output_dir + fname + '_regm.png', img_as_ubyte(masks[i]), cmap='gray')
+            matplotlib.image.imsave(output_dir + fname + '_reg.png', img_as_ubyte(images[mostSimilar]), cmap='gray')
+            res[i] = os.path.join(output_dir, fname + '_reg.png')
+
+        createStlModel([curImgPaths], os.path.join(output_dir,fname + "_model.stl"), None, full=True)
 
     config = {}
     config["avg_diff"] = round(eval_diff/(len(paths)-1),3)
     config["files"] = res
 
-    createStlModel(res, os.path.join(output_dir,"model.stl"))
+    print(paths)
+    stlFiles = [os.path.join(output_dir, os.path.basename(x) + "_reg.png") for x in paths]
+
+    createStlModel(stlFiles, os.path.join(output_dir,"model.stl"), os.path.join(output_dir,"model_plaque.stl"))
 
     with open(os.path.join(output_dir,"reg_config.json"), "w") as outfile:  
         json.dump(config, outfile, indent = 4) 

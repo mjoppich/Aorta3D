@@ -21,6 +21,9 @@ from flask_cors import CORS
 
 import base64
 
+import logging
+
+logger = logging.getLogger(__name__)
 
 dataurl = str(os.path.dirname(os.path.realpath(__file__))) + "/../" + 'frontend/src/static/'
 config_path = str(os.path.dirname(os.path.realpath(__file__))) + "/configs/"
@@ -33,24 +36,11 @@ app.config['UPLOAD_FOLDER'] = ""
 
 allConfigFiles = [config_path]
 
-def loadConfig():
-
-    allconfigs = []
-
-    for configFile in allConfigFiles:
-        with open(config_path) as f:
-            config_file = json.load(f)
-
-            for x in config_file:
-                x["id"] = configFile + ":" + x["id"]
-
-                if "parent" in x:
-                    x["parent"] = configFile + ":" + x["parent"]
-
-            allconfigs = config_file + allconfigs
-
-    return allconfigs
-
+#https://stackoverflow.com/questions/22281059/set-object-is-not-json-serializable
+def set_default(obj):
+    if isinstance(obj, set):
+        return list(obj)
+    raise TypeError
 
 # For a given file, return whether it's an allowed type or not
 def allowed_file(filename):
@@ -70,6 +60,68 @@ def models(filename):
     retFile = "../data/models/" +filename
     return send_from_directory("../data/models", filename)
 
+from stl import mesh
+import stl
+import tempfile
+
+
+@app.route('/get_model', methods=['POST'])
+def get_model():
+
+    content = request.get_json(silent=True)
+    fetchID = content.get("id", -1)
+
+    config_file = loadConfigs()
+
+    targetInfo = None
+    data = {"model": None}
+
+    for elem in config_file:
+        if elem["id"] == fetchID:
+            targetInfo = elem
+            break
+
+    eStlPath = eval_path(__file__, elem["path"])
+
+    logger.warning("Loading stl path {}".format(eStlPath))
+
+    main_body = mesh.Mesh.from_file(eStlPath)
+
+    with tempfile.NamedTemporaryFile() as fout:
+        logger.warning("Before write {}".format(""))
+        main_body.save("test.stl", fh=fout, mode=stl.Mode.ASCII)
+        logger.warning("after write {}".format(fout.name))
+        with open(fout.name, "rb") as fin:
+            encoded = base64.b64encode(fin.read())
+            data = {"model": encoded.decode()}
+
+
+    response = app.response_class(
+        response=json.dumps(data),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
+
+def eval_path( currentPath, evalPath):
+
+    if not os.path.isabs(currentPath):
+        currentPath = os.path.abspath(currentPath)
+
+    logger.warning("Loading path {} from {}".format(currentPath, evalPath))
+
+    if os.path.isabs(evalPath):
+        return evalPath
+
+    baseFolder = os.path.abspath(currentPath)
+
+    if not os.path.isdir(baseFolder):
+        baseFolder = os.path.dirname(baseFolder)
+
+    evalPath = os.path.abspath(os.path.join(baseFolder, evalPath))
+    return evalPath
+
 
 @app.route('/test', methods=['GET', 'POST'])
 def test():
@@ -81,6 +133,9 @@ def loadConfigs():
     allconfigs = []
 
     for configFile in allConfigFiles:
+
+        #logger.warning("Loading config {}".format(configFile))
+        
         with open(os.path.join(config_path, configFile)) as f:
             config_file = json.load(f)
 
@@ -102,9 +157,14 @@ def fetchViewableData():
     reduced_data = []
     counter = 0
     for elem in config_file:
-        if elem.get("id").startswith("scheme"): 
+
+        if not "path" in elem:
+            continue
+
+        if args.view_all or elem.get("id").startswith("scheme"): 
             reduced_data.append(elem)
-    print(reduced_data)
+
+            logger.warning("Adding viewable file {}".format(elem.get("id")))
     #if len(reduced_data) > 2:
     #    reduced_data = reduced_data[0:2]
 
@@ -286,6 +346,8 @@ def getElementInfoDE():
     content = request.get_json(silent=True)
     fetchID = content.get("id", -1)
 
+    logger.error("Content: {}".format(content))
+
     config_file = loadConfigs()
 
     data = {}
@@ -296,31 +358,37 @@ def getElementInfoDE():
             elementData = elem
             break
 
-    print(elementData)
+    lookForRegion = elementData.get("cluster", -2)
 
     if not "de_data" in elementData and "info_path" in elementData:
         # meant for MSI slides
         data = None
-        with open(elementData["info_path"]) as f:
-            elem_info_file = json.load(f)
-            data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
+        logger.error("no de_data, but found info_path {}".format(elementData["info_path"]))
+        infoFilePath = eval_path(__file__, elementData["info_path"])
+
+        with open(infoFilePath) as f:
+            data = json.load(f)[0]
+            logger.error("found data for region {}: {}".format(lookForRegion, len(data)))
 
         if len(data) > 0:
-            data = data[0]
-
-            print(content)
+            data = data
             elementData = data.get("info", {}).get(content["cluster"], None)
 
         else:
             data = None
 
+
+    else:
+        infoFilePath = __file__
+
     print("Reading Table", elementData.get("de_data", None))
-    print(elementData)
 
     deTable = []
     if elementData != None and "de_data" in elementData:
+
+        deDataPath = eval_path(infoFilePath, elementData["de_data"])
         
-        with open(elementData["de_data"], 'r') as fin:
+        with open(deDataPath, 'r') as fin:
 
             colname2idx = {}
             for lidx, line in enumerate(fin):
@@ -362,12 +430,17 @@ def getElementInfoImage():
             elementData = elem
             break
     if "png_path" in elementData:
-        pth = os.path.dirname(os.path.abspath(__file__)) + "/" + elementData["png_path"]
-        encoded = base64.b64encode(open(pth, "rb").read())
-        data = {"image": encoded.decode()}
+        eImgPath = eval_path(__file__, elementData["png_path"])
+
+        with open(eImgPath, 'rb') as f:
+            logger.warning("Loading img path {}".format(eImgPath))
+            encoded = base64.b64encode(f.read())
+            data = {"image": encoded.decode()}
 
     elif "info_path" in elementData:
-        with open(elementData["info_path"]) as f:
+        eInfoPath = eval_path(__file__, elementData["info_path"])
+
+        with open(eInfoPath) as f:
             elem_info_file = json.load(f)
             data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
 
@@ -379,7 +452,7 @@ def getElementInfoImage():
             data = data[0]
 
         if "path_upgma" in data:
-            encoded = base64.b64encode(open(data["path_upgma"], "rb").read())
+            encoded = base64.b64encode(open( eval_path(__file__, data["path_upgma"]) , "rb").read())
             data = {"image": encoded.decode()}
     else:
         data = {}
@@ -410,11 +483,17 @@ def getElementInfo():
             break
 
     if "info_path" in elementData:
-        pth = os.path.dirname(os.path.abspath(__file__)) + "/" + elementData["info_path"]
-        with open(pth) as f:
+        eInfoPath = eval_path(__file__, elementData["info_path"])
+        logger.warning(eInfoPath)
+
+        with open(eInfoPath) as f:
             elem_info_file = json.load(f)
+
             if elementData.get("type") == "msi":
-                data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
+                
+                assert(len(elem_info_file) == 1)
+
+                data = elem_info_file[0]#[x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
             else:
                 data["info"] = elem_info_file[0]
 
@@ -424,6 +503,13 @@ def getElementInfo():
         #    data = {}
         if len(data) == 1 and isinstance(data, (tuple, list)):
             data = data[0]
+
+    else:
+        logger.error("no info_path in elementData")
+
+    if len(data) == 0:
+        logger.error("Returning 0 len data in getElementInfo for element id {}".format(fetchID))
+        logger.error("{}".format(elementData))
 
     response = app.response_class(
         response=json.dumps(data),
@@ -447,6 +533,10 @@ def getElement():
         if elem.get("id") == fetchID:
             data = elem
             break
+
+    if len(data) == 0:
+        logger.error("Returning 0 len data in getElement")
+        logger.error("Was looking for data element: {}".format(fetchID))
 
     response = app.response_class(
         response=json.dumps(data),
@@ -503,7 +593,7 @@ def stats():
 
     datasets = 0
     datatypes = Counter()
-    datasubtypes = {}
+    datasubtypes = defaultdict(set)
 
     for elem in config_file:
         datasets += 1
@@ -517,17 +607,14 @@ def stats():
             if type_det == None or len(type_det) == 0:
                 continue
 
-            type_det = type_det[0]
+            type_det = type_det
 
-            if type_ in datasubtypes:
-                if not (type_det in datasubtypes[type_]):
-                    datasubtypes[type_].append(type_det)
-            else:
-                datasubtypes[type_] = [type_det]
+            for td in type_det:
+                datasubtypes[type_].add(td)
     
     data = {"datasets": datasets, "datatypes": list(datatypes.keys()), "datasubtypes": datasubtypes, "overview": datatypes}
     response = app.response_class(
-        response=json.dumps(data),
+        response=json.dumps(data, default=set_default),
         status=200,
         mimetype='application/json'
     )
@@ -549,7 +636,7 @@ def help():
 
 def start_app_from_args(args):
 
-    print(datetime.datetime.now(), "Loading finished")
+    logger.info("Starting From Args finished")
 
 
 def getCLParser():
@@ -557,6 +644,7 @@ def getCLParser():
 
     parser.add_argument('-p', '--port', type=int, help="port to run on", required=False, default=5005)
     parser.add_argument('-h', '--host', type=str, help="port to run on", required=False, default="0.0.0.0")
+    parser.add_argument('-v', '--view-all', action="store_true", default=False, help="View all elements with model?", required=False)
 
     return parser
 
@@ -571,6 +659,7 @@ if __name__ == '__main__':
     """
 
 
+
     parser = getCLParser()
 
     args = parser.parse_args()
@@ -579,6 +668,7 @@ if __name__ == '__main__':
         print(x, args.__dict__[x])
 
     print("Starting Flask on port", args.port)
+    loadConfigs()
 
     start_app_from_args(args)
 
