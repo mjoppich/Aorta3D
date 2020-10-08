@@ -11,7 +11,9 @@ sys.path.insert(0, str(os.path.dirname(os.path.realpath(__file__))) + "/../")
 
 import time
 import io
-
+from stl import mesh
+import stl
+import tempfile
 from flask import Flask, jsonify, request, redirect, url_for, send_from_directory, send_file, make_response
 import json
 import pprint
@@ -40,6 +42,8 @@ allConfigFiles = [config_path]
 def set_default(obj):
     if isinstance(obj, set):
         return list(obj)
+    if isinstance(obj, tuple):
+        return list(obj)
     raise TypeError
 
 # For a given file, return whether it's an allowed type or not
@@ -60,9 +64,7 @@ def models(filename):
     retFile = "../data/models/" +filename
     return send_from_directory("../data/models", filename)
 
-from stl import mesh
-import stl
-import tempfile
+
 
 
 @app.route('/get_model', methods=['POST'])
@@ -156,20 +158,35 @@ def fetchViewableData():
 
     reduced_data = []
     counter = 0
+
+    boundingBox = {"x": (0,0), "y": (0,0), "z": (0,0)}
+
     for elem in config_file:
 
         if not "path" in elem:
             continue
 
+        if not elem["path"].upper().endswith("STL"):
+            continue
+
         if args.view_all or elem.get("id").startswith("scheme"): 
             reduced_data.append(elem)
+
+            eStlPath = eval_path(__file__, elem["path"])
+            logger.warning("Loading stl path {}".format(eStlPath))
+
+            main_body = mesh.Mesh.from_file(eStlPath)
+        
+            boundingBox["x"] = ( float( min([boundingBox["x"][0], main_body.x.min()])), float(max([boundingBox["x"][1], main_body.x.max()])) )
+            boundingBox["y"] = ( float( min([boundingBox["y"][0], main_body.y.min()])), float(max([boundingBox["y"][1], main_body.y.max()])) )
+            boundingBox["z"] = ( float( min([boundingBox["z"][0], main_body.z.min()])), float(max([boundingBox["z"][1], main_body.z.max()])) )
 
             logger.warning("Adding viewable file {}".format(elem.get("id")))
     #if len(reduced_data) > 2:
     #    reduced_data = reduced_data[0:2]
 
     response = app.response_class(
-        response=json.dumps(reduced_data),
+        response=json.dumps({"bbox": boundingBox, "data": reduced_data}, default=set_default),
         status=200,
         mimetype='application/json'
     )

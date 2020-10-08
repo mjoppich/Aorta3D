@@ -200,7 +200,6 @@ export default class Aorta3DRenderer extends React.Component < Aorta3DRendererPr
 
         var scaleFactor = 0.5;//0.1;
         var scaleFactor2 = 2.7;//3;
-        var pushLevels = -15;//-30;
 
         //self.loadBaseElement(loader, "model/base/membrane1.small.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#ffffff", [0, 0, 0], {id: "config.json:mem1", descr: "Membrane 1", type_det: ["endothelial"]});
         //self.loadBaseElement(loader, "model/base/membrane2.small.stl", [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], "#9f9f9f", [0, 0, 0], {id: "config.json:mem2", descr: "Membrane 2", type_det: ["endothelial"]});
@@ -210,17 +209,21 @@ export default class Aorta3DRenderer extends React.Component < Aorta3DRendererPr
 
         axios.post(config.getRestAddress() + "/fetchViewableData", {}, config.axiosConfig)
         .then(function (response) {
+
+            var bbox = response.data.bbox;
+
+            var yStretch = bbox.y[1]-bbox.y[0]
+            var stepSize = yStretch / 100;
         
-          response.data.forEach(element => {
+          response.data.data.forEach(element => {
 
             if (element.bg_elem)
             {
                 self.loadBaseElement(loader, element.id, [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], element.color, element.selected_color || element.color , [0, 0, 0], element);
             } else {
-                
+                var elemLevel = element.level || 50;
                 // display stacked
-                self.loadBaseElement(loader, element.id, [1, pushLevels, 0], [scaleFactor/scaleFactor2, scaleFactor/scaleFactor2, scaleFactor/scaleFactor2], element.color, element.selected_color || element.color, [Math.PI / 2, element.right * Math.PI, 0], {id: element.id, descr: element.type});
-                pushLevels = pushLevels + 5//10
+                self.loadBaseElement(loader, element.id, [1, bbox.y[0]+elemLevel*stepSize, 0], [scaleFactor/scaleFactor2, scaleFactor/scaleFactor2, scaleFactor/scaleFactor2], element.color, element.selected_color || element.color, [Math.PI / 2, element.right * Math.PI, 0], {id: element.id, descr: element.type});
 
             }
           });  
