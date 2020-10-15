@@ -2,7 +2,7 @@
     {
         "id": "sc1.main",
         "type": "scrna",
-        "type_det": ["fibroblasts","macrophages", "smooth muscle cells"],
+        "type_det": ["fibroblasts","macrophages", "smooth muscle cells", "aorta", "plaque"],
         "region": "3",
         "location": "AR",
         "path": "../data/sc1.0/hybrid.mouse.bg.mouse/",
@@ -86,7 +86,7 @@
     {
         "id": "sc2.main",
         "type": "scrna",
-        "type_det": ["fibroblasts","macrophages", "smooth muscle cells"],
+        "type_det": ["fibroblasts","macrophages", "smooth muscle cells", "aorta", "plaque"],
         "region": "3",
         "location": "AR",
         "path": "../data/sc1.0/hybrid.human.bg.human/",

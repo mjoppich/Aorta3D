@@ -32,8 +32,13 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
 
 
 
-    handleElementSelected(element)
+    handleElementSelected(element, null_gene=false)
     {
+        if (null_gene)
+        {
+            this.handleSelectedGene(null);
+        }
+
         console.log("received element")
         console.log(element)
         this.setState({selected_element: element})
@@ -106,7 +111,7 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
                             spacing={(2) as GridSpacing}
                             style={{width: "100%", height: "100%"}}>
                             <Grid item xs style={{width: "100%"}}>
-                                <Aorta3DRenderer width={600} height={pageHeight} onSelectElement={(element) => this.handleElementSelected(element)}/>
+                                <Aorta3DRenderer width={600} height={pageHeight} onSelectElement={(element) => this.handleElementSelected(element, true)}/>
                             </Grid>
                             <Grid item xs style={{width: "100%"}}>
                                 <Aorta3DElemInfos

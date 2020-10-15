@@ -9,6 +9,10 @@ import FlatButton from 'material-ui/FlatButton';
 import MaterialTable from 'material-table';
 import { type } from 'os';
 
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+import FormGroup from '@material-ui/core/FormGroup';
+
 
 export interface Aorta3DRelatedExpsViewerProps {
     onSelectElement?: any,
@@ -154,6 +158,7 @@ export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DR
               { title: 'Sample Location', field: 'location' },
               { title: 'Plaque Level', field: 'level' },
               { title: "Plaque Rate", field: "plaqueRate", type: "numeric"},
+              { title: 'Blend', render: rowData => <FormGroup row><FormControlLabel control={<Switch onChange={() => {}} name="checkedA" /> } label="Secondary"/></FormGroup> },
               { title: 'Details', render: rowData => <FlatButton onClick={() => {this.getRowDetails(rowData)}}>Details</FlatButton> },
             ]}
             data={self.state.relatedexps}

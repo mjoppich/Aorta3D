@@ -1,6 +1,5 @@
 import os
 import json 
-import cv2
 import register_pair
 import stlstuff
 
@@ -53,8 +52,8 @@ def createStlModel( images, outname, outname_plaque, full=False, innerMargin=10,
         
         print(iidx, imgfile)
         
-        image = cv2.imread(imgfile)
-        rgbimg = rgb2gray(image)
+        image = skimage.io.imread(imgfile)
+        rgbimg = skimage.color.rgb2gray(image)
 
         maxX = max(maxX, rgbimg.shape[0])
         maxY = max(maxY, rgbimg.shape[1])
@@ -66,8 +65,8 @@ def createStlModel( images, outname, outname_plaque, full=False, innerMargin=10,
 
         print(iidx, imgfile)
         
-        image = cv2.imread(imgfile)
-        rgbimg = rgb2gray(image)
+        image = skimage.io.imread(imgfile)
+        rgbimg = skimage.color.rgb2gray(image)
                    
             
         for imgi in range(0, sliceWidth):
@@ -228,9 +227,9 @@ if __name__ == "__main__":
         fileInfo = fileInfos[infoID]
 
         imgPath = fileInfo["path_upgma"]
-        img = cv2.imread( imgPath )
-
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        img = skimage.io.imread(imgfile)
+        img = skimage.color.rgb2gray(img)
+        
         img = np.asarray(img, dtype=np.float32)
 
         images.append(img)
