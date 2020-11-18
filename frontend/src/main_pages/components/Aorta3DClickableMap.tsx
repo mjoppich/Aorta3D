@@ -10,13 +10,16 @@ export interface Aorta3DClickableMapProps {
     onSelectRegion?: any,
     element: any,
     width: any,
-    height: any
+    height: any,
+    blendedIDs?: any
 };
 export interface Aorta3DClickableMapState {
     eleminfo: any,
     pixelinfo: any,
     current_element: any,
-    current_image: any
+    current_image: any,
+    blendedImages: any,
+    blendedIDs: any
 };
 
 
@@ -27,13 +30,18 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
         current_element: {id: null},
         current_image: null,
         eleminfo: null,
-        pixelinfo: null
+        pixelinfo: null,
+        blendedIDs: null,
+        blendedImages: null
     }
 
     neo4jd3: any = null;
 
     canvas1: any;
     canvas2: any;
+
+    blendcanvasRef: any;
+    blendcanvas: any;
 
     drawing: any;
 
@@ -50,10 +58,12 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
 
         this.canvas1 = React.createRef();
         this.canvas2 = React.createRef();
+        this.blendcanvasRef = React.createRef();
 
 
         this.canvas = document.createElement('canvas');
         this.paintCanvas = document.createElement('canvas');
+        this.blendcanvas = document.createElement('canvas');
 
         this.region2type = {}
         this.pixel2region = {}
@@ -99,6 +109,47 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
         {
             console.log("Upadting current element")
             self.setState({current_element: this.props.element});
+        }
+
+        if (prevProps.blendedIDs !== this.props.blendedIDs)
+        {
+            self.setState({blendedIDs: this.props.blendedIDs});
+        }
+
+        if ((prevState.blendedIDs == null) || (prevState.blendedIDs !== self.state.blendedIDs)|| (prevState.blendedIDs !== self.state.blendedIDs))
+        {
+            // download blended image data here
+            self.state.blendedImages = [];
+
+            if (self.state.blendedIDs)
+            {
+
+                if (self.state.blendedIDs.length == 0)
+                {
+                    console.log("blendedIDs empty %s", self.state.blendedIDs)
+                    self.setState({blendedImages: []})
+                } else {
+                    console.log("blendedIDs: %s", self.state.blendedIDs)
+
+                    self.state.blendedIDs.forEach((elementID) => {
+
+                        axios.post(config.getRestAddress() + "/getElementInfoImage", {id: elementID}, config.axiosConfig)
+                        .then(function (response) {
+               
+                            self.state.blendedImages.push(`data:image/png;base64,${response.data.image}`)
+                            self.setState({blendedImages: self.state.blendedImages})
+                
+                        })
+                        .catch(function (error) {
+            
+                        });
+        
+                    })
+                }
+
+
+            }
+
         }
 
         if ((prevState.current_element == null) || (prevState.current_element.id !== self.state.current_element.id)|| (prevState.current_element.id !== self.state.current_element.id))
@@ -172,7 +223,6 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
         for (var i=0; i < pd1.length; ++i)
         {
             var xdist = Math.abs(pd1[i] - pd2[i])
-
             totalDist += xdist*xdist;
         }
 
@@ -185,11 +235,7 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
         var self=this;
         event.stopPropagation();
 
-        console.log("Canvas click")
-        console.log(event)
-
         var cvBR = this.canvas1.current.getBoundingClientRect();
-        console.log(cvBR)
 
         var posX = cvBR.left;
         var posY = cvBR.top;
@@ -200,48 +246,65 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
         var imageX = Math.round(self.imageOrigSize.x * clickX/this.props.width)
         var imageY = Math.round(self.imageOrigSize.y * clickY/this.props.height)
 
-        console.log(clickX/this.props.width + ";;" + clickY/this.props.height)
 
         //alert(clickX + " " + clickY + " ;; " + imageX + " " + imageY)
 
-        var pixelData = self.canvas.getContext("2d").getImageData(imageX, imageY, 1, 1).data;
+        //var pixelData2 = self.canvas1.current.getContext("2d").getImageData(imageX, imageY, 1, 1).data;
 
-        // clear the image
+        var imageContext = self.canvas1.current.getContext("2d");
+        var pixelData = imageContext.getImageData(clickX, clickY, 1, 1).data;
 
-        this.paintCanvas.width=this.imageOrigSize.x
-        this.paintCanvas.height=this.imageOrigSize.y
-        var paintCtx = this.paintCanvas.getContext('2d'); 
+        console.log('paintCanvas %s, %s', self.paintCanvas.width, self.paintCanvas.height)
+        console.log('canvas %s, %s', self.canvas.width, self.canvas.height)
+
+
+        this.paintCanvas.width=self.canvas.width
+        this.paintCanvas.height=self.canvas.height
         
-        paintCtx.clearRect(0,0,this.imageOrigSize.x, this.imageOrigSize.y)
+        var paintCtx = this.paintCanvas.getContext('2d'); 
+        paintCtx.clearRect(0,0,this.paintCanvas.width, this.paintCanvas.height)
 
-        console.log(this.imageOrigSize)
-        console.log(pixelData)
+        const targetData = paintCtx.createImageData(this.paintCanvas.width, this.paintCanvas.height);
+        const targetData32 = new Uint32Array(targetData.data.buffer);
 
         var imagePosTuple = [imageX, imageY]
         var paintedpixels = 0;
 
-        var origImageContext = self.canvas.getContext("2d");
+        var cvCtx = self.canvas.getContext("2d")
+        const sourceData = cvCtx.getImageData(0,0, this.canvas.width, this.canvas.height).data;
 
-        for (var i = 0; i < this.imageOrigSize.x; ++i)
+
+
+
+        for (var i = 0; i < self.canvas.width; ++i)
         {
-            for (var j = 0; j < this.imageOrigSize.y; ++j)
+            //console.log('%s, %s', "i loop", i)
+            for (var j = 0; j < self.canvas.height; ++j)
             {
 
-                var imageCol = origImageContext.getImageData(i, j, 1, 1).data;
 
-                var pixelDist = this.getPixelDist(pixelData, imageCol);
+                var index = (i + j * self.canvas.width) * 4;
+                const red   = sourceData[index];
+                const green = sourceData[index + 1];
+                const blue  = sourceData[index + 2];
+                const alpha = sourceData[index + 3];
+
+                const colorValues = [red, green, blue, alpha];
+                const pixelDist = this.getPixelDist(pixelData, colorValues);
+
+                //console.log('%s %s, %s %s', i,j, pixelData, colorValues, pixelDist)
 
                 if ( pixelDist < 2 )
-                {                                
-                    //ctx.fillStyle="rgba("+pixelData[0]+", "+pixelData[1]+", "+pixelData[2]+", 0.5)";
-                    paintCtx.fillStyle="rgba(255,0,0, 1.0)";
-                    paintCtx.fillRect(i,j,1,1)
-                    paintedpixels+=1
-
+                {
+                    targetData32[i + j * self.canvas.width] = 0xFF0000FF;
                 }
+
+                continue
 
             }
         }
+
+        paintCtx.putImageData(targetData,0,0);
 
         let paintImage = new Image();
         paintImage.width=this.imageOrigSize.x
@@ -249,15 +312,11 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
         paintImage.onload = function() {
             if (self.canvas2.current)
             {
-                console.log("painting canvas2")
                 self.canvas2.current.width = self.props.width;
                 self.canvas2.current.height = self.props.height;
 
                 self.canvas2.current.getContext("2d").clearRect(0, 0, self.props.width, self.props.height);
                 self.canvas2.current.getContext("2d").drawImage(paintImage, 0, 0, self.props.width, self.props.height)
-            } else {
-                console.log("canvas2 empty")
-                console.log(self.canvas2)
             }
 
             var pixelRegion = self.pixel2region[imagePosTuple.join("_")]
@@ -275,13 +334,11 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
 
                 const clone = JSON.parse(JSON.stringify(self.state.current_element));
                 clone["cluster"] = pixelRegion
-                console.log(clone)
 
                 self.props.onSelectRegion(clone);
             }
 
-            console.log("pixelinfo finished");
-            console.log(pixelinfo);
+
             self.setState({pixelinfo: pixelinfo})
             
         };
@@ -294,6 +351,54 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
 
     }
 
+    setTransparentColor(inCanvas, transparentColor=[68,1,84,255])
+    {
+
+        var cvCtx = inCanvas.getContext("2d")
+        const sourceData = cvCtx.getImageData(0,0, inCanvas.width, inCanvas.height);
+        var transparentPixels = 0;
+
+        for (var i = 0; i < inCanvas.width; ++i)
+        {
+            //console.log('%s, %s', "i loop", i)
+            for (var j = 0; j < inCanvas.height; ++j)
+            {
+
+                var index = (i + j * inCanvas.width) * 4;
+                var red   = sourceData.data[index];
+                var green = sourceData.data[index + 1];
+                var blue  = sourceData.data[index + 2];
+                var alpha = sourceData.data[index + 3];
+
+                const colorValues = [red, green, blue, alpha];
+                const pixelDist = this.getPixelDist(transparentColor, colorValues);
+
+                //console.log('%s %s, %s %s', i,j, pixelData, colorValues, pixelDist)
+
+                if ( pixelDist < 2 )
+                {
+                    red = 0;
+                    green = 0;
+                    blue = 0;
+                    alpha = 0;    
+                    
+                    sourceData.data[index] = red;
+                    sourceData.data[index+1] = green;
+                    sourceData.data[index+2] = blue;
+                    sourceData.data[index+3] = alpha;
+
+                    transparentPixels += 1;
+                }
+
+
+            }
+        }
+
+        console.log("Manipulated canvas. Set %s transparent of %s", transparentPixels, inCanvas.width*inCanvas.height)
+
+        cvCtx.putImageData(sourceData,0,0);
+    }
+
 
     render() {
 
@@ -303,44 +408,91 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
         var pixelRegion = "Unknown";
         var pixelType = "Unknown";
 
-        console.log("clickable map render")
-        console.log(this.state)
-
         if ((this.state) && (this.state.pixelinfo))
         {
             pixelSelected = "X=" + this.state.pixelinfo.position.x + ", Y=" + this.state.pixelinfo.position.y;
             pixelRegion = this.state.pixelinfo.region;
             pixelType = this.state.pixelinfo.types ? this.state.pixelinfo.types.join(", ") : "Unknown"
 
-            //console.log(pixelSelected)
-            //console.log(pixelRegion)
-            //console.log(pixelType)
         }
 
         if (this.state.current_image)
         {
             this.drawing = new Image();
-            this.drawing.src = this.state.current_image;
             this.drawing.onload = function() {
-                console.log(self.drawing.width)
-                console.log(self.drawing.height)
-                console.log(self.drawing)
 
                 self.imageOrigSize.x = self.drawing.width
                 self.imageOrigSize.y = self.drawing.height
 
-                self.canvas.width = self.drawing.width;
-                self.canvas.height = self.drawing.height;
+                console.log('imageOrigSize %s, %s', self.imageOrigSize.x, self.imageOrigSize.y)
 
-                self.canvas.getContext("2d").drawImage(self.drawing, 0, 0, self.drawing.width, self.drawing.height);
+                self.canvas.getContext("2d").imageSmoothingEnabled=false;
+                self.canvas.width = self.imageOrigSize.x;
+                self.canvas.height = self.imageOrigSize.y;
+                self.canvas.getContext("2d").drawImage(self.drawing,0,0, self.imageOrigSize.x,self.imageOrigSize.y);
 
-                self.canvas1.current.width = self.props.width;
-                self.canvas1.current.height = self.props.height;
+                if (self.canvas1.current)
+                {
+                    self.canvas1.current.getContext("2d").imageSmoothingEnabled=false;
 
-                self.canvas1.current.getContext("2d").drawImage(self.drawing,0,0, self.props.width,self.props.height);
+                    self.canvas1.current.width = self.props.width;
+                    self.canvas1.current.height = self.props.height;
+    
+                    self.canvas1.current.getContext("2d").drawImage(self.drawing,0,0, self.props.width,self.props.height);
+
+                    self.setTransparentColor(self.canvas1.current)
+                }
 
             };
+            this.drawing.src = this.state.current_image;
+
         }
+
+
+        var belowOpacity = "100%";
+        var mainOpacity = "100%";
+
+        if (self.blendcanvasRef.current)
+        {
+
+            self.blendcanvasRef.current.width = self.canvas1.current.width;
+            self.blendcanvasRef.current.height = self.canvas1.current.height;
+
+            var ctx = self.blendcanvasRef.current.getContext("2d");
+            ctx.clearRect(0, 0, self.canvas1.current.height, self.canvas1.current.height);
+        }
+
+        if ((this.state.blendedImages) && (this.state.blendedImages.length > 0))
+        {
+            if (self.blendcanvasRef.current)
+            {
+                var ctx = self.blendcanvasRef.current.getContext("2d");
+
+                ctx.globalAlpha = 1.0/(this.state.blendedImages.length);
+    
+                this.state.blendedImages.forEach(element => {
+    
+                    var blendDrawing = new Image();
+                    blendDrawing.src = element;
+                    blendDrawing.onload = function() {
+    
+                        blendDrawing.width=self.canvas1.current.width;
+                        blendDrawing.height=self.canvas1.current.height;
+               
+                        ctx.drawImage(blendDrawing, 0, 0, blendDrawing.width, blendDrawing.height);
+        
+        
+                    };
+                    
+                });
+
+                mainOpacity = "75%";
+            }
+
+
+        }
+
+
 
         return (
             <div>
@@ -348,9 +500,11 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
                     <tr>
                         <td style={{width: this.props.width+10, height: this.props.height+10}}>
                             <div style={{position:"relative",width: this.props.width, height: this.props.height}}>
-                                <canvas ref={this.canvas1} style={{top: "0px", left: "0px", position: "absolute", zIndex: 1}}>
+                                <canvas ref={this.blendcanvasRef} style={{opacity: belowOpacity, top: "0px", left: "0px", position: "absolute", zIndex: 1}}>
                                 </canvas>
-                                <canvas ref={this.canvas2} style={{top: "0px", left: "0px", position: "absolute", zIndex: 2}}>
+                                <canvas ref={this.canvas1} style={{opacity: mainOpacity, top: "0px", left: "0px", position: "absolute", zIndex: 2}}>
+                                </canvas>
+                                <canvas ref={this.canvas2} style={{top: "0px", left: "0px", position: "absolute", zIndex: 3}}>
                                 </canvas>
                             </div>
                         </td>

@@ -13,7 +13,7 @@ import { json } from 'body-parser';
 
 
 export interface ExplorePageProps { switchTab?: any };
-export interface ExplorePageState { selected_element: any, selected_element_exp: any, selected_gene: any};
+export interface ExplorePageState { selected_element: any, selected_element_exp: any, selected_blended_data: any, selected_gene: any};
 
 export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePageState> {
 
@@ -50,6 +50,14 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
         console.log(element)
         this.setState({selected_element_exp: element, selected_gene: null})
     }
+
+    handleBlendedDataSelected(elements)
+    {
+        console.log("Element details selected")
+        console.log(elements)
+        this.setState({selected_blended_data: elements})
+    }
+
     handleSelectedGene(element)
     {
         console.log("Gene selected")
@@ -71,11 +79,6 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
         console.log(this.state)
 
         var pageHeight = 600;
-
-
-        // new THREE.PerspectiveCamera(45, 2, 0.1, 1000)
-
-        // backgroundColor: "#FF0000", backgroundColor: "#00FF00", backgroundColor: "#0000FF", backgroundColor: "#FF00FF"
 
         return (
 
@@ -124,11 +127,13 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
                                 <Aorta3DRelatedExpsViewer
                                     element={this.state.selected_element}
                                     onSelectElement={(elem) => this.handleExpDetailSelected(elem)}
+                                    onBlendedData={(elem) => this.handleBlendedDataSelected(elem)}
                                     selectedGene={this.state.selected_gene}/>
                             </Grid>
                             <Grid item xs style={{width: "100%"}}> 
                                 <Aorta3DElemInfos
                                     element={this.state.selected_element_exp}
+                                    blendedIDs={this.state.selected_blended_data}
                                     onSelectElement={(element) => this.handleElementSelected(element)}
                                     onSelectGene={(rowData) => self.handleSelectedGene(rowData)} />
                             </Grid>

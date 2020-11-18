@@ -5,18 +5,20 @@ import stlstuff
 
 import numpy as np
 import sys, argparse, os, imageio
-from skimage import io, data
+import skimage
 from skimage.transform import warp
 from skimage.color import rgb2gray
 from skimage import img_as_ubyte
 from skimage.transform import resize, warp
+from skimage import measure
+
+
 import matplotlib
 
 import nrrd
 import glob
 
 from numpy import sin, cos, pi
-from skimage import measure
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
@@ -53,7 +55,7 @@ def createStlModel( images, outname, outname_plaque, full=False, innerMargin=10,
         print(iidx, imgfile)
         
         image = skimage.io.imread(imgfile)
-        rgbimg = skimage.color.rgb2gray(image)
+        rgbimg = rgb2gray(image)
 
         maxX = max(maxX, rgbimg.shape[0])
         maxY = max(maxY, rgbimg.shape[1])
@@ -227,9 +229,9 @@ if __name__ == "__main__":
         fileInfo = fileInfos[infoID]
 
         imgPath = fileInfo["path_upgma"]
-        img = skimage.io.imread(imgfile)
+        img = skimage.io.imread(imgPath)
         img = skimage.color.rgb2gray(img)
-        
+
         img = np.asarray(img, dtype=np.float32)
 
         images.append(img)

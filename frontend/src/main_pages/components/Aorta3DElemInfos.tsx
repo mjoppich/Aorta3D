@@ -20,10 +20,12 @@ export interface Aorta3DElemInfosProps {
     onSelectElement?: any
     element?: any
     onSelectGene?: any
+    blendedIDs?:any
 };
 export interface Aorta3DElemInfosState {
     eleminfo: any,
     element: any,
+    blendedIDs: any,
     elem_image: any,
     selected_region: any
 };
@@ -36,6 +38,7 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
 
     state = {
         element: {id: null},
+        blendedIDs: null,
         eleminfo: null,
         elem_image: "",
         selected_region: null
@@ -68,6 +71,11 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         if (prevProps.element !== this.props.element)
         {
             self.setState({element: this.props.element});
+        }
+
+        if (prevProps.blendedIDs !== this.props.blendedIDs)
+        {
+            self.setState({blendedIDs: this.props.blendedIDs});
         }
 
         if ((prevState.element == null) || (prevState.element.id !== self.state.element.id)|| (prevState.element.id !== self.state.element.id))
@@ -144,10 +152,12 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         var isMSI = (self.state!= null) && (self.state.eleminfo != null) && (["msi"].indexOf(self.state.eleminfo["type"]) >= 0)
         var isScheme = (self.state!= null) && (self.state.eleminfo != null) && (["scheme"].indexOf(self.state.eleminfo["type"]) >= 0)
         var isSCRNASeq = (self.state!= null) && (self.state.eleminfo != null) && (["scrna"].indexOf(self.state.eleminfo["type"]) >= 0)
+        var isImage = (self.state!= null) && (self.state.eleminfo != null) && (["image"].indexOf(self.state.eleminfo["type"]) >= 0)
 
         console.log("Is this msi " + isMSI);
         console.log("Is this scheme " + isScheme);
         console.log("Is this scrna " + isSCRNASeq);
+        console.log("Is this scrna " + isImage);
         console.log(self.state)
         console.log(self.state.eleminfo)
 
@@ -190,12 +200,16 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         if (isScheme)
         {
             detailElement.push(
-                <Grid item xs key={detailElement.length}><Aorta3DClickableMap element={self.state.eleminfo} onSelectRegion={(regionInfo) => self.handleSelectedRegionChange(regionInfo)} /></Grid>
+                <Grid item xs key={detailElement.length}>
+                    <Aorta3DClickableMap element={self.state.eleminfo} blendedIDs={self.state.blendedIDs} onSelectRegion={(regionInfo) => self.handleSelectedRegionChange(regionInfo)} />
+                    </Grid>
             )
         } else if (isMSI)
         {
             detailElement.push(
-                <Grid item xs key={detailElement.length}><Aorta3DClickableMap element={self.state.eleminfo} onSelectRegion={(regionInfo) => self.handleSelectedRegionChange(regionInfo)} /></Grid>)
+                <Grid item xs key={detailElement.length}>
+                    <Aorta3DClickableMap element={self.state.eleminfo} blendedIDs={self.state.blendedIDs} onSelectRegion={(regionInfo) => self.handleSelectedRegionChange(regionInfo)} />
+                </Grid>)
             extraElements.push(
                 <Aorta3DDEResViewer key={extraElements.length} element={self.state.selected_region} onSelectGene={(rowData) => self.handleSelectedGene(rowData)} exp_type={self.state.eleminfo["type"]} />
                 )
@@ -203,7 +217,7 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         } else if (isSCRNASeq) {
             extraElements.push(<Aorta3DDEResViewer element={self.state.eleminfo} onSelectGene={(rowData) => self.handleSelectedGene(rowData)} exp_type={self.state.eleminfo["type"]}/>)
         } else {
-            detailElement.push(<Grid item xs key={detailElement.length}><img style={{maxHeight: "200px", maxWidth: "400px"}} src={`data:image/png;base64,${self.state["elem_image"]}`} /></Grid>)
+            detailElement.push(<Grid item xs key={detailElement.length}><img style={{minHeight: "200px", minWidth: "200px", maxHeight: "400px", maxWidth: "400px"}} src={`data:image/png;base64,${self.state["elem_image"]}`} /></Grid>)
         }
 
         var self = this;

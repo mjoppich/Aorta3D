@@ -211,8 +211,7 @@ export default class Aorta3DRenderer extends React.Component < Aorta3DRendererPr
         .then(function (response) {
 
             var bbox = response.data.bbox;
-
-            var yStretch = bbox.y[1]-bbox.y[0]
+            var yStretch = (bbox.y[1]-bbox.y[0]) * scaleFactor;
             var stepSize = yStretch / 100;
         
           response.data.data.forEach(element => {
@@ -221,16 +220,16 @@ export default class Aorta3DRenderer extends React.Component < Aorta3DRendererPr
             {
                 self.loadBaseElement(loader, element.id, [0, 0, 0], [scaleFactor, scaleFactor, scaleFactor], element.color, element.selected_color || element.color , [0, 0, 0], element);
             } else {
-                var elemLevel = element.level || 50;
                 // display stacked
-                self.loadBaseElement(loader, element.id, [1, bbox.y[0]+elemLevel*stepSize, 0], [scaleFactor/scaleFactor2, scaleFactor/scaleFactor2, scaleFactor/scaleFactor2], element.color, element.selected_color || element.color, [Math.PI / 2, element.right * Math.PI, 0], {id: element.id, descr: element.type});
-
+                var elemLevel = element.level || 50;
+                var levelPos = (-0.5*yStretch) +elemLevel*stepSize;
+                self.loadBaseElement(loader, element.id, [1, levelPos, 0], [scaleFactor/scaleFactor2, scaleFactor/scaleFactor2, scaleFactor/scaleFactor2], element.color, element.selected_color || element.color, [Math.PI / 2, element.right * Math.PI, 0], {id: element.id, descr: element.type});
             }
           });  
 
         })
         .catch(function (error) {
-          console.log(error)
+          console.error(error)
         });
 
 

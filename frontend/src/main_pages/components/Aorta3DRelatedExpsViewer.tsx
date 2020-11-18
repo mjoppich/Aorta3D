@@ -16,6 +16,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 
 export interface Aorta3DRelatedExpsViewerProps {
     onSelectElement?: any,
+    onBlendedData?: any,
     element?: any,
     selectedGene?: any
 };
@@ -66,6 +67,27 @@ export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DR
         if (this.isFunction(this.props.onSelectElement))
         {
             this.props.onSelectElement(rowdata);
+        }
+
+    }
+
+    blendedids = [];
+
+
+    blendedData(toggleElement)
+    {   
+
+        var elemPos = this.blendedids.indexOf(toggleElement);
+        if (elemPos >= 0)
+        {
+            this.blendedids.splice(elemPos, 1)
+        } else {
+            this.blendedids.push(toggleElement)
+        }
+
+        if (this.isFunction(this.props.onBlendedData))
+        {
+            this.props.onBlendedData(this.blendedids);
         }
 
     }
@@ -158,7 +180,7 @@ export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DR
               { title: 'Sample Location', field: 'location' },
               { title: 'Plaque Level', field: 'level' },
               { title: "Plaque Rate", field: "plaqueRate", type: "numeric"},
-              { title: 'Blend', render: rowData => <FormGroup row><FormControlLabel control={<Switch onChange={() => {}} name="checkedA" /> } label="Secondary"/></FormGroup> },
+              { title: 'Blend', render: rowData => <FormGroup row><FormControlLabel control={<Switch onChange={() => {this.blendedData(rowData.id)}} name="checkedA" /> } label=""/></FormGroup> },
               { title: 'Details', render: rowData => <FlatButton onClick={() => {this.getRowDetails(rowData)}}>Details</FlatButton> },
             ]}
             data={self.state.relatedexps}

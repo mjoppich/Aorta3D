@@ -585,14 +585,19 @@ def getElementImage():
     testImage = os.path.dirname(os.path.abspath(__file__)) + "/../data/images/test_image.png"
 
     if data == None or not "png_path" in data:
+        print("Image not found", data)
         fname = testImage
     
     else:   
-        fname = os.path.dirname(os.path.abspath(__file__)) + "/../" + data.get("png_path")
+        fname = data.get("png_path")
+
+    fname = eval_path(os.path.dirname(os.path.abspath(__file__)), fname)
 
     if not os.path.exists(fname) or fname == None:
+        print("Image not found", fname)
         fname = testImage
 
+    print("Loading image", fname)
 
     encoded = base64.b64encode(open(fname, "rb").read())
 
