@@ -84,6 +84,7 @@ export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DR
         } else {
             this.blendedids.push(toggleElement)
         }
+        console.log("Handling toggling %s", this.blendedids)
 
         if (this.isFunction(this.props.onBlendedData))
         {
@@ -180,7 +181,7 @@ export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DR
               { title: 'Sample Location', field: 'location' },
               { title: 'Plaque Level', field: 'level' },
               { title: "Plaque Rate", field: "plaqueRate", type: "numeric"},
-              { title: 'Blend', render: rowData => <FormGroup row><FormControlLabel control={<Switch onChange={() => {this.blendedData(rowData.id)}} name="checkedA" /> } label=""/></FormGroup> },
+              { title: 'Blend', render: rowData => <FormGroup row><FormControlLabel control={<Switch onChange={() => {this.blendedData(rowData.id)}}/> } label=""/></FormGroup> },
               { title: 'Details', render: rowData => <FlatButton onClick={() => {this.getRowDetails(rowData)}}>Details</FlatButton> },
             ]}
             data={self.state.relatedexps}

@@ -23,17 +23,6 @@
         "level": 30
     },
     {
-        "id": 3,
-        "type": "scheme",
-        "type_det": ["aorta", "plaque"],
-        "color": "#000090",
-        "right": 0,
-        "path": "../data/models/massive_plaque/massive_plaque.small.stl",
-        "png_path": "../data/models/massive_plaque/massive_plaque.small.png",
-        "info_path": "../data/models/massive_plaque/massive_plaque.info",
-        "level": 40
-    },
-    {
         "id": 2,
         "type": "scheme",
         "type_det": ["aorta", "plaque"],
@@ -42,6 +31,17 @@
         "path": "../data/models/medium_plaque/medium_plaque.small.stl",
         "png_path": "../data/models/medium_plaque/medium_plaque.small.png",
         "info_path": "../data/models/medium_plaque/medium_plaque.info",
+        "level": 40
+    },
+    {
+        "id": 3,
+        "type": "scheme",
+        "type_det": ["aorta", "plaque"],
+        "color": "#000090",
+        "right": 0,
+        "path": "../data/models/massive_plaque/massive_plaque.small.stl",
+        "png_path": "../data/models/massive_plaque/massive_plaque.small.png",
+        "info_path": "../data/models/massive_plaque/massive_plaque.info",
         "level": 60
     },
     {
@@ -53,7 +53,7 @@
         "path": "../data/models/rupture_plaque/rupture_plaque.small.stl",
         "png_path": "../data/models/rupture_plaque/rupture_plaque.small.png",
         "info_path": "../data/models/rupture_plaque/rupture_plaque.info",
-        "level": 90
+        "level": 70
     }
 
     ,

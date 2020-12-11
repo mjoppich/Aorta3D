@@ -27,7 +27,8 @@ export interface Aorta3DElemInfosState {
     element: any,
     blendedIDs: any,
     elem_image: any,
-    selected_region: any
+    selected_region: any,
+    selected_intensity_mass: any
 };
 
 
@@ -41,7 +42,8 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         blendedIDs: null,
         eleminfo: null,
         elem_image: "",
-        selected_region: null
+        selected_region: null,
+        selected_intensity_mass: null
     }
 
     constructor(props) {
@@ -144,6 +146,20 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         }
     }
 
+    handleSelectedMass( selectedMass)
+    {
+        console.log("selected mass in Aorta3DElemInfos")
+        console.log(selectedMass)
+
+        if (this.state.selected_intensity_mass == selectedMass)
+        {
+            selectedMass = 0;
+            console.log("selected mass in Aorta3DElemInfos set 0")
+        }
+
+        this.setState({selected_intensity_mass: selectedMass})
+    }
+
 
     render() {
 
@@ -208,10 +224,17 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         {
             detailElement.push(
                 <Grid item xs key={detailElement.length}>
-                    <Aorta3DClickableMap element={self.state.eleminfo} blendedIDs={self.state.blendedIDs} onSelectRegion={(regionInfo) => self.handleSelectedRegionChange(regionInfo)} />
+                    <Aorta3DClickableMap    element={self.state.eleminfo}
+                                            blendedIDs={self.state.blendedIDs}
+                                            selectedMass={self.state.selected_intensity_mass}
+                                            onSelectRegion={(regionInfo) => self.handleSelectedRegionChange(regionInfo)} />
                 </Grid>)
             extraElements.push(
-                <Aorta3DDEResViewer key={extraElements.length} element={self.state.selected_region} onSelectGene={(rowData) => self.handleSelectedGene(rowData)} exp_type={self.state.eleminfo["type"]} />
+                <Aorta3DDEResViewer key={extraElements.length}
+                                    element={self.state.selected_region}
+                                    onSelectGene={(rowData) => self.handleSelectedGene(rowData)}
+                                    onSelectMass={(rowData) => self.handleSelectedMass(rowData)}
+                                    exp_type={self.state.eleminfo["type"]} />
                 )
 
         } else if (isSCRNASeq) {

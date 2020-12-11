@@ -14,6 +14,7 @@ import Plot from 'react-plotly.js';
 
 export interface Aorta3DDEResViewerProps {
     onSelectGene?: any,
+    onSelectMass?: any,
     element: any,
     exp_type: any,
 };
@@ -44,6 +45,16 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
     {
         console.log(rowdata.gene)
         this.props.onSelectGene(rowdata.gene)
+    }
+
+    getIntensityDetails(rowdata)
+    {
+        console.log(rowdata.gene)
+
+        if (this.isFunction(this.props.onSelectMass))
+        {
+            this.props.onSelectMass(rowdata.gene)
+        }
     }
 
 
@@ -156,6 +167,7 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
                     { title: 'q-value', field: 'qvalue' },
                     { title: 'Mean Intensity', field: 'mean' },
                     { title: 'Mean Intensity (Background)', field: 'mean_bg' },
+                    { title: 'IntensityMap', render: rowData => <FlatButton onClick={() => {this.getIntensityDetails(rowData)}}>IntensityMap</FlatButton> },
                     { title: 'Details', render: rowData => <FlatButton onClick={() => {this.getRowDetails(rowData)}}>Details</FlatButton> },
                   ]
 

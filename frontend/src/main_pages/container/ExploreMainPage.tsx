@@ -53,8 +53,7 @@ export class ExploreMainPage extends React.Component<ExplorePageProps, ExplorePa
 
     handleBlendedDataSelected(elements)
     {
-        console.log("Element details selected")
-        console.log(elements)
+        console.log("Element details selected: %s", elements)
         this.setState({selected_blended_data: elements})
     }
 
