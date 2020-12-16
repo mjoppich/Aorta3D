@@ -135,7 +135,7 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
 
         }
 
-        if (nextProps.selectedMass !== this.state.selectedMass)
+        if ((nextProps.selectedMass !== this.state.selectedMass) && (nextProps.selectedMass !== null))
         {
             
             console.log("selectedMass: %s", nextProps.blendedIDs)
@@ -369,7 +369,11 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
     {
         var self=this;
         event.stopPropagation();
-
+        if (!this.canvas1.current)
+        {
+            console.log("Canvas click deferred!")
+            return
+        }
         var cvBR = this.canvas1.current.getBoundingClientRect();
 
         var posX = cvBR.left;
@@ -672,8 +676,9 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
                                 </canvas>
                                 <canvas ref={this.canvas1} style={{opacity: mainOpacity, top: "0px", left: "0px", position: "absolute", zIndex: 2}}>
                                 </canvas>
-                                <canvas ref={this.canvas2} style={{top: "0px", left: "0px", position: "absolute", zIndex: 3}}></canvas>
-                                <canvas ref={this.massCanvasRef} style={{top: "0px", left: "0px", position: "absolute", zIndex: 4}}></canvas>
+                                <canvas ref={this.massCanvasRef} style={{top: "0px", left: "0px", position: "absolute", zIndex: 3}}></canvas>
+                                <canvas ref={this.canvas2} style={{top: "0px", left: "0px", position: "absolute", zIndex: 4}}></canvas>
+
                             </div>
                         </td>
                         <td>
