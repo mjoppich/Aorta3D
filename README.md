@@ -3,7 +3,7 @@
     cd frontend
     npm install
 
-After installation, edit file `node_modules/material-table/types/index.d.ts` and remove line 235: `searchText?: string;` . Then continue:
+After installation, edit file `./node_modules/reaviz/dist/src/common/utils/position.d.ts` and insert the PointObjectNotation definition `type PointObjectNotation = { x: number; y: number };` . Then continue:
 
     npm run build:dev
 

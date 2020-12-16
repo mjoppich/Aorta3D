@@ -483,6 +483,45 @@ def getElementInfoImage():
     return response
 
 
+def get_elem_info_path(fetchID, attr):
+    config_file = loadConfigs()
+
+    elementData = None
+    for elem in config_file:
+        if elem.get("id") == fetchID:
+            elementData = elem
+            break
+
+    if elementData == None:
+        return None
+
+    if attr in elementData:
+        eImgPath = eval_path(__file__, elementData[attr])
+
+        return eImgPath
+
+    elif "info_path" in elementData:
+        eInfoPath = eval_path(__file__, elementData["info_path"])
+
+        with open(eInfoPath) as f:
+            elem_info_file = json.load(f)
+            data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
+
+        assert(len(data) <= 1)
+
+        if len(data) == 0:
+            data = {}
+        elif len(data) == 1:
+            data = data[0]
+
+        if attr in data:
+            return eval_path(__file__, data[attr])
+
+    return None
+
+
+
+
 @app.route('/getElementInfo', methods=['GET', 'POST'])
 def getElementInfo():
 
