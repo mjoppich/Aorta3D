@@ -5,6 +5,11 @@ import regex
 import sys
 import os
 import shlex
+import h5py
+
+import matplotlib as mpl
+mpl.use('Agg')
+import matplotlib.pyplot as plt
 
 sys.path.insert(0, str(os.path.dirname(os.path.realpath(__file__))) + "/../")
 
@@ -430,6 +435,90 @@ def getElementInfoDE():
     )
     return response
 
+def get_elem_info_path(fetchID, attr):
+    config_file = loadConfigs()
+
+    elementData = None
+    for elem in config_file:
+        if elem.get("id") == fetchID:
+            elementData = elem
+            break
+
+    if elementData == None:
+        return None
+
+    if attr in elementData:
+        eImgPath = eval_path(file, elementData[attr])
+
+        return eImgPath
+
+    elif "info_path" in elementData:
+        eInfoPath = eval_path(file, elementData["info_path"])
+
+        with open(eInfoPath) as f:
+            elem_info_file = json.load(f)
+            data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
+
+        assert(len(data) <= 1)
+
+        if len(data) == 0:
+            data = {}
+        elif len(data) == 1:
+            data = data[0]
+
+        if attr in data:
+            return eval_path(file, data[attr])
+
+    return None
+
+@app.route('/getElementMass', methods=['GET', 'POST'])
+def getElementMass():
+
+    content = request.get_json(silent=True)
+    print(content)
+    fetchID = content.get("id", -1)
+    fetchMz = content.get("mass", -1)
+    print("id ", fetchID)
+    print("mass ", fetchMz)
+    if fetchID == -1 or fetchMz == -1:
+        response = app.response_class(
+            response=json.dumps({}),
+            status=400,
+            mimetype='application/json'
+        )
+        return response
+
+    min_k = None
+    min_diff = float('inf')
+
+    outdata = {}
+    path = get_elem_info_path(fetchID, "hdf5_file")
+    with h5py.File(path, 'r') as f:
+        data = f['intensities']
+        for k in data.keys():
+            cur_diff = abs(f['intensities'][k].attrs['mz'] - mz)
+            if cur_diff < min_diff:
+                min_k = k
+                min_diff = cur_diff
+
+        plot_data = np.copy(data[min_k])
+        plt.imshow(plot_data)
+
+        pic_IObytes = io.BytesIO()
+        plt.savefig(pic_IObytes,  format='png')
+        pic_IObytes.seek(0)
+        pic_hash = base64.b64encode(pic_IObytes.read())
+
+        plt.close()
+        f.close()
+        outdata['image'] = pic_hash
+
+    response = app.response_class(
+        response=json.dumps(outdata),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 
 @app.route('/getElementInfoImage', methods=['GET', 'POST'])
 def getElementInfoImage():
