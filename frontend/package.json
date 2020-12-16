@@ -80,7 +80,7 @@
     "three-stl-loader": "^1.0.6",
     "orbit-controls": "^1.2.4",
     "perspective-camera": "^2.0.1",
-    "material-table": ">=1.57.2"
+    "material-table": "^1.69.2"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",

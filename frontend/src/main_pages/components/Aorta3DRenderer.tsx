@@ -342,13 +342,7 @@ export default class Aorta3DRenderer extends React.Component < Aorta3DRendererPr
             var controlsUnset = this.state.glControls === null;
             var raycasterUnset = this.state.glRaycaster === null;
             var sceneUnset = this.state.glScene === null;
-    
-            console.log("render")
-            console.log("Camera unset " + cameraUnset)
-            console.log("controls unset " + controlsUnset)
-            console.log("ray unset " + raycasterUnset)
-            console.log("scene unset " + sceneUnset)
-            
+               
             var allUnset = cameraUnset || controlsUnset || raycasterUnset || sceneUnset;
             
     

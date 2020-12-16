@@ -11,6 +11,7 @@ from skimage.color import rgb2gray
 from skimage import img_as_ubyte
 from skimage.transform import resize, warp
 from skimage import measure
+from skimage import io
 
 
 import matplotlib
@@ -229,7 +230,7 @@ if __name__ == "__main__":
         fileInfo = fileInfos[infoID]
 
         imgPath = fileInfo["path_upgma"]
-        img = skimage.io.imread(imgPath)
+        img = io.imread(imgPath)
         img = skimage.color.rgb2gray(img)
 
         img = np.asarray(img, dtype=np.float32)

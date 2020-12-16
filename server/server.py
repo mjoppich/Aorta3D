@@ -218,7 +218,7 @@ def geneFound(elementData, gene):
     if elementData != None and "de_data" in elementData:
         try:
             with open(elementData["de_data"], 'r') as fin:
-                print("Loading", elementData["de_data"])
+                print("Loading de_data file", elementData["de_data"])
 
                 colname2idx = {}
                 for lidx, line in enumerate(fin):
