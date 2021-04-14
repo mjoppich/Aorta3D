@@ -141,7 +141,7 @@ def loadConfigs():
 
     for configFile in allConfigFiles:
 
-        #logger.warning("Loading config {}".format(configFile))
+        logger.warning("Loading config {}".format(configFile))
         
         with open(os.path.join(config_path, configFile)) as f:
             config_file = json.load(f)
@@ -207,13 +207,14 @@ def geneFound(elementData, gene):
             with open(elementData["info_path"]) as f:
                 print("Loading", elementData["info_path"])
                 elem_info_file = json.load(f)
+                print(elem_info_file)
                 data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
-
+                print(data)
             if len(data) > 0:
                 data = data[0]
 
                 elementData = data.get("info", {})#.get(content["cluster"], None)
-
+                print(elementData)
             else:
                 data = None
 
@@ -348,7 +349,7 @@ def getRelatedData():
 
             ints = list(set(detTypes) & set(targetInfo.get("type_det", [])))
 
-            if len(ints) > 0:
+            if len(ints) > 0 or elem.get("type", []) in ['scrna']:
                 data.append(elem)
 
 
@@ -368,7 +369,7 @@ def getElementInfoDE():
     content = request.get_json(silent=True)
     fetchID = content.get("id", -1)
 
-    logger.error("Content: {}".format(content))
+    logger.error("Content!!!!!: {}".format(content))
 
     config_file = loadConfigs()
 
@@ -395,7 +396,6 @@ def getElementInfoDE():
         if len(data) > 0:
             data = data
             elementData = data.get("info", {}).get(content["cluster"], None)
-
         else:
             data = None
 
@@ -409,7 +409,7 @@ def getElementInfoDE():
     if elementData != None and "de_data" in elementData:
 
         deDataPath = eval_path(infoFilePath, elementData["de_data"])
-        
+
         with open(deDataPath, 'r') as fin:
 
             colname2idx = {}
@@ -634,7 +634,7 @@ def getElementInfo():
         with open(eInfoPath) as f:
             elem_info_file = json.load(f)
 
-            if elementData.get("type") == "msi":
+            if elementData.get("type") == "msi" or elementData.get("type") == "scrna":
                 
                 assert(len(elem_info_file) == 1)
 
