@@ -197,8 +197,7 @@ def fetchViewableData():
     )
     return response
 
-def geneFound(elementData, gene):
-
+def old_geneFound(elementData, gene):
     if not "de_data" in elementData and "info_path" in elementData:
 
         try:
@@ -207,14 +206,14 @@ def geneFound(elementData, gene):
             with open(elementData["info_path"]) as f:
                 print("Loading", elementData["info_path"])
                 elem_info_file = json.load(f)
-                print(elem_info_file)
+
                 data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
-                print(data)
+
             if len(data) > 0:
                 data = data[0]
 
                 elementData = data.get("info", {})#.get(content["cluster"], None)
-                print(elementData)
+
             else:
                 data = None
 
@@ -231,10 +230,11 @@ def geneFound(elementData, gene):
                     line = line.strip().split("\t")
                     if lidx == 0:
                         for eidx, elem in enumerate(line):
+
                             colname2idx[elem] = eidx+1
 
                         continue
-
+                    
                     rowelem = {}
                     for col in colname2idx:
                         rowelem[col] = line[colname2idx[col]]
@@ -244,7 +244,49 @@ def geneFound(elementData, gene):
 
         except FileNotFoundError:
             return False
+            
+    return False
 
+def geneFound(elementData, gene):
+    try:
+        data = None
+        info_file = elementData.get("info_path", "")
+        infoFilePath = eval_path(__file__, info_file)
+        with open(infoFilePath, 'r') as f:
+            print("Loading", elementData.get("info_path", ""))
+            elem_info_file = json.load(f)
+            data = elem_info_file[0].get("info", None) #[x[0].get("info", None) for x in elem_info_file]
+
+    except FileNotFoundError:
+        return False
+
+    for key in list(data.keys()):
+        tsv_file = data[key].get("de_data", "")
+        try:
+            with open(eval_path(infoFilePath, tsv_file), 'r') as fin:
+                print("Loading de_data file", tsv_file)
+
+                colname2idx = {}
+                for lidx, line in enumerate(fin):
+                    line = line.strip().split("\t")
+                    if lidx == 0:
+                        for eidx, elem in enumerate(line):
+
+                            colname2idx[elem] = eidx+1
+
+                        continue
+                    
+                    rowelem = {}
+                    print(colname2idx)
+                    for col in colname2idx:
+                        rowelem[col] = line[colname2idx[col]]
+
+                    if rowelem["gene"].upper() == gene.upper():
+                        return True
+
+        except FileNotFoundError:
+            continue
+            
     return False
 
     
@@ -258,6 +300,9 @@ def getGeneRelatedData():
     print("id ", fetchID)
     print("gene ", fetchGene)
     config_file = loadConfigs()
+
+
+    logger.error("Content: {}".format(content))
 
     targetInfo = None
     data = []
@@ -369,7 +414,7 @@ def getElementInfoDE():
     content = request.get_json(silent=True)
     fetchID = content.get("id", -1)
 
-    logger.error("Content!!!!!: {}".format(content))
+    logger.error("Content: {}".format(content))
 
     config_file = loadConfigs()
 
