@@ -142,7 +142,7 @@ def loadConfigs():
 
     for configFile in allConfigFiles:
 
-        #logger.warning("Loading config {}".format(configFile))
+        logger.warning("Loading config {}".format(configFile))
         
         with open(os.path.join(config_path, configFile)) as f:
             config_file = json.load(f)
@@ -198,8 +198,7 @@ def fetchViewableData():
     )
     return response
 
-def geneFound(elementData, gene):
-
+def old_geneFound(elementData, gene):
     if not "de_data" in elementData and "info_path" in elementData:
 
         try:
@@ -208,6 +207,7 @@ def geneFound(elementData, gene):
             with open(elementData["info_path"]) as f:
                 print("Loading", elementData["info_path"])
                 elem_info_file = json.load(f)
+
                 data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
 
             if len(data) > 0:
@@ -231,10 +231,11 @@ def geneFound(elementData, gene):
                     line = line.strip().split("\t")
                     if lidx == 0:
                         for eidx, elem in enumerate(line):
+
                             colname2idx[elem] = eidx+1
 
                         continue
-
+                    
                     rowelem = {}
                     for col in colname2idx:
                         rowelem[col] = line[colname2idx[col]]
@@ -244,7 +245,49 @@ def geneFound(elementData, gene):
 
         except FileNotFoundError:
             return False
+            
+    return False
 
+def geneFound(elementData, gene):
+    try:
+        data = None
+        info_file = elementData.get("info_path", "")
+        infoFilePath = eval_path(__file__, info_file)
+        with open(infoFilePath, 'r') as f:
+            print("Loading", elementData.get("info_path", ""))
+            elem_info_file = json.load(f)
+            data = elem_info_file[0].get("info", None) #[x[0].get("info", None) for x in elem_info_file]
+
+    except FileNotFoundError:
+        return False
+
+    for key in list(data.keys()):
+        tsv_file = data[key].get("de_data", "")
+        try:
+            with open(eval_path(infoFilePath, tsv_file), 'r') as fin:
+                print("Loading de_data file", tsv_file)
+
+                colname2idx = {}
+                for lidx, line in enumerate(fin):
+                    line = line.strip().split("\t")
+                    if lidx == 0:
+                        for eidx, elem in enumerate(line):
+
+                            colname2idx[elem] = eidx+1
+
+                        continue
+                    
+                    rowelem = {}
+                    print(colname2idx)
+                    for col in colname2idx:
+                        rowelem[col] = line[colname2idx[col]]
+
+                    if rowelem["gene"].upper() == gene.upper():
+                        return True
+
+        except FileNotFoundError:
+            continue
+            
     return False
 
     
@@ -258,6 +301,9 @@ def getGeneRelatedData():
     print("id ", fetchID)
     print("gene ", fetchGene)
     config_file = loadConfigs()
+
+
+    logger.error("Content: {}".format(content))
 
     targetInfo = None
     data = []
@@ -349,7 +395,7 @@ def getRelatedData():
 
             ints = list(set(detTypes) & set(targetInfo.get("type_det", [])))
 
-            if len(ints) > 0:
+            if len(ints) > 0 or elem.get("type", []) in ['scrna']:
                 data.append(elem)
 
 
@@ -396,7 +442,6 @@ def getElementInfoDE():
         if len(data) > 0:
             data = data
             elementData = data.get("info", {}).get(content["cluster"], None)
-
         else:
             data = None
 
@@ -410,7 +455,7 @@ def getElementInfoDE():
     if elementData != None and "de_data" in elementData:
 
         deDataPath = eval_path(infoFilePath, elementData["de_data"])
-        
+
         with open(deDataPath, 'r') as fin:
 
             colname2idx = {}
@@ -654,7 +699,7 @@ def getElementInfo():
         with open(eInfoPath) as f:
             elem_info_file = json.load(f)
 
-            if elementData.get("type") == "msi":
+            if elementData.get("type") == "msi" or elementData.get("type") == "scrna":
                 
                 assert(len(elem_info_file) == 1)
 

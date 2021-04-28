@@ -155,6 +155,7 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
             var scatterData = {x: [], y:[], text: [], text_pval: []}
 
             var maxNegLog = 200
+            var gene_column, pval_column, fc_column;
 
             if (this.props.exp_type == "msi")
             {
@@ -170,26 +171,9 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
                     { title: 'IntensityMap', render: rowData => <FlatButton onClick={() => {this.getIntensityDetails(rowData)}}>IntensityMap</FlatButton> },
                     { title: 'Details', render: rowData => <FlatButton onClick={() => {this.getRowDetails(rowData)}}>Details</FlatButton> },
                   ]
-
-                  this.state.current_table.forEach((elem) => {
-                    var negLog = maxNegLog;
-                    var pvalAdj = elem["qvalue"];
-                    if (pvalAdj > 0)
-                    {
-                        negLog = -Math.log(pvalAdj)
-
-                        if (negLog > maxNegLog)
-                        {
-                            negLog = maxNegLog
-                        }
-                    }
-
-                    scatterData.x.push(elem["avg_logFC"])
-                    scatterData.y.push(negLog)
-                    scatterData.text.push(elem["gene"])
-                    scatterData.text_pval.push(pvalAdj)
-
-              })
+                  gene_column = "gene";
+                  pval_column = "qvalue";
+                  fc_column = "avg_logFC";
 
 
             } else if (this.props.exp_type == "scrna")
@@ -203,27 +187,31 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
                   ]
 
 
-                  this.state.current_table.forEach((elem) => {
-                        var negLog = maxNegLog;
-                        var pvalAdj = elem["p_val_adj"];
-                        if (pvalAdj > 0)
-                        {
-                            negLog = -Math.log(pvalAdj)
-
-                            if (negLog > maxNegLog)
-                            {
-                                negLog = maxNegLog
-                            }
-                        }
-
-
-                        scatterData.x.push(elem["avg_logFC"])
-                        scatterData.y.push(negLog)
-                        scatterData.text.push(elem["gene"])
-                        scatterData.text_pval.push(pvalAdj)
-                  })
+                gene_column = "gene";
+                pval_column = "p_val_adj";
+                fc_column = "avg_logFC";
 
             }
+            
+            this.state.current_table.forEach((elem) => {
+                var negLog = maxNegLog;
+                var pvalAdj = elem[pval_column];
+                if (pvalAdj > 0)
+                {
+                    negLog = -Math.log(pvalAdj)
+
+                    if (negLog > maxNegLog)
+                    {
+                        negLog = maxNegLog
+                    }
+                }
+
+                scatterData.x.push(elem[fc_column])
+                scatterData.y.push(negLog)
+                scatterData.text.push(elem[gene_column])
+                scatterData.text_pval.push(pvalAdj)
+
+          })
 
             console.log(scatterData)
 

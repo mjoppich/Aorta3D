@@ -220,7 +220,7 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
                     <Aorta3DClickableMap element={self.state.eleminfo} blendedIDs={self.state.blendedIDs} onSelectRegion={(regionInfo) => self.handleSelectedRegionChange(regionInfo)} />
                     </Grid>
             )
-        } else if (isMSI)
+        } else if (isMSI || isSCRNASeq)
         {
             detailElement.push(
                 <Grid item xs key={detailElement.length}>
@@ -237,8 +237,6 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
                                     exp_type={self.state.eleminfo["type"]} />
                 )
 
-        } else if (isSCRNASeq) {
-            extraElements.push(<Aorta3DDEResViewer element={self.state.eleminfo} onSelectGene={(rowData) => self.handleSelectedGene(rowData)} exp_type={self.state.eleminfo["type"]}/>)
         } else {
             detailElement.push(<Grid item xs key={detailElement.length}><img style={{minHeight: "200px", minWidth: "200px", maxHeight: "400px", maxWidth: "400px"}} src={`data:image/png;base64,${self.state["elem_image"]}`} /></Grid>)
         }

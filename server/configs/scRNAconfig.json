@@ -1,0 +1,23 @@
+[
+    {
+        "id": "sc.analysis.1",
+        "type": "scrna",
+        "type_det": [
+            "Airway goblet cells;Lungs",
+            "B cells;Immune system",
+            "Dendritic cells;Immune system",
+            "Gamma delta T cells;Immune system",
+            "Macrophages;Immune system",
+            "Mast cells;Immune system",
+            "Monocytes;Immune system",
+            "NK cells;Immune system",
+            "Plasma cells;Immune system",
+            "T cells;Immune system"
+        ],
+        "color": "#ff0000",
+        "right": null,
+        "png_path": "../data/test_scRNA/umap.png",
+        "info_path": "../data/test_scRNA/scrnaseq.analysis.1.info",
+        "level": null
+    }
+]
