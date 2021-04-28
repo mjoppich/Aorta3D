@@ -140,25 +140,25 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
             
             console.log("selectedMass: %s", nextProps.blendedIDs)
 
-            if (nextProps.selectedMass == null)
+            if (nextProps.selectedMass !== null)
             {
                 self.setState({selectedMass: nextProps.selectedMass, massImages:[]});
             }
             
             [nextProps.selectedMass].forEach((elementID) => {
 
-                console.log("loading image for mass %s", elementID)
+                console.log("loading image for mass %s in element %s", elementID, self.state.current_element.id)
 
-                axios.post(config.getRestAddress() + "/getElementMass", {id: elementID, mass: nextProps.selectedMass}, config.axiosConfig)
+                axios.post(config.getRestAddress() + "/getElementMass", {id: self.state.current_element.id, mass: nextProps.selectedMass}, config.axiosConfig)
                 .then(function (response) {
                     console.log("loaded image for id %s", elementID)
         
-                    self.state.blendedImages.push(`data:image/png;base64,${response.data.image}`)
-                    self.setState({massImages: self.state.blendedImages})
+                    self.state.massImages.push(`data:image/png;base64,${response.data.image}`)
+                    self.setState({massImages: self.state.massImages})
         
                 })
                 .catch(function (error) {
-                    console.error("blended IDs image error: %s", error)
+                    console.error("selected mass IDs image error: %s", error)
                 });
             });
 

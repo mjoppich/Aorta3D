@@ -49,11 +49,11 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
 
     getIntensityDetails(rowdata)
     {
-        console.log(rowdata.gene)
+        console.log(rowdata.gene_mass)
 
         if (this.isFunction(this.props.onSelectMass))
         {
-            this.props.onSelectMass(rowdata.gene)
+            this.props.onSelectMass(rowdata.gene_mass)
         }
     }
 
