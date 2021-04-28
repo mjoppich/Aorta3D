@@ -10,6 +10,7 @@ import h5py
 import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.pyplot as plt
+import numpy as np
 
 sys.path.insert(0, str(os.path.dirname(os.path.realpath(__file__))) + "/../")
 
@@ -445,19 +446,24 @@ def get_elem_info_path(fetchID, attr):
             break
 
     if elementData == None:
+        print("no element data found", fetchID)
         return None
 
     if attr in elementData:
-        eImgPath = eval_path(file, elementData[attr])
+        eImgPath = eval_path(__file__, elementData[attr])
 
         return eImgPath
 
     elif "info_path" in elementData:
-        eInfoPath = eval_path(file, elementData["info_path"])
+        print("in info path")
+        eInfoPath = eval_path(__file__, elementData["info_path"])
 
         with open(eInfoPath) as f:
             elem_info_file = json.load(f)
             data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
+
+        print("got data")
+        print([x for x in data])
 
         assert(len(data) <= 1)
 
@@ -467,7 +473,9 @@ def get_elem_info_path(fetchID, attr):
             data = data[0]
 
         if attr in data:
-            return eval_path(file, data[attr])
+            return eval_path(__file__, data[attr])
+        else:
+            print([x for x in elementData])
 
     return None
 
@@ -480,6 +488,18 @@ def getElementMass():
     fetchMz = content.get("mass", -1)
     print("id ", fetchID)
     print("mass ", fetchMz)
+
+    try:
+        fetchMz = float(fetchMz)
+    except:
+        response = app.response_class(
+            response=json.dumps({}),
+            status=400,
+            mimetype='application/json'
+        )
+        return response
+
+
     if fetchID == -1 or fetchMz == -1:
         response = app.response_class(
             response=json.dumps({}),
@@ -493,25 +513,26 @@ def getElementMass():
 
     outdata = {}
     path = get_elem_info_path(fetchID, "hdf5_file")
+
+
     with h5py.File(path, 'r') as f:
         data = f['intensities']
         for k in data.keys():
-            cur_diff = abs(f['intensities'][k].attrs['mz'] - mz)
+            cur_diff = abs(f['intensities'][k].attrs['mz'] - fetchMz)
             if cur_diff < min_diff:
                 min_k = k
                 min_diff = cur_diff
 
         plot_data = np.copy(data[min_k])
-        plt.imshow(plot_data)
-
         pic_IObytes = io.BytesIO()
-        plt.savefig(pic_IObytes,  format='png')
+        plt.imsave(pic_IObytes, plot_data)
+
         pic_IObytes.seek(0)
         pic_hash = base64.b64encode(pic_IObytes.read())
 
         plt.close()
         f.close()
-        outdata['image'] = pic_hash
+        outdata['image'] = pic_hash.decode()
 
     response = app.response_class(
         response=json.dumps(outdata),
@@ -593,8 +614,7 @@ def get_elem_info_path(fetchID, attr):
         eInfoPath = eval_path(__file__, elementData["info_path"])
 
         with open(eInfoPath) as f:
-            elem_info_file = json.load(f)
-            data = [x for x in elem_info_file if x.get("region", -1) == elementData.get("region", -2)]
+            data = json.load(f)
 
         assert(len(data) <= 1)
 
