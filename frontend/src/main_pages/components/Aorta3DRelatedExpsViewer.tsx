@@ -30,28 +30,7 @@ export default class Aorta3DRelatedExpsViewer extends React.Component < Aorta3DR
 { 
 
     state = {
-        relatedexps: [
-            {
-                "id": 415,
-                "type": "msi",
-                "type_det": "Lipids",
-                "region": "0",
-                "location": "AR",
-                "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
-                "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
-                "level": 50
-            },
-            {
-                "id": 417,
-                "type": "msi",
-                "type_det": "Lipids",
-                "region": "5",
-                "location": "AR",
-                "path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML",
-                "info_path": "/usr/local/hdd/rita/msimaging/190927_AR_ZT13_Lipids/190927_AR_ZT13_Lipids.imzML.info",
-                "level": 50
-            },
-        ],
+        relatedexps: [],
         element: null
     }
 

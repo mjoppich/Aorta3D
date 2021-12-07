@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import ChipInput from 'material-ui-chip-input';
 import AutoComplete from 'material-ui/AutoComplete';
+import FlatButton from 'material-ui/FlatButton';
+
 import axios from 'axios';
 import config from '../config';
 import Grid, { GridSpacing } from '@material-ui/core/Grid';
@@ -12,9 +14,12 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
 
 import Aorta3DClickableMap from '../components/Aorta3DClickableMap';
 import Aorta3DDEResViewer from '../components/Aorta3DDEResViewer';
+import { MenuItem } from '@material-ui/core';
 
 export interface Aorta3DElemInfosProps {
     onSelectElement?: any
@@ -94,11 +99,12 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
                 .then(function (response) {
         
                   self.setElemInfo(response.data);
-        
+
         
                 })
                 .catch(function (error) {
-    
+                    console.log("error fetching element");
+                    console.log(error)
                 });
         
                 axios.post(config.getRestAddress() + "/getElementImage", {id: self.state.element.id}, config.axiosConfig)
@@ -111,7 +117,8 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         
                 })
                 .catch(function (error) {
-    
+                    console.log("error fetching image");
+                    console.log(error)
                 });
             }
             
@@ -135,6 +142,7 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         }
     }
 
+
     handleSelectedGene( selectedGene )
     {
         console.log("selected gene in Aorta3DElemInfos")
@@ -151,9 +159,9 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         console.log("selected mass in Aorta3DElemInfos")
         console.log(selectedMass)
 
-        if (this.state.selected_intensity_mass == selectedMass)
+        if ((selectedMass == null) || (this.state.selected_intensity_mass == selectedMass))
         {
-            selectedMass = 0;
+            selectedMass = null;
             console.log("selected mass in Aorta3DElemInfos set 0")
         }
 
@@ -173,7 +181,7 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
         console.log("Is this msi " + isMSI);
         console.log("Is this scheme " + isScheme);
         console.log("Is this scrna " + isSCRNASeq);
-        console.log("Is this scrna " + isImage);
+        console.log("Is this Image " + isImage);
         console.log(self.state)
         console.log(self.state.eleminfo)
 
@@ -220,7 +228,7 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
                     <Aorta3DClickableMap element={self.state.eleminfo} blendedIDs={self.state.blendedIDs} onSelectRegion={(regionInfo) => self.handleSelectedRegionChange(regionInfo)} />
                     </Grid>
             )
-        } else if (isMSI || isSCRNASeq)
+        } else if (isMSI)
         {
             detailElement.push(
                 <Grid item xs key={detailElement.length}>
@@ -229,6 +237,7 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
                                             selectedMass={self.state.selected_intensity_mass}
                                             onSelectRegion={(regionInfo) => self.handleSelectedRegionChange(regionInfo)} />
                 </Grid>)
+                extraElements.push(<FlatButton onClick={() => {this.handleSelectedMass(null)}}>Clear Mass Heatmap</FlatButton>)
             extraElements.push(
                 <Aorta3DDEResViewer key={extraElements.length}
                                     element={self.state.selected_region}
@@ -236,6 +245,39 @@ export default class Aorta3DElemInfos extends React.Component < Aorta3DElemInfos
                                     onSelectMass={(rowData) => self.handleSelectedMass(rowData)}
                                     exp_type={self.state.eleminfo["type"]} />
                 )
+
+        } else if (isSCRNASeq)
+        {
+
+            if ((self.state) && (self.state.eleminfo))
+            {
+                console.log("menuitems")
+                console.log(self.state.eleminfo.all_regions)
+                var menuItems = new Array();
+                self.state.eleminfo.all_regions.forEach((x) => menuItems.push(<MenuItem key={x.clusterID} value={x.clusterID}>Cluster {x.clusterID} ({x.type_det})</MenuItem>));
+
+                extraElements.push(<InputLabel id="clusterinput">Select Region</InputLabel>)
+                extraElements.push(
+                    <Select
+                    labelId="clusterinput"
+                    label="Select Region"
+                    onChange={(x) => self.handleSelectedRegionChange({"id": self.state.eleminfo.id, "cluster": x.target.value})}
+                  >
+                      {menuItems}
+                  </Select>
+                )
+            }
+
+            extraElements.push(<FlatButton onClick={() => {this.handleSelectedGene(null)}}>Clear Gene Filter</FlatButton>)
+
+            extraElements.push(
+                <Aorta3DDEResViewer key={extraElements.length}
+                                    element={self.state.selected_region}
+                                    onSelectGene={(rowData) => self.handleSelectedGene(rowData)}
+                                    onSelectMass={(rowData) => self.handleSelectedMass(rowData)}
+                                    exp_type={self.state.eleminfo["type"]} />
+                )
+
 
         } else {
             detailElement.push(<Grid item xs key={detailElement.length}><img style={{minHeight: "200px", minWidth: "200px", maxHeight: "400px", maxWidth: "400px"}} src={`data:image/png;base64,${self.state["elem_image"]}`} /></Grid>)

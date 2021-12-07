@@ -737,19 +737,40 @@ def getElement():
 
     config_file = loadConfigs()
 
-    data = {}
+    elementData = {}
 
     for elem in config_file:
         if elem.get("id") == fetchID:
-            data = elem
+            elementData = elem
             break
 
-    if len(data) == 0:
+    if len(elementData) == 0:
         logger.error("Returning 0 len data in getElement")
         logger.error("Was looking for data element: {}".format(fetchID))
 
+    else:
+
+        if "info_path" in elementData:
+            eInfoPath = eval_path(__file__, elementData["info_path"])
+            logger.warning(eInfoPath)
+
+            with open(eInfoPath) as f:
+                elem_info_file = json.load(f)
+
+                if elementData.get("type", None) in ["msi", "scrna"]:
+
+                    allElements = []
+                    for x in elem_info_file[0]["info"]:
+                        clusterID = x
+                        clusterDescr = elem_info_file[0]["info"][x]["type_det"]
+
+                        allElements.append({"clusterID": clusterID, "type_det": clusterDescr})
+                    
+                    elementData["all_regions"] = allElements
+            
+
     response = app.response_class(
-        response=json.dumps(data),
+        response=json.dumps(elementData),
         status=200,
         mimetype='application/json'
     )
@@ -789,6 +810,12 @@ def getElementImage():
     if not os.path.exists(fname) or fname == None:
         print("Image not found", fname)
         fname = testImage
+        response = app.response_class(
+            response="",
+            status=400,
+            mimetype='application/json'
+        )
+        return response 
 
     print("Loading image", fname)
 

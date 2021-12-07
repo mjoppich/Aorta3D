@@ -199,11 +199,15 @@ if __name__ == "__main__":
     parser.add_argument('--id', type=str, required=True, help="the primary ID given to all samples")
     parser.add_argument('--type', type=str, required=False, default="msi", help="experiment type for aorta3d")
 
+    parser.add_argument('--level', nargs="+", type=int, required=True, help="levels for file slides")
+
     parser.add_argument('--onlyconf', action="store_true", required=False, default=False, help="experiment type for aorta3d")
 
     result_config = {}
 
     args = parser.parse_args()
+
+    assert(len(args.files) == len(args.level))
 
     fileInfos = {}
     sampleIDs = []
@@ -347,6 +351,7 @@ if __name__ == "__main__":
         fileDict = {}
 
         fileDict["id"] = "{}.{}".format(args.id, fIdx)
+        fileDict["level"] = args.level[fIdx]
         fileDict["type"] = "msi"
         fileDict["type_det"] = allDetTypes
         fileDict["color"] = "#ff0000"

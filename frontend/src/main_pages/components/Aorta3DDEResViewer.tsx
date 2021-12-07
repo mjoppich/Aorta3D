@@ -148,6 +148,7 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
         //clusterID	gene_ident	gene_mass	gene	protein_mass	avg_logFC	qvalue	num	anum	mean	median	num_bg	anum_bg	mean_bg	median_bg
         //p_val	avg_logFC	pct.1	pct.2	p_val_adj	gene
         var self = this;
+        console.log(self.state.current_element)
 
         if (self.state.current_element != null)
         {
@@ -183,7 +184,7 @@ export default class Aorta3DDEResViewer extends React.Component < Aorta3DDEResVi
                     { title: 'Avg. logFC', field: 'avg_logFC' },
                     { title: 'p-Value (raw)', field: 'p_val' },
                     { title: 'p-Value (adjusted)', field: 'p_val_adj' },
-                    { title: 'Details', render: rowData => <FlatButton onClick={() => {this.getRowDetails(rowData)}}>Details</FlatButton> },
+                    { title: 'Filter Experiments', render: rowData => <FlatButton onClick={() => {this.getRowDetails(rowData)}}>Filter</FlatButton> },
                   ]
 
 

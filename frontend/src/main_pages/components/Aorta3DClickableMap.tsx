@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import ChipInput from 'material-ui-chip-input'
 import AutoComplete from 'material-ui/AutoComplete'
+
 import axios from 'axios';
 import config from '../config';
 
@@ -161,6 +162,18 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
                     console.error("selected mass IDs image error: %s", error)
                 });
             });
+
+        } else if (nextProps.selectedMass == null)
+        {
+            // explicitely set to null!
+
+            if (this.state.selectedMass)
+            {
+                self.state.massImages.splice(0, self.state.massImages.length)
+                self.setState({massImages: self.state.massImages})
+                console.error("clickableMap selectedMass cleared")
+    
+            }
 
         }
     }
@@ -686,7 +699,7 @@ export default class Aorta3DClickableMap extends React.Component < Aorta3DClicka
                             <p>Pixel Region: <span id="pixel_region">{pixelRegion}</span></p>
                             <p>Pixel Type: <span id="pixel_type">{pixelType}</span></p>
                             <p>BlendedIDs: <span id="blendedids">{(this.state.blendedIDs!=null) || "-"}</span></p>
-                            <p>Len Blend Images: <span id="blendedlen">{((this.state.blendedImages!=null) && this.state.blendedImages.length) || "-"}</span></p>
+                            <p>Number Blend Images: <span id="blendedlen">{((this.state.blendedImages!=null) && this.state.blendedImages.length) || "-"}</span></p>
                         </td>
                     </tr>
                 </table>
